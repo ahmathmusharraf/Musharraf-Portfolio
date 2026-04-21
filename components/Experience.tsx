@@ -136,53 +136,6 @@ const Experience: React.FC = () => {
           ))}
         </div>
 
-        {/* User-friendly Summary Box */}
-        <motion.div 
-           {...({
-             initial: { opacity: 0, scale: 0.95 },
-             whileInView: { opacity: 1, scale: 1 },
-             viewport: { once: true }
-           } as any)}
-           className="mt-32 p-8 md:p-12 bg-indigo-500/5 border border-indigo-500/10 rounded-[2.5rem] relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 p-8 text-indigo-500/10 rotate-12">
-            <Briefcase size={120} />
-          </div>
-          
-          <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
-            <div className="flex-1">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to build something together?</h3>
-              <p className="text-slate-400 font-light mb-8 max-w-lg">
-                My international background and technical versatility allow me to adapt to diverse business needs and drive measurable results.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a 
-                  href="#contact" 
-                  className="px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/80 transition-all flex items-center gap-2"
-                >
-                  Get in Touch <ChevronRight size={18} />
-                </a>
-                <a 
-                  href="#projects" 
-                  className="px-8 py-4 bg-white/5 text-white rounded-2xl font-bold hover:bg-white/10 transition-all border border-white/10"
-                >
-                  View Case Studies
-                </a>
-              </div>
-            </div>
-            
-            <div className="md:w-px h-20 md:h-40 bg-slate-800" />
-            
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-3 text-amber-400 mb-2">
-                <Sparkles size={20} />
-                <span className="font-bold text-xl uppercase tracking-tighter">Impact Focus</span>
-              </div>
-              <p className="text-5xl font-black text-white tracking-tighter">100%</p>
-              <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Growth Driven</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
