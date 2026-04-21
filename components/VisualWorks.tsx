@@ -218,14 +218,15 @@ const VisualWorks: React.FC = () => {
                 </a>
 
                 <a 
-                    href="/Multimedia_Portfolio_Ahmath.pdf" 
-                    download
+                    href="https://studioroutes.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 pl-3 pr-8 py-2.5 bg-slate-900/40 text-white border border-slate-800 rounded-full font-bold transition-all hover:bg-slate-900/60 hover:border-slate-700 hover:-translate-y-1 active:scale-95 whitespace-nowrap"
                 >
-                    <div className="w-9 h-9 bg-slate-950/50 rounded-lg flex items-center justify-center border border-white/5">
-                        <Download size={18} />
+                    <div className="w-9 h-9 bg-slate-950/50 rounded-lg flex items-center justify-center border border-white/5 text-primary">
+                        <Video size={18} />
                     </div>
-                    <span className="text-sm font-semibold tracking-tight">Download Design Folio</span>
+                    <span className="text-sm font-semibold tracking-tight">Photography & Videography Portfolio</span>
                 </a>
             </div>
         </motion.div>
