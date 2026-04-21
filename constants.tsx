@@ -154,7 +154,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     icon: Megaphone,
     skills: ["Social Media Marketing, SEO & Growth Strategy, Meta & Google Ads, Analytics & Conversion Optimization, Viral Content Strategy"]
   },
-   {
+  {
     name: "Content Creation",
     icon: Megaphone,
     skills: ["Content Strategy, Short-form & Long-form Video, Viral Content Planning, Copywriting, Social Media Content Production"]
