@@ -188,7 +188,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: "Management & Leadership",
     icon: Briefcase,
     skills: ["Project Management, Team Coordination, Creative Direction, Workflow Optimization, Client Communication"]
-  },
+  }
 ];
 
 export const SOFTWARE_PROJECTS: Project[] = [
