@@ -19,7 +19,7 @@ const FloatingWhatsApp: React.FC = () => {
               animate: { opacity: 1, y: 0, scale: 1 },
               exit: { opacity: 0, y: 20, scale: 0.95 }
             } as any)}
-            className="fixed bottom-24 right-6 md:right-8 z-50 flex flex-col gap-3 items-end"
+            className="fixed bottom-44 md:bottom-24 right-6 md:right-8 z-50 flex flex-col gap-3 items-end"
           >
             {/* UAE Option */}
             <a
@@ -62,7 +62,7 @@ const FloatingWhatsApp: React.FC = () => {
 
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-6 md:right-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-2xl shadow-lg shadow-green-500/30 hover:bg-[#20bd5a] transition-all duration-300 group"
+        className="fixed bottom-28 md:bottom-8 right-6 md:right-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-2xl shadow-lg shadow-green-500/30 hover:bg-[#20bd5a] transition-all duration-300 group"
         {...({
           whileHover: { scale: 1.1 },
           whileTap: { scale: 0.9 }
