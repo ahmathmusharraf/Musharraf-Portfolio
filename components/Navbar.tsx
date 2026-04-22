@@ -27,78 +27,94 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-slate-900/80 backdrop-blur-lg shadow-lg border-b border-white/5 py-4' 
+          ? 'bg-slate-950/80 backdrop-blur-xl shadow-2xl border-b border-white/5 py-3' 
           : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold text-white tracking-tighter group">
-          Musharraf<span className="text-primary group-hover:text-secondary transition-colors">.</span>
+        <a href="#" className="text-2xl font-black text-white tracking-tighter group flex items-center gap-2">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white text-sm">M</div>
+          <span>Musharraf<span className="text-primary group-hover:text-secondary transition-colors">.</span></span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-1">
-          <div className="flex bg-slate-800/50 rounded-full p-1 border border-white/5 backdrop-blur-md">
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-all"
+                className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all relative group/link"
               >
                 {link.name}
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform origin-left"></span>
               </a>
             ))}
           </div>
           <a 
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="ml-4 px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-full hover:bg-indigo-600 transition-colors shadow-lg shadow-primary/20"
+            className="px-6 py-3 bg-white text-slate-950 text-xs font-black uppercase tracking-[0.2em] rounded-full hover:bg-primary hover:text-white transition-all shadow-xl"
           >
             Hire Me
           </a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle - Minimalist */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden flex items-center justify-center w-10 h-10 bg-white/5 border border-white/10 rounded-xl text-white backdrop-blur-sm active:scale-90 transition-transform"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown - Small and Professional */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            {...({
-              initial: { opacity: 0, height: 0 },
-              animate: { opacity: 1, height: 'auto' },
-              exit: { opacity: 0, height: 0 }
-            } as any)}
-            className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 overflow-hidden"
-          >
-            <div className="flex flex-col p-6 space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-slate-300 hover:text-white hover:bg-white/5 block px-4 py-3 rounded-xl text-lg font-medium transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href={`mailto:${PERSONAL_INFO.email}`}
-                className="mt-4 text-center px-4 py-3 bg-primary text-white rounded-xl font-bold hover:bg-indigo-600 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Hire Me
-              </a>
-            </div>
-          </motion.div>
+          <>
+            {/* Backdrop for closing */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-slate-950/20 backdrop-blur-sm sm:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              className="absolute top-[70px] right-6 z-[70] w-64 bg-slate-900 border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden sm:hidden"
+            >
+              <div className="p-2 space-y-1">
+                {navLinks.map((link, idx) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all group"
+                  >
+                    <span className="text-[10px] font-bold text-primary opacity-50 group-hover:opacity-100">0{idx + 1}</span>
+                    <span className="text-sm font-bold uppercase tracking-widest">{link.name}</span>
+                  </a>
+                ))}
+                
+                <div className="mt-2 pt-2 border-t border-white/5">
+                  <a 
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    className="flex items-center justify-center w-full py-3 bg-white text-slate-950 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Hire Me Now
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
