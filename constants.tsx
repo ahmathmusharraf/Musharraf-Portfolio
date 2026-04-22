@@ -235,6 +235,34 @@ export const VISUAL_WORKS: VisualWork[] = [
     imageUrl: "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=800&auto=format&fit=crop",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
     aspectRatio: '9:16'
+  },
+  { 
+    id: "v3", 
+    title: "Luxury Watch Branding", 
+    category: "Branding", 
+    imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '3:4'
+  },
+  { 
+    id: "v4", 
+    title: "Tech Workshop Series", 
+    category: "Mentorship", 
+    imageUrl: "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '3:4'
+  },
+  {
+    id: "v5",
+    title: "Automotive Lighting Studio",
+    category: "Photography",
+    imageUrl: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '16:9'
+  },
+  {
+    id: "v6",
+    title: "Corporate Identity Motion",
+    category: "Videography",
+    imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '16:9'
   }
 ];
 
