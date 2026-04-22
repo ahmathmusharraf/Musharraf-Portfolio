@@ -64,70 +64,61 @@ export const SITE_CONFIG = {
 export const EXPERIENCES: Experience[] = [
   {
     id: "1",
-    role: "Visual Lead & Brand Architect",
+    role: "Photographer, Videographer cum Graphic Designer",
     company: "Al Khateeb Global General Trading LLC",
     location: "Dubai, UAE",
-    period: "Oct 2024 - Present",
+    period: "Oct 2025 - Present",
     website: "https://alkhateeb.ae/",
     description: [
-      "Orchestrating the digital visual transformation for GCC’s premier automotive accessories group, managing creative assets for a multi-million AED brand portfolio across the UAE.",
-      "Spearheading high-bitrate cinematic 4K production and art direction for flagship Toyota LC300 and Lexus LX600 campaigns, amplifying regional brand visibility with 1M+ organic social impressions.",
-      "Engineering high-performance UI/UX frameworks for corporate e-commerce portals, optimizing user navigation and increasing online conversion rates by 18%.",
-      "Leading the end-to-end technical production pipeline, implementing advanced color science workflows in DaVinci Resolve for global lifestyle brand consistency."
+      "Produced high-quality photography and videography for marketing and product campaigns, increasing content engagement by 40%+ across digital platforms.",
+      "Led end-to-end content production (planning, shooting, editing), reducing turnaround time by 30% while maintaining premium visual standards.",
+      "Designed creative assets for social media and promotions, contributing to a 25%+ growth in audience reach and brand visibility.",
+      "Collaborated with marketing and sales teams to deliver targeted visual campaigns, supporting increased lead generation and customer conversions.",
+      "Managed and optimized digital media library and workflows, improving content accessibility and team efficiency by 20%."
     ]
   },
   {
     id: "2",
-    role: "Senior Digital Strategist",
+    role: "Digital Marketing Specialist",
     company: "British College of Applied Studies (BCAS)",
     location: "Colombo, Sri Lanka",
     period: "Jan 2023 - Aug 2025",
     website: "https://bcas.lk/",
     description: [
-      "Conceptualized and deployed a data-driven recruitment funnel that yielded a 40% increase in student enrollment through targeted multi-channel digital strategies.",
-      "Optimized enterprise SEO and web speed performance, securing top-3 rankings for high-intent academic keywords in a competitive South Asian education market.",
-      "Managed a significant annual digital ad spend across Meta and Google ecosystems, achieving a consistent 4.5x ROAS through rigorous data analytics and A/B testing.",
-      "Developed interactive digital brochures and virtual tour experiences that reduced physical inquiry processing time by 25% while improving lead quality."
+      "Executed multi-channel digital marketing campaigns (Meta, Google Ads, email), increasing student inquiries and qualified leads by 35%+.",
+      "Improved SEO performance, boosting organic website traffic by 40% and ranking key academic programs on the first page of search results.",
+      "Developed and managed targeted content strategies, increasing social media engagement by 50%+ and growing follower base significantly.",
+      "Analyzed campaign performance and optimized strategies, improving conversion rates by 25% and maximizing marketing ROI.",
+      "Collaborated with academic and admissions teams on recruitment campaigns, contributing to a 20%+ increase in student enrollments."
     ]
   },
   {
     id: "3",
-    role: "Lead Photographer & Cinematographer",
-    company: "Studio Routes",
+    role: "Visiting Lecturer - IT",
+    company: "British College of Applied Studies (BCAS)",
     location: "Colombo, Sri Lanka",
-    period: "Feb 2023 - Aug 2025",
-    website: "https://studioroutes.vercel.app/",
+    period: "Mar 2024 - Aug 2025",
+    website: "https://bcas.lk/",
     description: [
-      "Directed high-end photography and cinematic videography across diverse sectors including fashion editorials, corporate branding, luxury weddings, and professional portraits.",
-      "Managed end-to-end visual production pipelines for elite clientele, delivering high-bitrate 4K content with specialized focus on architectural and commercial storytelling.",
-      "Mastered intricate studio and on-location lighting setups for fashion and portrait sessions, ensuring consistent high-fidelity image quality across various challenging environments.",
-      "Pioneered cinematic wedding and event coverage utilizing multi-cam operations, FPV drone perspectives, and DaVinci Resolve color science for premium emotional narratives."
+      "Delivered IT and Multimedia lectures to undergraduate students, achieving 90%+ student satisfaction and consistently strong academic outcomes.",
+      "Designed and updated curriculum aligned with industry standards, improving student skill readiness and practical competencies.",
+      "Supervised student projects and assessments, contributing to 95%+ pass rates and enhanced project quality.",
+      "Mentored students in multimedia tools and technologies, increasing employability and successful internship/job placements."
     ]
   },
   {
     id: "4",
-    role: "Digital Marketing & Brand Lead",
+    role: "Social Media Executive & Brand Lead",
     company: "Dr. Jameel Memorial Hospital",
-    location: "Sri Lanka",
-    period: "2021 – 2023",
-    description: [
-      "Developed and executed the digital brand identity for the healthcare facility, modernizing the patient outreach program through content-driven trust building.",
-      "Architected the hospital's appointment booking portal and web infrastructure, improving digital appointment acquisition by 35% through UX optimization.",
-      "Managed production for a series of 'Expert Medical Insights' video campaigns, effectively positioning the hospital as a regional leader in specialized care.",
-      "Analyzed patient demographic data to create hyper-targeted awareness campaigns for specialized medical wings, maximizing clinical operational efficiency."
-    ]
-  },
-  {
-    id: "5",
-    role: "Lecturer - Interactive Multimedia & UX",
-    company: "BCAS Campus",
     location: "Colombo, Sri Lanka",
-    period: "Mar 2024 - Aug 2025",
+    period: "Oct 2020 - Dec 2022",
+    website: "https://jameelhospital.lk/",
     description: [
-      "Delivering Pearson BTEC Level 5 HND modules in User Experience (UX) and Multimedia Design, focusing on industry-aligned prototyping and visual theory.",
-      "Mentoring a cohort of 200+ students in advanced technical workflows including professional cinematography, lighting design, and full-stack React.js development.",
-      "Designing a specialized curriculum for digital entrepreneurship, empowering students to build market-ready portfolios for the global creative economy.",
-      "Facilitating hands-on masterclasses in DaVinci Resolve color grading and Adobe Creative Cloud, bridging the gap between academia and professional production standards."
+      "Led social media strategy and brand positioning, increasing online engagement by 60%+ and strengthening brand awareness across platforms.",
+      "Managed and executed digital campaigns (Facebook, Instagram, Google), driving 30%+ growth in patient inquiries and appointments.",
+      "Developed high-quality healthcare content and campaigns, improving audience reach and trust in medical services.",
+      "Analyzed performance metrics and optimized campaigns, improving conversion rates by 25%+ and maximizing ROI.",
+      "Coordinated with medical and administrative teams to promote services and health campaigns, contributing to increased patient acquisition and retention."
     ]
   }
 ];
