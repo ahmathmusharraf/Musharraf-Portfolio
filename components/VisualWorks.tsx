@@ -11,22 +11,20 @@ const VisualWorks: React.FC = () => {
 
   const filters = [
     { name: 'All', icon: Sparkles },
-    { name: 'Real Estate', icon: Building2 },
-    { name: 'Automotive', icon: Car },
-    { name: 'Social Reels', icon: Smartphone },
+    { name: 'Videography', icon: Video },
+    { name: 'Photography', icon: Camera },
+    { name: 'Reels', icon: Smartphone },
+    { name: 'Creative Design', icon: Palette },
     { name: 'Mentorship', icon: GraduationCap },
-    { name: 'Healthcare', icon: Stethoscope },
-    { name: 'Branding', icon: Briefcase },
   ];
 
   const filteredWorks = VISUAL_WORKS.filter(work => {
     if (activeFilter === 'All') return true;
-    if (activeFilter === 'Real Estate') return work.title.toLowerCase().includes('villa') || work.title.toLowerCase().includes('penthouse') || work.title.toLowerCase().includes('architectural');
-    if (activeFilter === 'Automotive') return work.category === 'Reels' || work.title.toLowerCase().includes('cruiser') || work.title.toLowerCase().includes('lexus') || work.title.toLowerCase().includes('off-road');
-    if (activeFilter === 'Social Reels') return work.category === 'Reels';
-    if (activeFilter === 'Mentorship') return work.title.toLowerCase().includes('lecturing') || work.title.toLowerCase().includes('workshop') || work.title.toLowerCase().includes('mentorship');
-    if (activeFilter === 'Healthcare') return work.title.toLowerCase().includes('medical') || work.title.toLowerCase().includes('hospital');
-    if (activeFilter === 'Branding') return work.category === 'Photography' || work.title.toLowerCase().includes('corporate');
+    if (activeFilter === 'Videography') return work.category === 'Videography';
+    if (activeFilter === 'Photography') return work.category === 'Photography';
+    if (activeFilter === 'Reels') return work.category === 'Reels';
+    if (activeFilter === 'Creative Design') return work.category === 'Graphic Design' || work.category === 'Branding';
+    if (activeFilter === 'Mentorship') return work.title.toLowerCase().includes('mentorship') || work.title.toLowerCase().includes('lecturing') || work.title.toLowerCase().includes('workshop');
     return true;
   });
 
@@ -69,26 +67,26 @@ const VisualWorks: React.FC = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white mt-1 mb-4 sm:mb-6 text-glow tracking-tighter">Specialized Multimedia</h2>
-          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full shadow-[0_0_15px_rgba(0,182,212,0.5)]"></div>
+          <div className="w-16 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full shadow-[0_0_15px_rgba(0,182,212,0.5)]"></div>
         </motion.div>
 
         {/* Filter Navigation - Horizontally scrollable on mobile */}
-        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-2 sm:gap-3 mb-10 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
+        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-1.5 sm:gap-3 mb-10 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
           {filters.map((filter) => (
             <button
               key={filter.name}
               onClick={() => setActiveFilter(filter.name)}
-              className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl border transition-all duration-300 whitespace-nowrap shrink-0 ${
+              className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-1.5 sm:py-3 rounded-lg sm:rounded-2xl border transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeFilter === filter.name
                   ? 'bg-slate-800 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
                   : 'bg-slate-900/50 border-white/5 hover:border-white/10 text-slate-400'
               }`}
             >
               <filter.icon 
-                size={16} 
+                size={14} 
                 className={activeFilter === filter.name ? 'text-amber-400' : 'text-indigo-400 opacity-60'} 
               />
-              <span className={`text-[10px] sm:text-sm font-bold uppercase tracking-widest ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
+              <span className={`text-[9px] sm:text-sm font-bold uppercase tracking-wider ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
                 {filter.name}
               </span>
             </button>
@@ -97,7 +95,7 @@ const VisualWorks: React.FC = () => {
 
         <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5"
         >
           <AnimatePresence mode="popLayout">
             {filteredWorks.map((work) => (
