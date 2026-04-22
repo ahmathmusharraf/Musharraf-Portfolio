@@ -16,7 +16,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="engineering" className="py-24 bg-slate-900 relative overflow-hidden">
+    <section id="engineering" className="py-20 sm:py-24 bg-slate-900 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
@@ -31,19 +31,19 @@ const Projects: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-16 text-center"
+          className="mb-10 sm:mb-16 text-center"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
-            <span className="text-primary font-mono text-sm tracking-widest uppercase text-glow px-4 py-1 rounded-full bg-primary/10 border border-primary/20">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-3 sm:mb-4">
+            <span className="text-primary font-mono text-[10px] sm:text-sm tracking-[0.3em] uppercase text-glow px-4 py-1 rounded-full bg-primary/10 border border-primary/20 font-bold">
               Web Engineering & Design
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6 text-glow font-display tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-white mt-1 mb-4 sm:mb-6 text-glow tracking-tighter">
             Full-Stack Digital Solutions
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary via-indigo-400 to-indigo-600 mx-auto rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-          <p className="text-slate-400 mt-6 max-w-2xl mx-auto font-light leading-relaxed">
-            Bridging the gap between Front-end aesthetics and Back-end scalability to build complete, high-performance web ecosystems.
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary via-indigo-400 to-indigo-600 mx-auto rounded-full shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+          <p className="text-slate-400 mt-4 sm:mt-6 max-w-xl mx-auto font-light leading-relaxed text-sm sm:text-base">
+            Bridging aesthetics and scalability to build performant web ecosystems.
           </p>
         </motion.div>
 
@@ -122,12 +122,12 @@ const Projects: React.FC = () => {
             } as any)}
             className="mt-20 text-center relative"
         >
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center px-4">
                 <a 
                     href={githubLink} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 pl-3 pr-6 py-2.5 bg-white text-slate-950 rounded-full font-bold transition-all shadow-[0_4px_20px_rgba(255,255,255,0.1)] hover:-translate-y-1 active:scale-95 whitespace-nowrap"
+                    className="w-full md:w-auto flex items-center gap-4 pl-3 pr-6 py-2.5 bg-white text-slate-950 rounded-2xl font-bold transition-all shadow-[0_4px_20px_rgba(255,255,255,0.1)] active:scale-95 whitespace-nowrap"
                 >
                     <div className="w-9 h-9 bg-slate-950 rounded-lg flex items-center justify-center text-white">
                       <Terminal size={18} />
