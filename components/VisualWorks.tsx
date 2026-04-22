@@ -216,7 +216,7 @@ const VisualWorks: React.FC = () => {
                 </a>
 
                 <a 
-                    href="https://studioroutes.vercel.app/" 
+                    href="https://www.canva.com/design/DAG7830hOq8/RxMMMG4idKm8Q5GwIEuAhQ/view?utm_content=DAG7830hOq8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h551cf0bd2c" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 pl-3 pr-8 py-2.5 bg-slate-900/40 text-white border border-slate-800 rounded-full font-bold transition-all hover:bg-slate-900/60 hover:border-slate-700 hover:-translate-y-1 active:scale-95 whitespace-nowrap"
