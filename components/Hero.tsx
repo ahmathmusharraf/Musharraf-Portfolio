@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { PERSONAL_INFO } from '../constants';
-import { Sparkles, Star, FileText, Building2, Car, Briefcase, GraduationCap, Megaphone, Smartphone } from 'lucide-react';
+import { Sparkles, Star, FileText, Building2, Briefcase, GraduationCap, Megaphone, Camera, Video, Code, Palette, Smartphone, Brain } from 'lucide-react';
 
 interface HeroProps {
   onOpenResume?: () => void;
@@ -47,12 +47,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   }, []);
 
   const specialties = [
-    { label: 'Real Estate', icon: Building2, color: 'text-amber-400' },
-    { label: 'Automotive', icon: Car, color: 'text-indigo-400' },
-    { label: 'Digital Strategy', icon: Megaphone, color: 'text-emerald-400' },
-    { label: 'Social Reels', icon: Smartphone, color: 'text-purple-400' },
-    { label: 'Teaching', icon: GraduationCap, color: 'text-rose-400' },
-    { label: 'Management', icon: Briefcase, color: 'text-cyan-400' },
+    { label: 'Real Estate Media', icon: Building2, color: 'text-amber-400' },
+    { label: 'Branding & Strategy', icon: Briefcase, color: 'text-indigo-400' },
+    { label: 'Cinematography', icon: Video, color: 'text-emerald-400' },
+    { label: 'Digital Marketing', icon: Megaphone, color: 'text-purple-400' },
+    { label: 'Web Development', icon: Code, color: 'text-rose-400' },
+    { label: 'AI & Automation', icon: Brain, color: 'text-cyan-400' },
   ];
 
   return (
@@ -115,7 +115,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
             
             <p className="text-slate-400 max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed text-lg">
-              Architecting cinematic property narratives, automotive visual systems, and data-driven marketing strategies for the Dubai luxury market.
+              Synchronizing high-bitrate cinematography, technical web engineering, and strategic marketing to architect premium brand ecosystems across the GCC.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start mb-12">
