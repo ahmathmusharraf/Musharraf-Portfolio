@@ -50,9 +50,9 @@ const PrintableResume: React.FC = () => {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 12pt;
+          margin-bottom: 4pt;
           border-bottom: 2pt solid #111827;
-          padding-bottom: 12pt;
+          padding-bottom: 10pt;
         }
         .header-left {
           flex: 1;
@@ -178,15 +178,17 @@ const PrintableResume: React.FC = () => {
           </div>
         </div>
 
-        <div className="ats-section-title">Executive Summary</div>
+        <div className="ats-section-title" style={{ marginTop: 0 }}>Executive Summary</div>
         <div className="ats-summary">{PERSONAL_INFO.summary}</div>
 
         <div className="ats-section-title">Technical Expertise</div>
-        <div className="ats-skills-container">
-          {SKILL_CATEGORIES.slice(0, 6).map(cat => (
+        <div className="ats-skills-container" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '6pt' }}>
+          {SKILL_CATEGORIES.map(cat => (
             <div key={cat.name} className="ats-skill-group">
               <strong>{cat.name.toUpperCase()}</strong>
-              {cat.skills.join(", ")}
+              <div style={{ fontSize: '7.5pt', color: '#4b5563', lineHeight: '1.2' }}>
+                {cat.skills.join(", ")}
+              </div>
             </div>
           ))}
         </div>
@@ -216,7 +218,7 @@ const PrintableResume: React.FC = () => {
 
       {/* PAGE 2: Education, Remaining Experience, Certs */}
       <div className="cv-page">
-        <div className="ats-section-title">Professional Chronicle (Continued)</div>
+        <div className="ats-section-title" style={{ marginTop: 0 }}>Professional Chronicle (Continued)</div>
         <div className="space-y-4">
           {EXPERIENCES.slice(2).map(exp => (
             <div key={exp.id} className="ats-exp-item">
