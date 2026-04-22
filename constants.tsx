@@ -45,7 +45,7 @@ export const PERSONAL_INFO = {
   
   summary: "Results-driven Multimedia Architect with over 5 years of international experience across the UAE and GCC markets. Expert in bridging high-bitrate cinematic production with technical web engineering and strategic digital marketing. Proven track record in scaling brands across automotive, healthcare, and academic sectors through data-backed visual storytelling and technical innovation.",
   
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+  profileImage: "https://raw.githubusercontent.com/ahmath-musharraf/Musharraf-Portfolio/refs/heads/main/Musharraf.png",
 
   // PATH TO YOUR REAL CV
   cvUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
@@ -264,7 +264,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { name: "Email", url: `mailto:${PERSONAL_INFO.email}`, icon: Mail },
 ];
 
-export const LANGUAGES = ["English (Professional)", "Tamil (Native)", "Sinhala (Native)", "Malayalam (Conversational)"];
+export const LANGUAGES = ["English (Professional)", "Tamil (Native)", "Sinhala (Professional)", "Malayalam (Conversational)", "Hindi (Conversational)",];
 
 export const CERTIFICATIONS = [
   "Meta Certified Creative Strategy Professional",
