@@ -53,7 +53,7 @@ const VisualWorks: React.FC = () => {
   };
 
   return (
-    <section id="visuals" className="py-24 bg-slate-950">
+    <section id="visuals" className="py-20 sm:py-24 bg-slate-950">
       <div className="container mx-auto px-6">
         <motion.div
           {...({
@@ -61,34 +61,34 @@ const VisualWorks: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-12 text-center"
+          className="mb-8 sm:mb-12 text-center"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
-            <span className="text-secondary font-mono text-sm tracking-widest uppercase text-glow px-4 py-1 rounded-full bg-secondary/10 border border-secondary/20">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-3 sm:mb-4">
+            <span className="text-secondary font-mono text-[10px] sm:text-sm tracking-[0.3em] uppercase text-glow px-4 py-1 rounded-full bg-secondary/10 border border-secondary/20 font-bold">
               Creative Direction
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6 text-glow font-display">Specialized Multimedia</h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full shadow-[0_0_15px_rgba(0,182,212,0.5)]"></div>
+          <h2 className="text-3xl sm:text-5xl font-black text-white mt-1 mb-4 sm:mb-6 text-glow tracking-tighter">Specialized Multimedia</h2>
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full shadow-[0_0_15px_rgba(0,182,212,0.5)]"></div>
         </motion.div>
 
-        {/* Filter Navigation - Expanded for Mentorship */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        {/* Filter Navigation - Horizontally scrollable on mobile */}
+        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-2 sm:gap-3 mb-10 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
           {filters.map((filter) => (
             <button
               key={filter.name}
               onClick={() => setActiveFilter(filter.name)}
-              className={`flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 ${
+              className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl border transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeFilter === filter.name
                   ? 'bg-slate-800 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
                   : 'bg-slate-900/50 border-white/5 hover:border-white/10 text-slate-400'
               }`}
             >
               <filter.icon 
-                size={18} 
+                size={16} 
                 className={activeFilter === filter.name ? 'text-amber-400' : 'text-indigo-400 opacity-60'} 
               />
-              <span className={`text-sm font-medium ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
+              <span className={`text-[10px] sm:text-sm font-bold uppercase tracking-widest ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
                 {filter.name}
               </span>
             </button>
