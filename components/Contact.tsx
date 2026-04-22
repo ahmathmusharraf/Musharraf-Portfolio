@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="bg-slate-950 pt-24 pb-10 border-t border-slate-900 relative overflow-hidden">
+    <footer id="contact" className="bg-slate-950 pt-16 md:pt-24 pb-10 border-t border-slate-900 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -41,20 +41,20 @@ const Contact: React.FC = () => {
         </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 mb-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 mb-12 lg:mb-20">
 
           {/* Contact Info & Social Badge */}
-          <div className="lg:w-5/12 space-y-10">
+          <div className="lg:w-5/12 space-y-6 lg:space-y-10">
             <div>
-              <span className="text-secondary font-mono text-sm tracking-widest uppercase">Get in Touch</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">Let's Work Together</h2>
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <span className="text-secondary font-mono text-xs tracking-widest uppercase">Get in Touch</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mt-1 mb-4 lg:mb-6">Let's Work Together</h2>
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed">
                 I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
               </p>
             </div>
 
-            <div className="space-y-6">
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-6 p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
+            <div className="space-y-3 lg:space-y-6">
+              <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
                 <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                   <Mail size={22} />
                 </div>
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-               <div className="flex items-start gap-6 p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
+               <div className="flex items-start gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
                 <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform mt-1">
                   <Phone size={22} />
                 </div>
@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-               <div className="flex items-center gap-6 p-4 rounded-2xl bg-slate-900/50 border border-white/5">
+               <div className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5">
                 <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
                   <MapPin size={22} />
                 </div>
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-               <div className="flex items-center gap-6 p-4 rounded-2xl bg-slate-900/50 border border-white/5">
+               <div className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5">
                 <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
                   <Flag size={22} />
                 </div>
@@ -159,11 +159,11 @@ const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <div className="lg:w-7/12">
-            <div className="bg-slate-900 p-8 md:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
+            <div className="bg-slate-900 p-6 md:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                 
-                 <h3 className="text-2xl font-bold text-white mb-8 relative z-10">Send a Message</h3>
-                <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
+                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-8 relative z-10">Send a Message</h3>
+                <form className="space-y-4 md:space-y-6 relative z-10" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <label className="text-sm text-slate-400 ml-1 font-medium">Name</label>
