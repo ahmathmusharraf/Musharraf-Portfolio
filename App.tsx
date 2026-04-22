@@ -13,6 +13,7 @@ import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import PrintableResume from './components/PrintableResume';
+import MobileDock from './components/MobileDock';
 import { SITE_CONFIG } from './constants';
 
 function App() {
@@ -59,7 +60,7 @@ function App() {
 
   // Portfolio Mode Rendering
   return (
-    <div className="min-h-screen bg-dark text-slate-200 selection:bg-primary/30 selection:text-white overflow-x-hidden scroll-smooth">
+    <div className="min-h-[100dvh] bg-dark text-slate-200 selection:bg-primary/30 selection:text-white overflow-x-hidden scroll-smooth">
       <motion.div className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-secondary to-primary z-[100] origin-left" style={{ scaleX }} />
       
       <Navbar />
@@ -76,6 +77,7 @@ function App() {
       
       <Contact />
       <FloatingWhatsApp />
+      <MobileDock />
       
       <AnimatePresence>
         {showScrollTop && (
@@ -84,7 +86,7 @@ function App() {
             animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-24 right-8 p-4 bg-slate-800/80 backdrop-blur-md rounded-full shadow-2xl border border-white/10 hover:bg-primary transition-all z-40 group"
+            className="fixed bottom-44 md:bottom-24 right-8 p-4 bg-slate-800/80 backdrop-blur-md rounded-full shadow-2xl border border-white/10 hover:bg-primary transition-all z-40 group"
           >
             <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
           </motion.button>
