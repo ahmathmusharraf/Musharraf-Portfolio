@@ -50,6 +50,15 @@ const VisualWorks: React.FC = () => {
     }
   };
 
+  const getYoutubeThumbnail = (url?: string) => {
+    if (!url) return null;
+    // Handle embed URLs, short URLs (youtu.be), and standard watch?v= URLs
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = (match && match[2].length === 11) ? match[2] : null;
+    return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null;
+  };
+
   return (
     <section id="visuals" className="py-20 sm:py-24 bg-slate-950">
       <div className="container mx-auto px-6">
@@ -110,9 +119,10 @@ const VisualWorks: React.FC = () => {
                 onClick={() => work.videoUrl && setSelectedVideo(work)}
               >
                 <img 
-                  src={work.imageUrl} 
+                  src={work.videoUrl ? (getYoutubeThumbnail(work.videoUrl) || work.imageUrl) : work.imageUrl} 
                   alt={work.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
