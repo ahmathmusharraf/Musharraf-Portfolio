@@ -195,17 +195,52 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const SOFTWARE_PROJECTS: Project[] = [
   {
-    title: "Al Khateeb Digital Transformation",
-    description: "Re-engineered visual assets and web UI for a leading GCC automotive enterprise to drive e-commerce growth.",
+    title: "Al Khateeb Car Accessories",
+    description: "We offer everything from custom-fit seat covers, LED lights, and mobile chargers to dashboard cameras, parking sensors, and window tinting accessories.",
     tags: ["Next.js", "Tailwind", "UX"],
     link: "https://alkhateeb.ae/",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "Studio Routes Media Engine",
-    description: "Cloud-optimized media delivery platform for high-bitrate luxury real estate visual assets.",
+    title: "Dress Line - Batticaloa",
+    description: "Simply The Best.",
+    tags: ["E-Commerce", "Tailwind", "UX"],
+    link: "https://dressline.vercel.app/",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Studio Routes",
+    description: "Everything Has Beauty - Photography & Videography.",
     tags: ["Performance", "Media", "Full-Stack"],
     link: "https://studioroutes.vercel.app/",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Ink Spire",
+    description: "Every Pixel, a Touch of Magic.",
+    tags: ["Performance", "Media", "Full-Stack"],
+    link: "https://inkspirekky.vercel.app/",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Hive Image",
+    description: "Hive Image brings you the world's most elite electronics. Based in Canary Wharf, delivered UK-wide with professional precision.",
+    tags: ["Performance", "Media", "Full-Stack"],
+    link: "https://hiveimage.co.uk/",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Fix Deal",
+    description: "The most sophisticated marketplace in Sri Lanka. Explore, buy, and sell with absolute precision.",
+    tags: ["Performance", "Media", "Full-Stack"],
+    link: "https://fixdeal.vercel.app/",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Sri Lanka Signature Tours",
+    description: "Experience bespoke luxury journeys curated by local experts. From ancient heritage to pristine beaches, we unveil the island's best.",
+    tags: ["Performance", "Media", "Full-Stack"],
+    link: "https://slsignaturetours.vercel.app/",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
   }
 ];
