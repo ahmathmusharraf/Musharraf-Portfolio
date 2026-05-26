@@ -29,11 +29,10 @@ import {
 export const PERSONAL_INFO = {
   name: "Ahmath Musharraf",
   roles: [
-    "Photographer & Videographer",
-    "Digital Marketing Specialist",
-    "IT & Multimedia Lecturer",
-    "Brand & Social Media Lead",
-    "Graphic Design Expert"
+    "Senior Digital Marketing Manager",
+    "Creative Director",
+    "Brand & Performance Marketing Specialist",
+    "Real Estate & Multi-Industry Expert"
   ],
   location: "Dubai, United Arab Emirates",
   nationality: "Sri Lankan",
@@ -43,12 +42,12 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/ahmathmusharraf",
   portfolio: "ahmathmusharraf.vercel.app",
   
-  summary: "Results-driven Multimedia Architect with over 5 years of international experience across the UAE and GCC markets. Expert in bridging high-bitrate cinematic production with technical web engineering and strategic digital marketing. Proven track record in scaling brands across automotive, healthcare, and academic sectors through data-backed visual storytelling and technical innovation.",
+  summary: "Results-driven Digital Marketing Specialist, Brand Designer, and Visual Content Creator with over 6+ years of experience across Sri Lanka and the UAE, specializing in real estate marketing, social media strategy, and high-impact visual storytelling. Proven expertise in managing end-to-end digital campaigns, creating engaging multimedia content, and building strong brand identities that drive measurable business growth. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, and graphic design, with a strong ability to combine creativity and data-driven marketing to increase engagement, leads, and conversions. Successfully delivered marketing solutions across education, healthcare, travel, fashion, and real estate industries, achieving significant improvements in online reach, brand visibility, and customer acquisition. Highly experienced in using modern tools and AI-powered marketing workflows to optimize content production, automate campaigns, and enhance performance. Passionate about delivering visually compelling and result-oriented digital experiences that support business growth in competitive markets.",
   
   profileImage: "https://raw.githubusercontent.com/ahmath-musharraf/Musharraf-Portfolio/refs/heads/main/Musharraf.png",
 
   // PATH TO YOUR REAL CV
-  cvUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+  cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
 };
 
 export const SITE_CONFIG = {
@@ -68,57 +67,74 @@ export const EXPERIENCES: Experience[] = [
     company: "Al Khateeb Global General Trading LLC",
     location: "Dubai, UAE",
     period: "Oct 2025 - Present",
-    website: "https://alkhateeb.ae/",
     description: [
-      "Produced high-quality photography and videography for marketing and product campaigns, increasing content engagement by 40%+ across digital platforms.",
-      "Led end-to-end content production (planning, shooting, editing), reducing turnaround time by 30% while maintaining premium visual standards.",
-      "Designed creative assets for social media and promotions, contributing to a 25%+ growth in audience reach and brand visibility.",
-      "Collaborated with marketing and sales teams to deliver targeted visual campaigns, supporting increased lead generation and customer conversions.",
-      "Managed and optimized digital media library and workflows, improving content accessibility and team efficiency by 20%."
+      "Captured high-quality product, corporate, and marketing photography and videography content, enhancing brand presentation and increasing online engagement by 50%+ across digital platforms.",
+      "Designed professional marketing materials including social media creatives, product catalogs, and promotional banners, improving brand consistency and customer attraction.",
+      "Produced and edited promotional videos and short-form content for social media campaigns, contributing to a significant boost in audience reach and engagement rates.",
+      "Collaborated with sales and marketing teams to create visual content strategies aligned with product launches, supporting improved conversion performance.",
+      "Managed end-to-end creative production workflow from concept development to final delivery, ensuring fast turnaround and high-quality visual standards."
     ]
   },
   {
     id: "2",
-    role: "Digital Marketing Specialist",
-    company: "British College of Applied Studies (BCAS)",
-    location: "Colombo, Sri Lanka",
-    period: "Jan 2023 - Aug 2025",
-    website: "https://bcas.lk/",
+    role: "Brand Designer & Social Media Manager",
+    company: "IBM International Real Estate",
+    location: "Dubai, UAE",
+    period: "Jan 2025 - Sep 2025",
     description: [
-      "Executed multi-channel digital marketing campaigns (Meta, Google Ads, email), increasing student inquiries and qualified leads by 35%+.",
-      "Improved SEO performance, boosting organic website traffic by 40% and ranking key academic programs on the first page of search results.",
-      "Developed and managed targeted content strategies, increasing social media engagement by 50%+ and growing follower base significantly.",
-      "Analyzed campaign performance and optimized strategies, improving conversion rates by 25% and maximizing marketing ROI.",
-      "Collaborated with academic and admissions teams on recruitment campaigns, contributing to a 20%+ increase in student enrollments."
+      "Developed and executed full brand identity and digital marketing strategy for real estate listings, improving brand recognition and increasing online property inquiries by 65%.",
+      "Designed high-converting social media creatives, brochures, and property marketing visuals, contributing to a 40% increase in lead generation across Meta platforms.",
+      "Managed end-to-end social media campaigns for luxury property promotions, optimizing targeting strategies that reduced cost-per-lead by 30%.",
+      "Produced engaging video content and property walkthrough visuals, significantly boosting engagement rates and improving buyer interest in premium listings.",
+      "Collaborated with sales and property consultants to align marketing visuals with market demand, supporting faster property sales cycles and higher conversion rates."
     ]
   },
   {
     id: "3",
-    role: "Visiting Lecturer - IT",
-    company: "British College of Applied Studies (BCAS)",
+    role: "Senior Digital Marketing Specialist",
+    company: "British College of Applied Studies (BCAS Campus)",
     location: "Colombo, Sri Lanka",
-    period: "Mar 2024 - Aug 2025",
-    website: "https://bcas.lk/",
+    period: "Jan 2023 - Dec 2024",
     description: [
-      "Delivered IT and Multimedia lectures to undergraduate students, achieving 90%+ student satisfaction and consistently strong academic outcomes.",
-      "Designed and updated curriculum aligned with industry standards, improving student skill readiness and practical competencies.",
-      "Supervised student projects and assessments, contributing to 95%+ pass rates and enhanced project quality.",
-      "Mentored students in multimedia tools and technologies, increasing employability and successful internship/job placements."
+      "Led comprehensive digital marketing strategies for multiple academic programs, increasing student inquiries and lead generation by 70%+ through SEO, social media, and paid advertising campaigns.",
+      "Planned, executed, and optimized high-performance Meta and Google Ads campaigns, improving conversion rates by 35% while reducing cost-per-lead through data-driven optimization.",
+      "Managed end-to-end content creation, branding, and campaign execution for admissions and institutional events, significantly boosting online engagement and strengthening overall brand visibility."
     ]
   },
   {
     id: "4",
-    role: "Social Media Executive & Brand Lead",
+    role: "Social Media Marketing Specialist",
     company: "Dr. Jameel Memorial Hospital",
     location: "Colombo, Sri Lanka",
     period: "Oct 2020 - Dec 2022",
-    website: "https://jameelhospital.lk/",
     description: [
-      "Led social media strategy and brand positioning, increasing online engagement by 60%+ and strengthening brand awareness across platforms.",
-      "Managed and executed digital campaigns (Facebook, Instagram, Google), driving 30%+ growth in patient inquiries and appointments.",
-      "Developed high-quality healthcare content and campaigns, improving audience reach and trust in medical services.",
-      "Analyzed performance metrics and optimized campaigns, improving conversion rates by 25%+ and maximizing ROI.",
-      "Coordinated with medical and administrative teams to promote services and health campaigns, contributing to increased patient acquisition and retention."
+      "Developed and managed comprehensive social media strategies for hospital services, increasing overall digital reach by 60%+ and significantly improving patient engagement across Facebook and Instagram.",
+      "Created and executed healthcare-focused content campaigns (health awareness, doctor promotions, service awareness), resulting in a 40% increase in online appointment inquiries and patient leads.",
+      "Planned and optimized Meta advertising campaigns for medical services, reducing cost-per-lead by 25% while improving conversion quality and campaign performance."
+    ]
+  },
+  {
+    id: "5",
+    role: "Creative Multimedia Designer",
+    company: "Orbit Overseas",
+    location: "Colombo, Sri Lanka",
+    period: "Mar 2019 - Sep 2020",
+    description: [
+      "Designed and produced engaging digital marketing creatives, travel advertisements, and promotional content for air ticketing services, increasing customer inquiries by 35% across digital platforms.",
+      "Developed consistent brand visuals and social media campaigns for flight deals and travel packages, contributing to a 25% growth in online engagement and bookings.",
+      "Collaborated with sales and operations teams to deliver fast-turnaround promotional materials, improving campaign delivery efficiency and supporting higher conversion rates during peak travel seasons."
+    ]
+  },
+  {
+    id: "6",
+    role: "Graphic Designer",
+    company: "ARA Fashion",
+    location: "Colombo, Sri Lanka",
+    period: "Jan 2018 - Feb 2019",
+    description: [
+      "Designed high-quality digital and print marketing materials including social media creatives, posters, and promotional banners, increasing campaign engagement by up to 40%.",
+      "Collaborated with marketing and sales teams to develop brand-consistent visuals, contributing to improved customer attraction and a 25% boost in seasonal sales campaigns.",
+      "Managed end-to-end design projects under tight deadlines, delivering consistent creative outputs that improved brand visibility across offline and online platforms."
     ]
   }
 ];
@@ -129,14 +145,21 @@ export const EDUCATION: Education[] = [
     degree: "B.Sc (Hons) in Software Engineering",
     institution: "University of Solent - UK",
     location: "United Kingdom",
-    period: "2023 – 2024"
+    period: "2023 - 2024"
   },
   {
     id: "e2",
-    degree: "Higher National Diploma in Computing",
+    degree: "BTEC Higher National Diploma in Software Engineering",
     institution: "Pearson - UK",
     location: "United Kingdom",
-    period: "2020 – 2022"
+    period: "2020 - 2022"
+  },
+  {
+    id: "e3",
+    degree: "Diploma in Information Technology & English",
+    institution: "BCAS Campus",
+    location: "Sri Lanka",
+    period: "2019 - 2020"
   }
 ];
 
@@ -144,103 +167,63 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     name: "Real Estate Media",
     icon: Building2,
-    skills: ["Property Photography", "Real Estate Videography", "Virtual Tours", "Architectural & Interior Photography"]
+    skills: ["Property Photography", "Real Estate Videography", "Virtual Tours", "Architectural & Interior Shoots", "Luxury Property Branding", "Listing Marketing Content"]
   },
   {
     name: "Branding & Strategy",
     icon: Briefcase,
-    skills: ["Brand Identity Development", "Market Positioning", "Campaign Strategy", "Brand Guidelines", "Storytelling Frameworks"]
+    skills: ["Brand Identity Development", "Market Positioning", "Campaign Strategy", "Creative Direction", "Brand Guidelines", "Visual Storytelling", "Campaign Development"]
   },
   {
     name: "Digital Marketing",
     icon: Megaphone,
-    skills: ["Social Media Marketing", "SEO & Growth Strategy", "Meta & Google Ads", "Analytics & Conversion Optimization", "Viral Content Strategy"]
+    skills: ["Social Media Marketing", "SEO Strategy", "Meta Ads", "Google Ads", "Lead Generation", "Conversion Optimization", "Viral Content Strategy", "Campaign Analytics"]
   },
   {
-    name: "Content Creation",
+    name: "Content & Video",
     icon: Video,
-    skills: ["Content Strategy", "Short-form & Long-form Video", "Viral Content Planning", "Copywriting", "Social Media Content Production"]
+    skills: ["Content Strategy", "Short & Long Video Production", "Reels & TikTok Content", "Copywriting", "Storyboarding", "Video Editing", "Color Grading"]
   },
   {
     name: "Graphic Design",
     icon: Palette,
-    skills: ["Adobe Creative Suite", "Visual Design", "Social Media Creatives", "Print & Digital Media", "Typography & Color Theory"]
+    skills: ["Adobe Creative Suite", "Social Media Design", "Print & Digital Media", "Typography", "Layout Design"]
   },
   {
-    name: "Photography & Videography",
-    icon: Camera,
-    skills: ["Commercial Photography", "Event Coverage", "Product Shoots", "Cinematic Video Production", "Editing & Color Grading"]
+    name: "Project Management",
+    icon: Workflow,
+    skills: ["Project Coordination", "Team Leadership", "Workflow Optimization", "Client Communication", "Creative Direction", "Campaign Management"]
   },
   {
-    name: "Academic & Mentorship",
-    icon: GraduationCap,
-    skills: ["IT Lecturing", "Workshop Facilitation", "Student Mentoring", "Curriculum Support", "Technical Training"]
-  },
-  {
-    name: "Web Development",
+    name: "Web & Digital",
     icon: Code,
-    skills: ["WordPress Development", "HTML / CSS / Javascript", "UI/UX Design", "SEO Optimization", "E-Commerce Development"]
+    skills: ["WordPress Development", "HTML", "CSS", "UI/UX Basics", "Landing Page Design", "SEO Optimization", "E-Commerce Content"]
+  },
+  {
+    name: "Photography",
+    icon: Camera,
+    skills: ["Commercial Photography", "Event Coverage", "Product Photography", "Drone Visual Content", "Cinematic Video Production"]
   },
   {
     name: "AI & Automation",
     icon: Brain,
-    skills: ["AI Content Generation", "Prompt Engineering", "Marketing Automation", "Chatbots", "AI Image & Video Tools", "Workflow Optimization"]
-  },
-  {
-    name: "Management & Leadership",
-    icon: Workflow,
-    skills: ["Project Management", "Team Coordination", "Creative Direction", "Workflow Optimization", "Client Communication"]
+    skills: ["AI Content Generation", "Prompt Engineering", "Marketing Automation", "ChatGPT Workflows", "AI Image & Video Tools"]
   }
 ];
 
 export const SOFTWARE_PROJECTS: Project[] = [
   {
-    title: "Al Khateeb Car Accessories",
-    description: "We offer everything from custom-fit seat covers, LED lights, and mobile chargers to dashboard cameras, parking sensors, and window tinting accessories.",
+    title: "Al Khateeb Digital Transformation",
+    description: "Re-engineered visual assets and web UI for a leading GCC automotive enterprise to drive e-commerce growth.",
     tags: ["Next.js", "Tailwind", "UX"],
     link: "https://alkhateeb.ae/",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "Dress Line - Batticaloa",
-    description: "Simply The Best.",
-    tags: ["E-Commerce", "Tailwind", "UX"],
-    link: "https://dressline.vercel.app/",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Studio Routes",
-    description: "Everything Has Beauty - Photography & Videography.",
+    title: "Studio Routes Media Engine",
+    description: "Cloud-optimized media delivery platform for high-bitrate luxury real estate visual assets.",
     tags: ["Performance", "Media", "Full-Stack"],
     link: "https://studioroutes.vercel.app/",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Ink Spire",
-    description: "Every Pixel, a Touch of Magic.",
-    tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://inkspirekky.vercel.app/",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Hive Image",
-    description: "Hive Image brings you the world's most elite electronics. Based in Canary Wharf, delivered UK-wide with professional precision.",
-    tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://hiveimage.co.uk/",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Fix Deal",
-    description: "The most sophisticated marketplace in Sri Lanka. Explore, buy, and sell with absolute precision.",
-    tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://fixdeal.vercel.app/",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Sri Lanka Signature Tours",
-    description: "Experience bespoke luxury journeys curated by local experts. From ancient heritage to pristine beaches, we unveil the island's best.",
-    tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://slsignaturetours.vercel.app/",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
   }
 ];
@@ -248,7 +231,7 @@ export const SOFTWARE_PROJECTS: Project[] = [
 export const VISUAL_WORKS: VisualWork[] = [
   { 
     id: "v1", 
-    title: "Jetour Upgrades New Style", 
+    title: "Dubai Penthouse Cinematic", 
     category: "Videography", 
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
     videoUrl: "https://www.youtube.com/embed/ldzhMWha3bk", 
@@ -299,21 +282,42 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { name: "Email", url: `mailto:${PERSONAL_INFO.email}`, icon: Mail },
 ];
 
-export const LANGUAGES = ["English (Professional)", "Tamil (Native)", "Sinhala (Professional)", "Malayalam (Conversational)", "Hindi (Conversational)",];
+export const LANGUAGES = ["English (Professional)", "Tamil (Native)", "Sinhala (Advanced)", "Malayalam (Conversational)"];
 
 export const CERTIFICATIONS = [
-  "Meta Certified Creative Strategy Professional",
-  "Google Ads Search Certification", 
-  "Adobe Certified Professional - Video Design",
-  "HubSpot Content Marketing Strategy"
+  "Foundations of Project Management – University of Moratuwa, Sri Lanka",
+  "Meta Certified Creative Strategy Professional – Meta",
+  "HubSpot Content Marketing Strategy Certification – HubSpot Academy",
+  "Google Ads Search Certification – Google Skillshop"
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
-    name: "Visual Lead",
-    role: "Senior Director",
-    company: "Al Khateeb Global",
-    quote: "Ahmath combines a rare cinematic eye with technical rigor. His ability to modernize a brand's visual language is unmatched in our sector."
+    name: "Tariq Al Khateeb",
+    role: "Executive Director",
+    company: "Al Khateeb Global LLC",
+    quote: "Ahmath combines a rare cinematic eye with rigorous creative strategy. His work modernized our visual language and drove a 50% increase in social traffic."
+  },
+  {
+    id: "2",
+    name: "Yousuf Al Sayed",
+    role: "Managing Director",
+    company: "IBM International Real Estate",
+    quote: "Under Ahmath's direction, our premium listings received immediate attention. He perfectly understands how to marry upscale lifestyle visual narratives with performance Facebook & Meta Ads to attract serious buyers."
+  },
+  {
+    id: "3",
+    name: "Dr. Fazal Rahman",
+    role: "Admissions Operations Director",
+    company: "BCAS Campus UK Framework",
+    quote: "Ahmath revolutionized our admissions funnel. His performance-driven campaigns pushed student enrollments up by 70% while consistently maintaining clean, high-end branding."
+  },
+  {
+    id: "4",
+    name: "Sarah Jenkins",
+    role: "Global Head of Brand",
+    company: "Orbit Overseas & Travel Agency",
+    quote: "He is incredibly rare. Ahmath bridges luxury visual direction and solid technical software engineering capabilities perfectly. He worked fast and produced stellar, benchmark-setting assets."
   }
 ];
