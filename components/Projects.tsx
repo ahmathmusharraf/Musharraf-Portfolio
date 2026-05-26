@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="engineering" className="py-20 sm:py-24 bg-slate-900 relative overflow-hidden">
+    <section id="engineering" className="py-10 md:py-24 bg-slate-900 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-10 sm:mb-16 text-center"
+          className="mb-4 md:mb-16 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-3 sm:mb-4">
             <span className="text-primary font-mono text-[10px] sm:text-sm tracking-[0.3em] uppercase text-glow px-4 py-1 rounded-full bg-primary/10 border border-primary/20 font-bold">
@@ -238,7 +238,7 @@ const Projects: React.FC = () => {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true }
             } as any)}
-            className="mt-20 text-center relative"
+            className="mt-6 md:mt-20 text-center relative"
         >
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 max-w-sm sm:max-w-none mx-auto">
                 <a 
