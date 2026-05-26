@@ -60,7 +60,7 @@ const Testimonials: React.FC = () => {
   const totalPages = getTotalPages();
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="testimonials" className="py-10 md:py-24 bg-slate-950 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl transform translate-y-1/2 pointer-events-none"></div>
       <div className="absolute top-20 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 pointer-events-none"></div>
@@ -72,7 +72,7 @@ const Testimonials: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-16 text-center"
+          className="mb-4 md:mb-16 text-center"
         >
           <span className="text-secondary font-mono text-sm tracking-widest uppercase">Feedback</span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">What Colleagues Say</h2>
