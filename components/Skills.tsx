@@ -92,7 +92,7 @@ const Skills: React.FC = () => {
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<number | null>(null);
 
   return (
-    <section id="skills" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="skills" className="py-10 md:py-24 bg-slate-950 relative overflow-hidden">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
@@ -104,7 +104,7 @@ const Skills: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-12 sm:mb-20 text-center"
+          className="mb-6 md:mb-20 text-center"
         >
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
              <div className="h-px w-6 sm:w-8 bg-indigo-500/50"></div>
@@ -287,7 +287,7 @@ const Skills: React.FC = () => {
         </AnimatePresence>
 
         {/* Credentials & Languages - Simplified Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-16 md:mt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-8 md:mt-32">
           <motion.div
             {...({
                 initial: { opacity: 0, y: 20 },
