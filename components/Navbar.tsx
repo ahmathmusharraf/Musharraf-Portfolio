@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           </div>
           <a 
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="px-6 py-3 bg-white text-slate-950 text-xs font-black uppercase tracking-[0.2em] rounded-full hover:bg-primary hover:text-white transition-all shadow-xl"
+            className="px-6 py-2.5 bg-white text-slate-950 text-[10px] font-black uppercase tracking-[0.25em] rounded-full hover:bg-indigo-500 hover:text-white hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] transition-all duration-300 transform active:scale-95"
           >
             Hire Me
           </a>
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] bg-slate-950/20 backdrop-blur-sm sm:hidden"
+              className="fixed inset-0 z-[60] bg-slate-950/20 backdrop-blur-sm md:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
@@ -88,29 +88,35 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="absolute top-[70px] right-6 z-[70] w-64 bg-slate-900 border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden sm:hidden"
+              className="absolute top-[70px] right-6 z-[70] w-64 bg-slate-900 border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden md:hidden"
             >
               <div className="p-2 space-y-1">
                 {navLinks.map((link, idx) => (
-                  <a
+                  <motion.a
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.04 + 0.05 }}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white transition-all group"
                   >
                     <span className="text-[10px] font-bold text-primary opacity-50 group-hover:opacity-100">0{idx + 1}</span>
                     <span className="text-sm font-bold uppercase tracking-widest">{link.name}</span>
-                  </a>
+                  </motion.a>
                 ))}
                 
                 <div className="mt-2 pt-2 border-t border-white/5">
-                  <a 
+                  <motion.a 
                     href={`mailto:${PERSONAL_INFO.email}`}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: navLinks.length * 0.04 + 0.05 }}
                     className="flex items-center justify-center w-full py-3 bg-white text-slate-950 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Hire Me Now
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
