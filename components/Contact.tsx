@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="bg-slate-950 pt-10 md:pt-24 pb-10 border-t border-slate-900 relative overflow-hidden">
+    <footer id="contact" className="bg-slate-950 pt-10 md:pt-24 pb-28 md:pb-12 border-t border-slate-900 relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
