@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../constants';
 import { Mail, Phone, MapPin, Linkedin, ExternalLink, ArrowRight, Send, Flag } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const [mobileTab, setMobileTab] = useState<'channels' | 'message'>('channels');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,18 +43,18 @@ const Contact: React.FC = () => {
         </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 mb-12 lg:mb-20">
+        <div className="mb-10 text-center md:text-left">
+          <span className="text-secondary font-mono text-xs tracking-widest uppercase">Get in Touch</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-1 mb-4">Let's Work Together</h2>
+          <p className="text-slate-400 text-sm md:text-lg leading-relaxed max-w-xl md:max-w-none mx-auto md:mx-0">
+            I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+          </p>
+        </div>
+
+        <div className="hidden md:flex flex-col lg:flex-row gap-10 lg:gap-16 mb-12 lg:mb-20">
 
           {/* Contact Info & Social Badge */}
           <div className="lg:w-5/12 space-y-6 lg:space-y-10">
-            <div>
-              <span className="text-secondary font-mono text-xs tracking-widest uppercase">Get in Touch</span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mt-1 mb-4 lg:mb-6">Let's Work Together</h2>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed">
-                I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-              </p>
-            </div>
-
             <div className="space-y-3 lg:space-y-6">
               <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
                 <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -222,6 +224,185 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* Mobile View: High Impact One-View Switcher Card */}
+        <div className="md:hidden space-y-4 px-1 max-w-sm mx-auto mb-10">
+          {/* Subtle switcher tabs */}
+          <div className="flex bg-slate-900/80 p-1 rounded-xl border border-white/5">
+            <button
+              onClick={() => setMobileTab('channels')}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+              className={`flex-1 py-2 text-[10.5px] font-black uppercase tracking-widest rounded-lg transition-all ${
+                mobileTab === 'channels' 
+                  ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 text-white shadow-inner' 
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              CHANNELS
+            </button>
+            <button
+              onClick={() => setMobileTab('message')}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+              className={`flex-1 py-2 text-[10.5px] font-black uppercase tracking-widest rounded-lg transition-all ${
+                mobileTab === 'message' 
+                  ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 text-white shadow-inner' 
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              WRITE MESSAGE
+            </button>
+          </div>
+
+          <AnimatePresence mode="wait">
+            {mobileTab === 'channels' ? (
+              <motion.div
+                key="channels"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-3"
+              >
+                {/* Mail & Location Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square hover:border-primary/30 transition-all group">
+                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary group-hover:scale-105 transition-transform shrink-0">
+                      <Mail size={15} />
+                    </div>
+                    <div>
+                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">EMAIL</span>
+                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.email}</span>
+                    </div>
+                  </a>
+
+                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
+                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
+                      <MapPin size={15} />
+                    </div>
+                    <div>
+                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">LOCATION</span>
+                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.location}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Call & Status Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
+                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
+                      <Phone size={15} />
+                    </div>
+                    <div>
+                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-1">CALL ME</span>
+                      <div className="flex flex-col gap-1">
+                        <a href={`tel:${PERSONAL_INFO.phone}`} className="text-white text-[9px] font-bold hover:text-primary transition-colors flex items-center gap-1">
+                          UAE: {PERSONAL_INFO.phone}
+                        </a>
+                        {PERSONAL_INFO.secondaryPhone && (
+                          <a href={`tel:${PERSONAL_INFO.secondaryPhone}`} className="text-white text-[9px] font-bold hover:text-primary transition-colors flex items-center gap-1">
+                            SL: {PERSONAL_INFO.secondaryPhone}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
+                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
+                      <Flag size={15} />
+                    </div>
+                    <div>
+                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">NATIONALITY</span>
+                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.nationality}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* LinkedIn compact card */}
+                <div className="p-4 rounded-xl bg-[#0077b5] border border-white/5 shadow-xl relative overflow-hidden flex items-center justify-between">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                  <div className="flex items-center gap-3 relative z-10 min-w-0 pr-2">
+                    <div className="bg-white/10 p-2 rounded-lg shrink-0">
+                      <Linkedin className="text-white" size={16} />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-[8px] font-mono text-blue-100 uppercase block mb-0.5">LINKEDIN PROFILE</span>
+                      <span className="text-white text-xs font-black block truncate">Connect on LinkedIn</span>
+                    </div>
+                  </div>
+                  <a
+                    href="https://linkedin.com/in/ahmathmusharraf"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    className="bg-white text-[#0077b5] text-[9px] font-black uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors shrink-0 shadow-sm"
+                  >
+                    CONNECT
+                  </a>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="message"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="bg-slate-900/60 p-4 rounded-2xl border border-white/[0.05] shadow-xl space-y-3"
+              >
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="space-y-1 text-left">
+                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 font-medium"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div className="space-y-1 text-left">
+                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 font-medium"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+
+                  <div className="space-y-1 text-left">
+                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Message</label>
+                    <textarea
+                      rows={3}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 resize-none font-medium"
+                      placeholder="Tell me about your project..."
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    className="w-full py-3 bg-primary hover:bg-indigo-600 text-white font-black text-[10px] uppercase tracking-widest rounded-xl transition-all shadow-md shadow-primary/20 flex items-center justify-center gap-1.5 active:scale-95"
+                  >
+                    SEND TO WHATSAPP
+                    <Send size={12} />
+                  </button>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
