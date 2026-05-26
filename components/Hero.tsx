@@ -56,11 +56,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 pt-32 lg:pt-0">
+    <section id="home" className="relative h-[100dvh] md:h-auto md:min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 pt-16 md:pt-32 lg:pt-0">
       
       <div className="absolute inset-0 bg-slate-900 overflow-hidden">
         <motion.div 
-            className="absolute inset-0 bg-grid-white bg-[size:50px_50px] opacity-20"
+            className="absolute inset-0 bg-grid-white bg-[size:30px_30px] md:bg-[size:50px_50px] opacity-15 md:opacity-20"
             style={{ 
                 perspective: 1000,
                 rotateX: gridRotateX,
@@ -73,18 +73,129 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             className="absolute top-0 -left-4 pointer-events-none"
             style={{ x: blob1X, y: blob1Y }}
         >
-            <div className="w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+            <div className="w-56 h-56 md:w-72 md:h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-15 md:opacity-20 animate-blob"></div>
         </motion.div>
         
         <motion.div 
             className="absolute top-0 -right-4 pointer-events-none"
             style={{ x: blob2X, y: blob2Y }}
         >
-            <div className="w-72 h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className="w-56 h-56 md:w-72 md:h-72 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-15 md:opacity-20 animate-blob animation-delay-2000"></div>
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+      {/* MOBILE EXCLUSIVE ONE-VIEW LAYOUT */}
+      <div className="md:hidden w-full h-full flex flex-col justify-between px-6 pb-24 pt-16 relative z-10">
+        
+        {/* Top visual brand badge & Avatar */}
+        <div className="flex flex-col items-center text-center mt-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative mb-5"
+          >
+            {/* Glowing avatar ring */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-amber-500 rounded-full opacity-30 blur-md animate-pulse"></div>
+            <div className="w-24 h-24 rounded-full p-[2px] bg-gradient-to-tr from-indigo-500 via-amber-200 to-indigo-400 relative z-10">
+              <div className="w-full h-full rounded-full overflow-hidden bg-slate-800">
+                <img 
+                  src={PERSONAL_INFO.profileImage} 
+                  alt={PERSONAL_INFO.name} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Real-time status badge */}
+            <div className="absolute bottom-0 right-1 px-2.5 py-0.5 bg-slate-950 border border-white/10 rounded-full flex items-center gap-1 shadow-lg z-20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="text-[7px] font-black text-slate-300 uppercase tracking-widest">DUBAI</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-1.5 py-1 px-3.5 rounded-full bg-white/5 border border-white/10 text-amber-400 text-[9px] font-black uppercase tracking-widest mb-3"
+          >
+            <Sparkles size={10} />
+            <span>Premium Media Architect</span>
+          </motion.div>
+        </div>
+
+        {/* Dynamic Title and Copy Block */}
+        <div className="text-center flex-1 flex flex-col justify-center my-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="text-3xl font-black tracking-tight text-white mb-2 leading-[1.12]"
+          >
+            I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-amber-200 to-indigo-400 bg-300% animate-gradient">{PERSONAL_INFO.name}</span>
+          </motion.h1>
+
+          {/* Core dynamic role string */}
+          <div className="h-6 overflow-hidden mb-3">
+             <motion.p 
+              key={roleIndex}
+              className="text-sm text-slate-300 font-medium"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4 }}
+            >
+              {PERSONAL_INFO.roles[roleIndex]}
+            </motion.p>
+          </div>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.25 }}
+            className="text-slate-400 text-xs leading-relaxed max-w-xs mx-auto mb-2 font-medium"
+          >
+            Synchronizing cinematography, performance marketing and AI workflows in Dubai.
+          </motion.p>
+        </div>
+
+        {/* Actions Button Bar & Specialties loop */}
+        <div className="w-full space-y-5">
+          {/* Compact visual slider of categories */}
+          <div className="flex overflow-x-auto gap-2 py-1 scrollbar-hide px-2 justify-start sm:justify-center -mx-6 mask-fade-edges">
+            {specialties.map((spec, sIdx) => (
+              <div key={spec.label} className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/60 border border-white/5 shrink-0">
+                <spec.icon size={12} className={`${spec.color}`} />
+                <span className="text-[9px] font-bold text-slate-300 uppercase tracking-wider">{spec.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Clean CTA block */}
+          <div className="grid grid-cols-2 gap-3.5">
+            <a 
+              href="#contact" 
+              className="px-4 py-3 bg-indigo-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg shadow-indigo-500/10 active:scale-95 transition-transform"
+            >
+              Consult Now
+            </a>
+            
+            {onOpenResume && (
+                <button 
+                  onClick={onOpenResume}
+                  className="px-4 py-3 bg-slate-800 text-white border border-slate-700/80 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                >
+                  <FileText size={12} className="text-amber-400" />
+                  <span>Resume</span>
+                </button>
+            )}
+          </div>
+        </div>
+
+      </div>
+
+      {/* DESKTOP/TABLET EXCLUSIVE LAYOUT */}
+      <div className="hidden md:flex container mx-auto px-6 relative z-10 flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
         
         <div className="flex-1 text-center lg:text-left pt-10 sm:pt-0">
           <motion.div
@@ -181,7 +292,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <Star size={20} fill="currentColor" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-white leading-none">5+</p>
+                <p className="text-2xl font-bold text-white leading-none">6+</p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Years Exp</p>
               </div>
             </motion.div>
