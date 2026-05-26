@@ -2,12 +2,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { VISUAL_WORKS } from '../constants';
-import { Camera, Video, ExternalLink, Play, Palette, Layout, Sparkles, Download, X, Smartphone, Building2, Car, Stethoscope, Briefcase, GraduationCap } from 'lucide-react';
+import { Camera, Video, ExternalLink, Play, Palette, Layout, Sparkles, Download, X, Smartphone, Building2, Car, Stethoscope, Briefcase, GraduationCap, ChevronRight } from 'lucide-react';
 import { VisualWork } from '../types';
 
 const VisualWorks: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<VisualWork | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('All');
+  const [mobileActiveIdx, setMobileActiveIdx] = useState<number>(0);
+
+  const handleFilterChange = (filterName: string) => {
+    setActiveFilter(filterName);
+    setMobileActiveIdx(0);
+  };
 
   const filters = [
     { name: 'All', icon: Sparkles },
@@ -82,10 +88,12 @@ const VisualWorks: React.FC = () => {
         {/* Filter Navigation - Horizontally scrollable on mobile */}
         <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-1.5 sm:gap-3 mb-10 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
           {filters.map((filter) => (
-            <button
+            <motion.button
               key={filter.name}
-              onClick={() => setActiveFilter(filter.name)}
-              className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-1.5 sm:py-3 rounded-lg sm:rounded-2xl border transition-all duration-300 whitespace-nowrap shrink-0 ${
+              onClick={() => handleFilterChange(filter.name)}
+              whileTap={{ scale: 0.95 }}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+              className={`flex items-center gap-2 sm:gap-3 px-3.5 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl border transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeFilter === filter.name
                   ? 'bg-slate-800 border-indigo-500/50 shadow-[0_0_20px_rgba(99,102,241,0.2)]'
                   : 'bg-slate-900/50 border-white/5 hover:border-white/10 text-slate-400'
@@ -95,16 +103,16 @@ const VisualWorks: React.FC = () => {
                 size={14} 
                 className={activeFilter === filter.name ? 'text-amber-400' : 'text-indigo-400 opacity-60'} 
               />
-              <span className={`text-[9px] sm:text-sm font-bold uppercase tracking-wider ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
+              <span className={`text-[10px] sm:text-sm font-bold uppercase tracking-wider ${activeFilter === filter.name ? 'text-white' : 'text-slate-500'}`}>
                 {filter.name}
               </span>
-            </button>
+            </motion.button>
           ))}
         </div>
 
         <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5"
+          className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5"
         >
           <AnimatePresence mode="popLayout">
             {filteredWorks.map((work) => (
@@ -159,6 +167,110 @@ const VisualWorks: React.FC = () => {
           </AnimatePresence>
         </motion.div>
 
+        {/* Mobile View: High Impact One-View Compact Slider */}
+        <div className="md:hidden space-y-4 px-1 max-w-sm mx-auto">
+          {filteredWorks.length > 0 ? (
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={filteredWorks[mobileActiveIdx].id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.25 }}
+                  className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 border border-white/5 shadow-xl cursor-pointer"
+                  onClick={() => filteredWorks[mobileActiveIdx].videoUrl && setSelectedVideo(filteredWorks[mobileActiveIdx])}
+                >
+                  {/* Visual Background Cover Image */}
+                  <img 
+                    src={filteredWorks[mobileActiveIdx].videoUrl ? (getYoutubeThumbnail(filteredWorks[mobileActiveIdx].videoUrl) || filteredWorks[mobileActiveIdx].imageUrl) : filteredWorks[mobileActiveIdx].imageUrl} 
+                    alt={filteredWorks[mobileActiveIdx].title} 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  
+                  {/* Subtle black overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/10 to-transparent opacity-85"></div>
+                  
+                  {/* Play icon overlay */}
+                  {filteredWorks[mobileActiveIdx].videoUrl && (
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                       <div className="w-12 h-12 bg-white/15 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white shadow-lg">
+                          <Play size={18} fill="currentColor" className="ml-0.5" />
+                       </div>
+                    </div>
+                  )}
+
+                  {/* Information Overlay */}
+                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                       <div className={`${getCategoryColor(filteredWorks[mobileActiveIdx].category)} backdrop-blur-md p-1.5 rounded-lg`}>
+                           {getCategoryIcon(filteredWorks[mobileActiveIdx].category)}
+                       </div>
+                       <span className="text-[9px] font-black uppercase tracking-widest text-slate-300">
+                           {filteredWorks[mobileActiveIdx].category}
+                       </span>
+                    </div>
+                    
+                    <h3 className="text-sm font-black text-white leading-tight tracking-tight mb-2">
+                      {filteredWorks[mobileActiveIdx].title}
+                    </h3>
+                    
+                    <div className="inline-flex items-center gap-1.5 text-[9px] font-bold text-indigo-400 uppercase tracking-widest">
+                       <span>{filteredWorks[mobileActiveIdx].videoUrl ? 'TAP TO WATCH' : 'TAP TO VIEW'}</span>
+                       <ExternalLink size={10} />
+                    </div>
+                  </div>
+
+                  {/* Top-Right Badge Indicator */}
+                  <div className="absolute top-3.5 right-3.5 bg-slate-950/80 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10 text-[8px] font-mono text-white tracking-widest">
+                    {mobileActiveIdx + 1} OF {filteredWorks.length}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Slider Slider Controls */}
+              <div className="flex items-center justify-between mt-3 px-1">
+                <button
+                  type="button"
+                  onClick={() => setMobileActiveIdx(p => (p === 0 ? filteredWorks.length - 1 : p - 1))}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  className="w-9 h-9 rounded-xl bg-slate-900 border border-white/5 text-slate-400 flex items-center justify-center active:scale-95 transition-all"
+                >
+                  <ChevronRight size={14} className="rotate-180" />
+                </button>
+
+                {/* Slider Progress Indicator Dots */}
+                <div className="flex gap-1">
+                  {filteredWorks.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => setMobileActiveIdx(dotIdx)}
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                        mobileActiveIdx === dotIdx ? 'bg-indigo-400 w-3' : 'bg-slate-800'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setMobileActiveIdx(p => (p === filteredWorks.length - 1 ? 0 : p + 1))}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  className="w-9 h-9 rounded-xl bg-slate-900 border border-white/5 text-slate-400 flex items-center justify-center active:scale-95 transition-all"
+                >
+                  <ChevronRight size={14} />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-[#0c111d]/40 border border-white/5 rounded-2xl p-6 text-center">
+              <span className="text-slate-500 font-bold text-[10px] uppercase tracking-widest">No available items</span>
+            </div>
+          )}
+        </div>
+
         {/* Video Modal */}
         <AnimatePresence>
           {selectedVideo && (
@@ -180,8 +292,8 @@ const VisualWorks: React.FC = () => {
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
-                className={`relative w-full max-w-5xl shadow-2xl rounded-3xl overflow-hidden bg-black ${
-                  selectedVideo.aspectRatio === '9:16' ? 'max-w-[400px] aspect-[9/16]' : 'aspect-video'
+                className={`relative w-full max-h-[85vh] shadow-[0_25px_60px_rgba(0,0,0,0.8)] rounded-2xl md:rounded-3xl overflow-hidden bg-black ${
+                  selectedVideo.aspectRatio === '9:16' ? 'max-w-[340px] aspect-[9/16]' : 'max-w-5xl aspect-video'
                 }`}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -210,31 +322,31 @@ const VisualWorks: React.FC = () => {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true }
             } as any)}
-            className="mt-20 text-center relative"
+            className="mt-12 sm:mt-20 text-center relative"
         >
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 max-w-lg sm:max-w-none mx-auto">
                 <a 
                     href="https://behance.net/ahmathmusharraf" 
                     target="_blank"
-                    className="flex items-center gap-4 pl-3 pr-6 py-2.5 bg-white text-slate-950 rounded-full font-bold transition-all shadow-[0_4px_20px_rgba(255,255,255,0.05)] hover:-translate-y-1 active:scale-95 whitespace-nowrap"
+                    className="w-full sm:w-auto flex items-center gap-3 pl-2.5 pr-4 py-2 bg-white text-slate-950 rounded-full font-bold transition-all shadow-[0_4px_20px_rgba(255,255,255,0.05)] hover:-translate-y-1 active:scale-95 whitespace-nowrap text-xs md:text-sm"
                 >
-                    <div className="w-9 h-9 bg-slate-950 rounded-lg flex items-center justify-center text-white">
-                      <Camera size={18} />
+                    <div className="w-8 h-8 md:w-9 md:h-9 bg-slate-950 rounded-lg flex items-center justify-center text-white shrink-0">
+                      <Camera size={14} className="md:size-[18px]" />
                     </div>
-                    <span className="text-sm">View Full Design Portfolio on Behance</span>
-                    <Sparkles size={16} className="text-[#06b6d4] ml-auto md:ml-0" />
+                    <span className="text-left">Behance Creative Design</span>
+                    <Sparkles size={14} className="text-[#06b6d4] ml-auto" />
                 </a>
 
                 <a 
-                    href="https://www.canva.com/design/DAG7830hOq8/RxMMMG4idKm8Q5GwIEuAhQ/view?utm_content=DAG7830hOq8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h551cf0bd2c" 
+                    href="https://studioroutes.vercel.app/" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 pl-3 pr-8 py-2.5 bg-slate-900/40 text-white border border-slate-800 rounded-full font-bold transition-all hover:bg-slate-900/60 hover:border-slate-700 hover:-translate-y-1 active:scale-95 whitespace-nowrap"
+                    className="w-full sm:w-auto flex items-center gap-3 pl-2.5 pr-5 py-2 bg-slate-900/40 text-white border border-slate-800 rounded-full font-bold transition-all hover:bg-slate-900/60 hover:border-slate-700 hover:-translate-y-1 active:scale-95 whitespace-nowrap text-xs md:text-sm"
                 >
-                    <div className="w-9 h-9 bg-slate-950/50 rounded-lg flex items-center justify-center border border-white/5 text-primary">
-                        <Video size={18} />
+                    <div className="w-8 h-8 md:w-9 md:h-9 bg-slate-950/50 rounded-lg flex items-center justify-center border border-white/5 text-primary shrink-0">
+                        <Video size={14} className="md:size-[18px]" />
                     </div>
-                    <span className="text-sm font-semibold tracking-tight">Photography & Videography Portfolio</span>
+                    <span className="font-semibold tracking-tight text-left">Multimedia Video Portfolio</span>
                 </a>
             </div>
         </motion.div>
