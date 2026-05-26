@@ -4,12 +4,39 @@ import { PERSONAL_INFO, EXPERIENCES, EDUCATION, SKILL_CATEGORIES, LANGUAGES, CER
 
 const PrintableResume: React.FC = () => {
   return (
-    <div className="mx-auto bg-neutral-200 print:bg-white print:p-0">
+    <div className="mx-auto bg-neutral-200 print:bg-white print:p-0 w-full overflow-x-auto flex flex-col items-center px-2 sm:px-4 py-4 md:py-8">
       <style>{`
         @media screen {
           .cv-page {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             margin: 2rem auto;
+          }
+        }
+        @media screen and (max-width: 840px) {
+          .cv-page {
+            zoom: 0.9;
+            margin: 1.5rem auto !important;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          .cv-page {
+            zoom: 0.8;
+            margin: 1rem auto !important;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          .cv-page {
+            zoom: 0.65;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          .cv-page {
+            zoom: 0.45;
+          }
+        }
+        @media screen and (max-width: 380px) {
+          .cv-page {
+            zoom: 0.38;
           }
         }
         @media print {
@@ -216,10 +243,10 @@ const PrintableResume: React.FC = () => {
         <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 1</div>
       </div>
 
-      {/* PAGE 2: Education, Remaining Experience, Certs */}
+      {/* PAGE 2: Remaining Experiences */}
       <div className="cv-page">
         <div className="ats-section-title" style={{ marginTop: 0 }}>Professional Chronicle (Continued)</div>
-        <div className="space-y-4">
+        <div className="flex-1 space-y-4">
           {EXPERIENCES.slice(2).map(exp => (
             <div key={exp.id} className="ats-exp-item">
               <div className="ats-exp-header">
@@ -238,16 +265,20 @@ const PrintableResume: React.FC = () => {
             </div>
           ))}
         </div>
+        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 2</div>
+      </div>
 
-        <div className="ats-section-title">Educational Foundation</div>
-        <div className="ats-edu-grid">
+      {/* PAGE 3: Education, Certs, Languages */}
+      <div className="cv-page">
+        <div className="ats-section-title" style={{ marginTop: 0 }}>Educational Foundation</div>
+        <div className="space-y-4 mb-4">
           {EDUCATION.map(edu => (
             <div key={edu.id} className="ats-exp-item">
-              <div className="ats-exp-header" style={{fontSize: '9pt'}}>
+              <div className="ats-exp-header" style={{fontSize: '9.5pt'}}>
                 <span>{edu.degree}</span>
                 <span style={{fontWeight: 600}}>{edu.period}</span>
               </div>
-              <div className="ats-exp-sub" style={{fontSize: '8.5pt'}}>
+              <div className="ats-exp-sub" style={{fontSize: '9pt'}}>
                 <span>{edu.institution}</span>
                 <span>{edu.location}</span>
               </div>
@@ -255,27 +286,39 @@ const PrintableResume: React.FC = () => {
           ))}
         </div>
 
-        <div className="ats-section-title">Accreditations & Linguistics</div>
+        <div className="ats-section-title">Certifications & Linguistics</div>
         <div className="grid grid-cols-2 gap-10">
           <div>
             <ul className="ats-bullet-list" style={{marginLeft: '10pt', fontSize: '8pt'}}>
               {CERTIFICATIONS.map(cert => <li key={cert}>{cert}</li>)}
             </ul>
           </div>
-          <div className="text-[8pt] pt-0">
-            <div className="mb-3">
+          <div className="text-[8.5pt] pt-0">
+            <div className="mb-4">
               <strong className="block mb-1 text-[#6366f1]">LANGUAGES</strong>
-              <span className="font-medium">{LANGUAGES.join(" • ")}</span>
+              <span className="font-semibold">{LANGUAGES.join(" • ")}</span>
             </div>
-            <div className="p-3 bg-slate-50 rounded-lg border-l-2 border-slate-200">
-              <p className="text-slate-500 italic leading-relaxed">
-                "Bridging the intersection of cinema and code to architect the next generation of visual brand identity."
+            <div className="p-4 bg-slate-50 rounded-xl border-l-2 border-indigo-500">
+              <p className="text-slate-600 italic leading-relaxed text-[8.5pt]">
+                "Bridging the intersection of digital marketing strategy, performance media buying, and high-impact visual content creation."
               </p>
             </div>
           </div>
         </div>
 
-        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 2</div>
+        <div className="ats-section-title">Digital Portfolio Profiles</div>
+        <div className="grid grid-cols-2 gap-6 text-[9.5pt]">
+          <div className="space-y-1">
+            <div className="font-bold text-[#111827]">LinkedIn Profile:</div>
+            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#6366f1] underline break-all">{PERSONAL_INFO.linkedin}</a>
+          </div>
+          <div className="space-y-1">
+            <div className="font-bold text-[#111827]">Visual Portfolio Website:</div>
+            <a href={`https://${PERSONAL_INFO.portfolio}`} target="_blank" rel="noopener noreferrer" className="text-[#6366f1] underline break-all">{PERSONAL_INFO.portfolio}</a>
+          </div>
+        </div>
+
+        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 3</div>
       </div>
     </div>
   );
