@@ -141,13 +141,13 @@ const Experience: React.FC = () => {
   const CurrentIcon = getRoleIcon(currentExp.role);
 
   return (
-    <section ref={containerRef} id="experience" className="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
+    <section ref={containerRef} id="experience" className="py-10 md:py-32 bg-slate-950 relative overflow-hidden">
       
       {/* Dynamic Ambient Glow */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none md:block hidden"></div>
       
       <div className="container mx-auto px-6 max-w-5xl">
-        <div className="mb-12 md:mb-24">
+        <div className="mb-6 md:mb-24">
           <div className="flex items-center gap-4 mb-3">
             <div className="w-12 h-px bg-primary" />
             <span className="text-primary text-xs font-bold uppercase tracking-[0.4em]">Career Journey</span>
