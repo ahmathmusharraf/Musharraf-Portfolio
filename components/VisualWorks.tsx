@@ -66,7 +66,7 @@ const VisualWorks: React.FC = () => {
   };
 
   return (
-    <section id="visuals" className="py-20 sm:py-24 bg-slate-950">
+    <section id="visuals" className="py-10 md:py-24 bg-slate-950">
       <div className="container mx-auto px-6">
         <motion.div
           {...({
@@ -74,7 +74,7 @@ const VisualWorks: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-8 sm:mb-12 text-center"
+          className="mb-4 md:mb-12 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-3 sm:mb-4">
             <span className="text-secondary font-mono text-[10px] sm:text-sm tracking-[0.3em] uppercase text-glow px-4 py-1 rounded-full bg-secondary/10 border border-secondary/20 font-bold">
@@ -86,7 +86,7 @@ const VisualWorks: React.FC = () => {
         </motion.div>
 
         {/* Filter Navigation - Horizontally scrollable on mobile */}
-        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-1.5 sm:gap-3 mb-10 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
+        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-1.5 sm:gap-3 mb-5 sm:mb-16 pb-4 md:pb-0 scrollbar-hide px-4 -mx-6 md:mx-0 mask-fade-edges">
           {filters.map((filter) => (
             <motion.button
               key={filter.name}
@@ -322,7 +322,7 @@ const VisualWorks: React.FC = () => {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true }
             } as any)}
-            className="mt-12 sm:mt-20 text-center relative"
+            className="mt-6 md:mt-20 text-center relative"
         >
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 max-w-lg sm:max-w-none mx-auto">
                 <a 
