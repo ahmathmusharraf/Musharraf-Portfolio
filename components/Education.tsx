@@ -18,7 +18,7 @@ const Education: React.FC = () => {
   const [mobileIdx, setMobileIdx] = useState<number>(0);
 
   return (
-    <section className="py-20 bg-slate-950 relative overflow-hidden">
+    <section className="py-10 md:py-24 bg-slate-950 relative overflow-hidden">
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -29,7 +29,7 @@ const Education: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-12 sm:mb-16 text-center"
+          className="mb-4 md:mb-16 text-center"
         >
           <span className="text-secondary font-mono text-xs md:text-sm tracking-widest uppercase">Academic Foundation</span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Education & Qualifications</h2>
