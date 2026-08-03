@@ -20,7 +20,8 @@ import {
   Video, 
   Cpu, 
   Brain, 
-  Layers 
+  Layers,
+  Globe
 } from 'lucide-react';
 
 /**
@@ -38,11 +39,11 @@ export const PERSONAL_INFO = {
   nationality: "Sri Lankan",
   email: "ahmathmusharraf@gmail.com",
   phone: "+971 58146 2540",
-  secondaryPhone: "+94 76 776 5080",
+  secondaryPhone: "+94 76 77 65080",
   linkedin: "https://linkedin.com/in/ahmathmusharraf",
-  portfolio: "ahmathmusharraf.vercel.app",
+  portfolio: "https://linktr.ee/ahmathmusharraf",
   
-  summary: "Results-driven Digital Marketing Specialist, Brand Designer, and Visual Content Creator with over 6+ years of experience across Sri Lanka and the UAE, specializing in real estate marketing, social media strategy, and high-impact visual storytelling. Proven expertise in managing end-to-end digital campaigns, creating engaging multimedia content, and building strong brand identities that drive measurable business growth. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, and graphic design, with a strong ability to combine creativity and data-driven marketing to increase engagement, leads, and conversions. Successfully delivered marketing solutions across education, healthcare, travel, fashion, and real estate industries, achieving significant improvements in online reach, brand visibility, and customer acquisition. Highly experienced in using modern tools and AI-powered marketing workflows to optimize content production, automate campaigns, and enhance performance. Passionate about delivering visually compelling and result-oriented digital experiences that support business growth in competitive markets.",
+  summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
   
   profileImage: "https://raw.githubusercontent.com/ahmath-musharraf/Musharraf-Portfolio/refs/heads/main/Musharraf.png",
 
@@ -51,42 +52,49 @@ export const PERSONAL_INFO = {
 };
 
 export const SITE_CONFIG = {
-  title: `${PERSONAL_INFO.name} | Global Creative Lead & Multimedia Architect`,
-  description: "Specializing in High-End Real Estate Cinematography, Automotive Branding, and Performance Web Architecture for the Dubai Luxury Sector.",
+  title: `${PERSONAL_INFO.name} | Senior Digital Marketing Manager & Creative Director`,
+  description: "Senior Digital Marketing Manager & Creative Director based in Dubai, UAE. Specializing in Real Estate Marketing, Performance Ads, Brand Strategy & Media Production.",
   resumeUrl: PERSONAL_INFO.cvUrl,
 };
 
 /**
  * EDIT YOUR WORK EXPERIENCE HERE
- * All entries have exactly 4 high-impact points.
  */
 export const EXPERIENCES: Experience[] = [
   {
     id: "1",
-    role: "Photographer, Videographer cum Graphic Designer",
+    role: "Senior Multimedia Designer",
     company: "Al Khateeb Global General Trading LLC",
     location: "Dubai, UAE",
     period: "Oct 2025 - Present",
     description: [
-      "Captured high-quality product, corporate, and marketing photography and videography content, enhancing brand presentation and increasing online engagement by 50%+ across digital platforms.",
-      "Designed professional marketing materials including social media creatives, product catalogs, and promotional banners, improving brand consistency and customer attraction.",
-      "Produced and edited promotional videos and short-form content for social media campaigns, contributing to a significant boost in audience reach and engagement rates.",
-      "Collaborated with sales and marketing teams to create visual content strategies aligned with product launches, supporting improved conversion performance.",
-      "Managed end-to-end creative production workflow from concept development to final delivery, ensuring fast turnaround and high-quality visual standards."
+      "Produced product photography, photo retouching, and promotional videos for marketing and e-commerce platforms.",
+      "Optimized multimedia content for websites, social media platforms, and digital advertising campaigns.",
+      "Designed and developed high-quality visual content for digital and print marketing campaigns, including social media creatives, brochures, flyers, banners, and promotional materials.",
+      "Managed end-to-end multimedia production, including concept development, graphic design, video editing, animation, and final delivery.",
+      "Stayed updated with the latest design trends, tools, and multimedia technologies to improve creative outputs.",
+      "Directed end-to-end creative vision for multimedia campaigns, setting visual tone, style guidelines, and quality standards across the team.",
+      "Led creative decision-making from concept to final output, acting as the primary point of creative sign-off before delivery.",
+      "Supervised creative projects and ensured timely delivery while maintaining high design standards."
     ]
   },
   {
     id: "2",
-    role: "Brand Designer & Social Media Manager",
-    company: "IBM International Real Estate",
+    role: "Social Media Manager & Brand Designer",
+    company: "IBM International Real Estate LLC (Contract)",
     location: "Dubai, UAE",
     period: "Jan 2025 - Sep 2025",
     description: [
-      "Developed and executed full brand identity and digital marketing strategy for real estate listings, improving brand recognition and increasing online property inquiries by 65%.",
-      "Designed high-converting social media creatives, brochures, and property marketing visuals, contributing to a 40% increase in lead generation across Meta platforms.",
-      "Managed end-to-end social media campaigns for luxury property promotions, optimizing targeting strategies that reduced cost-per-lead by 30%.",
-      "Produced engaging video content and property walkthrough visuals, significantly boosting engagement rates and improving buyer interest in premium listings.",
-      "Collaborated with sales and property consultants to align marketing visuals with market demand, supporting faster property sales cycles and higher conversion rates."
+      "Managed AED 40,000+ monthly advertising budget across Meta, Google, and TikTok platforms for high-performance real estate lead generation campaigns.",
+      "Developed brand identity materials and ensured consistent visual communication across all digital platforms and campaigns.",
+      "Owned creative direction for all campaign assets, defining brand tone, visual identity, and messaging across property launches and listings.",
+      "Directed photography, videography, and design vendors to produce premium, on-brand property marketing content.",
+      "Optimized campaign performance to achieve cost-per-lead (CPL) ranging from AED 8-40 (Sri Lanka) and AED 80-300 (UAE market), improving overall ad efficiency and ROI.",
+      "Increased lead quality from 20% to 35% conversion rate through advanced audience segmentation, funnel optimization, and landing page improvements.",
+      "Implemented WhatsApp API automation and Zapier workflows for lead nurturing, instant follow-ups, and improved conversion speed.",
+      "Generated 1,500+ qualified leads per month across international markets including UAE, India, Pakistan, Australia, Canada, Singapore, UK, USA, and Sri Lanka.",
+      "Tracked and reported on ROAS, CPA, and CTR across campaigns using Google Analytics and Meta Business Manager to guide budget reallocation.",
+      "Presented campaign performance reports and marketing proposals to senior management to secure continued budget investment."
     ]
   },
   {
@@ -96,9 +104,10 @@ export const EXPERIENCES: Experience[] = [
     location: "Colombo, Sri Lanka",
     period: "Jan 2023 - Dec 2024",
     description: [
-      "Led comprehensive digital marketing strategies for multiple academic programs, increasing student inquiries and lead generation by 70%+ through SEO, social media, and paid advertising campaigns.",
+      "Led comprehensive digital marketing strategies for multiple academic programs, increasing student inquiries and lead generation by 70%+ through SEO, social media, email marketing, and paid advertising campaigns.",
       "Planned, executed, and optimized high-performance Meta and Google Ads campaigns, improving conversion rates by 35% while reducing cost-per-lead through data-driven optimization.",
-      "Managed end-to-end content creation, branding, and campaign execution for admissions and institutional events, significantly boosting online engagement and strengthening overall brand visibility."
+      "Managed end-to-end content creation, branding, and campaign execution for admissions and institutional events, significantly boosting online engagement and strengthening overall brand visibility.",
+      "Set creative direction for all admissions marketing materials, ensuring consistent brand identity across digital, print, and event campaigns."
     ]
   },
   {
@@ -110,31 +119,8 @@ export const EXPERIENCES: Experience[] = [
     description: [
       "Developed and managed comprehensive social media strategies for hospital services, increasing overall digital reach by 60%+ and significantly improving patient engagement across Facebook and Instagram.",
       "Created and executed healthcare-focused content campaigns (health awareness, doctor promotions, service awareness), resulting in a 40% increase in online appointment inquiries and patient leads.",
-      "Planned and optimized Meta advertising campaigns for medical services, reducing cost-per-lead by 25% while improving conversion quality and campaign performance."
-    ]
-  },
-  {
-    id: "5",
-    role: "Creative Multimedia Designer",
-    company: "Orbit Overseas",
-    location: "Colombo, Sri Lanka",
-    period: "Mar 2019 - Sep 2020",
-    description: [
-      "Designed and produced engaging digital marketing creatives, travel advertisements, and promotional content for air ticketing services, increasing customer inquiries by 35% across digital platforms.",
-      "Developed consistent brand visuals and social media campaigns for flight deals and travel packages, contributing to a 25% growth in online engagement and bookings.",
-      "Collaborated with sales and operations teams to deliver fast-turnaround promotional materials, improving campaign delivery efficiency and supporting higher conversion rates during peak travel seasons."
-    ]
-  },
-  {
-    id: "6",
-    role: "Graphic Designer",
-    company: "ARA Fashion",
-    location: "Colombo, Sri Lanka",
-    period: "Jan 2018 - Feb 2019",
-    description: [
-      "Designed high-quality digital and print marketing materials including social media creatives, posters, and promotional banners, increasing campaign engagement by up to 40%.",
-      "Collaborated with marketing and sales teams to develop brand-consistent visuals, contributing to improved customer attraction and a 25% boost in seasonal sales campaigns.",
-      "Managed end-to-end design projects under tight deadlines, delivering consistent creative outputs that improved brand visibility across offline and online platforms."
+      "Planned and optimized Meta advertising campaigns for medical services, reducing cost-per-lead by 25% while improving conversion quality and campaign performance.",
+      "Directed the visual and creative direction of healthcare content, shaping the hospital's brand voice across all social media channels."
     ]
   }
 ];
@@ -165,65 +151,70 @@ export const EDUCATION: Education[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    name: "Real Estate Media",
-    icon: Building2,
-    skills: ["Property Photography", "Real Estate Videography", "Virtual Tours", "Architectural & Interior Shoots", "Luxury Property Branding", "Listing Marketing Content"]
-  },
-  {
-    name: "Branding & Strategy",
-    icon: Briefcase,
-    skills: ["Brand Identity Development", "Market Positioning", "Campaign Strategy", "Creative Direction", "Brand Guidelines", "Visual Storytelling", "Campaign Development"]
-  },
-  {
-    name: "Digital Marketing",
+    name: "Digital Marketing & Performance",
     icon: Megaphone,
-    skills: ["Social Media Marketing", "SEO Strategy", "Meta Ads", "Google Ads", "Lead Generation", "Conversion Optimization", "Viral Content Strategy", "Campaign Analytics"]
+    skills: ["Social Media Marketing", "SEO Strategy", "SEM", "Meta Ads", "Google Ads", "LinkedIn Ads", "TikTok Ads", "Email Marketing", "Retargeting", "Lead Generation", "Conversion Rate Optimization (CRO)", "Campaign Analytics", "ROAS", "CPA", "CTR Tracking"]
   },
   {
-    name: "Content & Video",
-    icon: Video,
-    skills: ["Content Strategy", "Short & Long Video Production", "Reels & TikTok Content", "Copywriting", "Storyboarding", "Video Editing", "Color Grading"]
-  },
-  {
-    name: "Graphic Design",
-    icon: Palette,
-    skills: ["Adobe Creative Suite", "Social Media Design", "Print & Digital Media", "Typography", "Layout Design"]
-  },
-  {
-    name: "Project Management",
+    name: "Analytics & Automation Tools",
     icon: Workflow,
-    skills: ["Project Coordination", "Team Leadership", "Workflow Optimization", "Client Communication", "Creative Direction", "Campaign Management"]
+    skills: ["Google Analytics", "Google Tag Manager", "Meta Business Manager", "HubSpot", "Mailchimp", "SEMrush", "Ahrefs", "WhatsApp API", "Zapier"]
   },
   {
-    name: "Web & Digital",
+    name: "Real Estate Marketing",
+    icon: Building2,
+    skills: ["Property Photography", "Real Estate Videography", "Virtual Tours", "Architectural & Interior Shoots", "Luxury Property Branding", "Listing Marketing"]
+  },
+  {
+    name: "Branding & Creative Strategy",
+    icon: Briefcase,
+    skills: ["Brand Identity Development", "Market Positioning", "Campaign Strategy", "Creative Direction", "Brand Guidelines", "Visual Storytelling"]
+  },
+  {
+    name: "Content & Video Production",
+    icon: Video,
+    skills: ["Content Strategy", "Short & Long-Form Video", "Reels & TikTok Content", "Copywriting", "Storyboarding", "Video Editing", "Color Grading"]
+  },
+  {
+    name: "Graphic Design & Visuals",
+    icon: Palette,
+    skills: ["Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere Pro", "Social Media Design", "Print & Digital Media", "Typography", "Layout Design"]
+  },
+  {
+    name: "Web & Digital Experience",
     icon: Code,
-    skills: ["WordPress Development", "HTML", "CSS", "UI/UX Basics", "Landing Page Design", "SEO Optimization", "E-Commerce Content"]
+    skills: ["WordPress Development", "HTML", "CSS", "UI/UX Basics", "Landing Page Design", "SEO Optimization", "E-Commerce Content Management"]
   },
   {
-    name: "Photography",
+    name: "Photography & Cinematography",
     icon: Camera,
     skills: ["Commercial Photography", "Event Coverage", "Product Photography", "Drone Visual Content", "Cinematic Video Production"]
   },
   {
-    name: "AI & Automation",
+    name: "Project Management & Leadership",
+    icon: Zap,
+    skills: ["Project Coordination", "Team Leadership", "Workflow Optimization", "Client Communication", "Campaign Management"]
+  },
+  {
+    name: "AI & Marketing Automation",
     icon: Brain,
-    skills: ["AI Content Generation", "Prompt Engineering", "Marketing Automation", "ChatGPT Workflows", "AI Image & Video Tools"]
+    skills: ["AI Content Generation", "Prompt Engineering", "Marketing Automation Tools", "ChatGPT Workflows", "AI Image & Video Tools"]
   }
 ];
 
 export const SOFTWARE_PROJECTS: Project[] = [
   {
     title: "Al Khateeb Digital Transformation",
-    description: "Re-engineered visual assets and web UI for a leading GCC automotive enterprise to drive e-commerce growth.",
+    description: "Re-engineered visual assets and web UI for a leading GCC enterprise to drive e-commerce growth.",
     tags: ["Next.js", "Tailwind", "UX"],
     link: "https://alkhateeb.ae/",
     image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "Studio Routes Media Engine",
-    description: "Cloud-optimized media delivery platform for high-bitrate luxury real estate visual assets.",
+    title: "Portfolio Hub & Media Engine",
+    description: "Cloud-optimized media delivery platform and central portfolio hub for luxury real estate and marketing assets.",
     tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://studioroutes.vercel.app/",
+    link: "https://linktr.ee/ahmathmusharraf",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
   }
 ];
@@ -247,21 +238,21 @@ export const VISUAL_WORKS: VisualWork[] = [
   },
   { 
     id: "v3", 
-    title: "Luxury Watch Branding", 
+    title: "Luxury Property Branding", 
     category: "Branding", 
     imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop",
     aspectRatio: '3:4'
   },
   { 
     id: "v4", 
-    title: "Tech Workshop Series", 
+    title: "BCAS Education Campaign", 
     category: "Mentorship", 
     imageUrl: "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=800&auto=format&fit=crop",
     aspectRatio: '3:4'
   },
   {
     id: "v5",
-    title: "Automotive Lighting Studio",
+    title: "Commercial Product Photography",
     category: "Photography",
     imageUrl: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop",
     aspectRatio: '16:9'
@@ -277,18 +268,28 @@ export const VISUAL_WORKS: VisualWork[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { name: "LinkedIn", url: PERSONAL_INFO.linkedin, icon: Linkedin },
-  { name: "Instagram", url: "https://instagram.com/ahmath_musharraf", icon: Instagram },
-  { name: "GitHub", url: "https://github.com/ahmathmusharraf", icon: Github },
+  { name: "Portfolio Hub", url: PERSONAL_INFO.portfolio, icon: Globe },
   { name: "Email", url: `mailto:${PERSONAL_INFO.email}`, icon: Mail },
 ];
 
-export const LANGUAGES = ["English (Professional)", "Tamil (Native)", "Sinhala (Advanced)", "Malayalam (Conversational)"];
+export const LANGUAGES = [
+  "English (Professional)",
+  "Tamil (Native)",
+  "Sinhala (Advanced)",
+  "Malayalam (Conversational)"
+];
 
 export const CERTIFICATIONS = [
   "Foundations of Project Management – University of Moratuwa, Sri Lanka",
   "Meta Certified Creative Strategy Professional – Meta",
   "HubSpot Content Marketing Strategy Certification – HubSpot Academy",
-  "Google Ads Search Certification – Google Skillshop"
+  "Google Ads Search Certification – Google Skillshop",
+  "AI-Powered Performance Ads Certification – Google",
+  "Fundamentals of Digital Marketing – Google",
+  "AI for App Building – Google",
+  "AI for Business Professionals – HP LIFE",
+  "Social Media Marketing – HP LIFE",
+  "Microsoft Certified: Azure Fundamentals – Microsoft"
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -321,3 +322,4 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "He is incredibly rare. Ahmath bridges luxury visual direction and solid technical software engineering capabilities perfectly. He worked fast and produced stellar, benchmark-setting assets."
   }
 ];
+
