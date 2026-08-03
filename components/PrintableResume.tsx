@@ -1,26 +1,26 @@
-
 import React from 'react';
 import { PERSONAL_INFO, EXPERIENCES, EDUCATION, SKILL_CATEGORIES, LANGUAGES, CERTIFICATIONS } from '../constants';
 
 const PrintableResume: React.FC = () => {
   return (
-    <div className="mx-auto bg-neutral-200 print:bg-white print:p-0 w-full overflow-x-auto flex flex-col items-center px-2 sm:px-4 py-4 md:py-8">
+    <div className="mx-auto bg-slate-900 print:bg-white min-h-screen w-full flex flex-col items-center py-6 md:py-12 px-2 sm:px-4">
       <style>{`
         @media screen {
           .cv-page {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            margin: 2rem auto;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
           }
         }
         @media screen and (max-width: 840px) {
-          .cv-page {
-            zoom: 0.9;
-            margin: 1.5rem auto !important;
+          .cv-page-container {
+            width: 100%;
+            overflow-x: auto;
           }
-        }
-        @media screen and (max-width: 768px) {
           .cv-page {
-            zoom: 0.8;
+            min-width: 210mm;
+            zoom: 0.85;
             margin: 1rem auto !important;
           }
         }
@@ -31,12 +31,7 @@ const PrintableResume: React.FC = () => {
         }
         @media screen and (max-width: 480px) {
           .cv-page {
-            zoom: 0.45;
-          }
-        }
-        @media screen and (max-width: 380px) {
-          .cv-page {
-            zoom: 0.38;
+            zoom: 0.5;
           }
         }
         @media print {
@@ -51,274 +46,332 @@ const PrintableResume: React.FC = () => {
           .cv-page { 
             box-shadow: none !important; 
             margin: 0 !important; 
-            page-break-after: always;
             border: none !important;
+            border-radius: 0 !important;
+            page-break-after: always;
+            page-break-inside: avoid;
+            height: 297mm !important;
+            max-height: 297mm !important;
           }
           .cv-page:last-child { 
             page-break-after: avoid; 
           }
         }
-        /* ATS Optimized A4 Container */
+
+        /* ATS Optimized Professional A4 Container */
         .cv-page {
           background: white;
           width: 210mm;
-          height: 297mm;
+          min-height: 297mm;
           padding: 12mm 15mm;
-          color: #111827;
-          font-family: 'Inter', sans-serif;
-          line-height: 1.4;
+          color: #0f172a;
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          line-height: 1.45;
           position: relative;
           box-sizing: border-box;
-          overflow: hidden;
           display: flex;
           flex-direction: column;
+          justify-content: space-between;
         }
+
         .ats-header {
+          border-bottom: 2px solid #1e293b;
+          padding-bottom: 10px;
+          margin-bottom: 12px;
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 4pt;
-          border-bottom: 2pt solid #111827;
-          padding-bottom: 10pt;
         }
-        .header-left {
-          flex: 1;
+
+        .ats-name { 
+          font-size: 22pt; 
+          font-weight: 900; 
+          letter-spacing: -0.03em;
+          color: #0f172a;
+          line-height: 1.1;
+          margin-bottom: 3px;
         }
-        .header-right {
+
+        .ats-roles {
+          font-size: 8.5pt;
+          font-weight: 800;
+          color: #4f46e5;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        .header-contact {
           text-align: right;
           font-size: 8pt;
-          color: #374151;
-          line-height: 1.6;
+          color: #334155;
+          line-height: 1.5;
+          font-weight: 500;
         }
-        .ats-name { 
-          font-size: 26pt; 
-          font-weight: 900; 
-          letter-spacing: -0.04em;
-          margin-bottom: 0;
-          color: #000;
-          line-height: 1;
+
+        .header-contact a {
+          color: #4f46e5;
+          font-weight: 600;
+          text-decoration: none;
         }
-        .ats-roles {
-          font-size: 10pt;
-          font-weight: 700;
-          color: #6366f1;
-          text-transform: uppercase;
-          letter-spacing: 0.15em;
-          margin-top: 4pt;
-        }
+
         .ats-section-title {
-          font-size: 10.5pt;
+          font-size: 9.5pt;
           font-weight: 800;
           text-transform: uppercase;
-          padding: 4pt 0;
-          margin-top: 12pt;
-          margin-bottom: 8pt;
-          letter-spacing: 0.1em;
-          display: block;
-          border-bottom: 1pt solid #e5e7eb;
-          color: #111827;
+          padding: 3px 0;
+          margin-top: 10px;
+          margin-bottom: 8px;
+          letter-spacing: 0.12em;
+          border-bottom: 1.5px solid #cbd5e1;
+          color: #0f172a;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
+
         .ats-summary {
-          font-size: 9pt;
-          line-height: 1.6;
-          margin-bottom: 8pt;
-          color: #374151;
-          text-align: left;
-        }
-        .ats-skills-container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10pt;
-          margin-bottom: 8pt;
-        }
-        .ats-skill-group {
           font-size: 8.5pt;
-          line-height: 1.4;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          color: #334155;
+          text-align: justify;
         }
-        .ats-skill-group strong {
-          display: block;
+
+        .ats-skills-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6px 16px;
+          margin-bottom: 10px;
+        }
+
+        .ats-skill-item {
           font-size: 8pt;
-          color: #000;
-          margin-bottom: 2pt;
-          border-left: 2pt solid #6366f1;
-          padding-left: 4pt;
+          line-height: 1.35;
+          color: #334155;
         }
+
+        .ats-skill-item strong {
+          color: #0f172a;
+          font-weight: 700;
+        }
+
         .ats-exp-item {
-          margin-bottom: 10pt;
+          margin-bottom: 10px;
         }
+
         .ats-exp-header {
           display: flex;
           justify-content: space-between;
-          font-size: 10pt;
+          align-items: baseline;
+          font-size: 9.5pt;
           font-weight: 800;
-          color: #000;
+          color: #0f172a;
         }
+
         .ats-exp-sub {
           display: flex;
           justify-content: space-between;
-          font-size: 9pt;
-          font-weight: 600;
-          color: #6366f1;
-          margin-bottom: 2pt;
-        }
-        .ats-bullet-list {
-          margin: 0 0 6pt 12pt;
-          padding: 0;
-          list-style-type: square;
+          align-items: baseline;
           font-size: 8.5pt;
-          color: #4b5563;
+          font-weight: 700;
+          color: #4f46e5;
+          margin-bottom: 3px;
         }
+
+        .ats-bullet-list {
+          margin: 0 0 4px 10px;
+          padding: 0;
+          list-style-type: disc;
+          font-size: 8pt;
+          color: #334155;
+        }
+
         .ats-bullet-list li {
-          margin-bottom: 1.5pt;
-          padding-left: 2pt;
+          margin-bottom: 2.5px;
+          padding-left: 2px;
+          line-height: 1.35;
         }
-        .ats-edu-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 15pt;
-        }
+
         .ats-footer {
           margin-top: auto;
           text-align: center;
           font-size: 7.5pt;
-          color: #9ca3af;
-          border-top: 1px solid #f3f4f6;
-          padding-top: 8pt;
+          color: #94a3b8;
+          border-top: 1px solid #f1f5f9;
+          padding-top: 6px;
           text-transform: uppercase;
           letter-spacing: 0.1em;
+          font-weight: 600;
         }
       `}</style>
 
-      {/* PAGE 1: Profile, Skills, and Top Experience */}
+      {/* PAGE 1: Header, Executive Summary, Technical Skills & Core UAE Experience */}
       <div className="cv-page">
-        <div className="ats-header">
-          <div className="header-left">
-            <div className="ats-name">{PERSONAL_INFO.name}</div>
-            <div className="ats-roles">{PERSONAL_INFO.roles.slice(0, 2).join(" | ")}</div>
+        <div>
+          {/* Header */}
+          <div className="ats-header">
+            <div>
+              <div className="ats-name">{PERSONAL_INFO.name}</div>
+              <div className="ats-roles">Senior Digital Marketing Manager | Creative Director</div>
+            </div>
+            <div className="header-contact">
+              <div>Dubai, United Arab Emirates</div>
+              <div>{PERSONAL_INFO.phone}</div>
+              <div><a href={`mailto:${PERSONAL_INFO.email}`}>{PERSONAL_INFO.email}</a></div>
+              <div><a href="https://linktr.ee/ahmathmusharraf" target="_blank" rel="noreferrer">linktr.ee/ahmathmusharraf</a></div>
+            </div>
           </div>
-          <div className="header-right">
-            <div>{PERSONAL_INFO.location}</div>
-            <div>{PERSONAL_INFO.phone}</div>
-            <div><a href={`mailto:${PERSONAL_INFO.email}`} style={{color: '#6366f1', fontWeight: 600}}>{PERSONAL_INFO.email}</a></div>
-            <div>linkedin.com/in/ahmathmusharraf</div>
-            <div>ahmathmusharraf.vercel.app</div>
+
+          {/* Executive Summary */}
+          <div className="ats-section-title">Executive Summary</div>
+          <div className="ats-summary">{PERSONAL_INFO.summary}</div>
+
+          {/* Core Competencies */}
+          <div className="ats-section-title">Core Competencies & Expertise</div>
+          <div className="ats-skills-grid">
+            {SKILL_CATEGORIES.slice(0, 8).map(cat => (
+              <div key={cat.name} className="ats-skill-item">
+                <strong>{cat.name}:</strong> {cat.skills.slice(0, 6).join(", ")}
+              </div>
+            ))}
           </div>
-        </div>
 
-        <div className="ats-section-title" style={{ marginTop: 0 }}>Executive Summary</div>
-        <div className="ats-summary">{PERSONAL_INFO.summary}</div>
+          {/* Professional Experience (UAE Roles) */}
+          <div className="ats-section-title">Professional Experience</div>
 
-        <div className="ats-section-title">Technical Expertise</div>
-        <div className="ats-skills-container" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '6pt' }}>
-          {SKILL_CATEGORIES.map(cat => (
-            <div key={cat.name} className="ats-skill-group">
-              <strong>{cat.name.toUpperCase()}</strong>
-              <div style={{ fontSize: '7.5pt', color: '#4b5563', lineHeight: '1.2' }}>
-                {cat.skills.join(", ")}
-              </div>
+          {/* Role 1 */}
+          <div className="ats-exp-item">
+            <div className="ats-exp-header">
+              <span>SENIOR MULTIMEDIA DESIGNER</span>
+              <span className="font-semibold text-xs">Oct 2025 – Present</span>
             </div>
-          ))}
-        </div>
-
-        <div className="ats-section-title">Professional Chronicle</div>
-        <div className="flex-1 overflow-hidden">
-          {EXPERIENCES.slice(0, 2).map(exp => (
-            <div key={exp.id} className="ats-exp-item">
-              <div className="ats-exp-header">
-                <span>{exp.role.toUpperCase()}</span>
-                <span>{exp.period}</span>
-              </div>
-              <div className="ats-exp-sub">
-                <span>{exp.company}</span>
-                <span>{exp.location}</span>
-              </div>
-              <ul className="ats-bullet-list">
-                {exp.description.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
+            <div className="ats-exp-sub">
+              <span>Al Khateeb Global General Trading LLC</span>
+              <span className="text-xs font-semibold text-slate-500">Dubai, UAE</span>
             </div>
-          ))}
-        </div>
-        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 1</div>
-      </div>
-
-      {/* PAGE 2: Remaining Experiences */}
-      <div className="cv-page">
-        <div className="ats-section-title" style={{ marginTop: 0 }}>Professional Chronicle (Continued)</div>
-        <div className="flex-1 space-y-4">
-          {EXPERIENCES.slice(2).map(exp => (
-            <div key={exp.id} className="ats-exp-item">
-              <div className="ats-exp-header">
-                <span>{exp.role.toUpperCase()}</span>
-                <span>{exp.period}</span>
-              </div>
-              <div className="ats-exp-sub">
-                <span>{exp.company}</span>
-                <span>{exp.location}</span>
-              </div>
-              <ul className="ats-bullet-list">
-                {exp.description.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 2</div>
-      </div>
-
-      {/* PAGE 3: Education, Certs, Languages */}
-      <div className="cv-page">
-        <div className="ats-section-title" style={{ marginTop: 0 }}>Educational Foundation</div>
-        <div className="space-y-4 mb-4">
-          {EDUCATION.map(edu => (
-            <div key={edu.id} className="ats-exp-item">
-              <div className="ats-exp-header" style={{fontSize: '9.5pt'}}>
-                <span>{edu.degree}</span>
-                <span style={{fontWeight: 600}}>{edu.period}</span>
-              </div>
-              <div className="ats-exp-sub" style={{fontSize: '9pt'}}>
-                <span>{edu.institution}</span>
-                <span>{edu.location}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="ats-section-title">Certifications & Linguistics</div>
-        <div className="grid grid-cols-2 gap-10">
-          <div>
-            <ul className="ats-bullet-list" style={{marginLeft: '10pt', fontSize: '8pt'}}>
-              {CERTIFICATIONS.map(cert => <li key={cert}>{cert}</li>)}
+            <ul className="ats-bullet-list">
+              {EXPERIENCES[0].description.slice(0, 5).map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
             </ul>
           </div>
-          <div className="text-[8.5pt] pt-0">
-            <div className="mb-4">
-              <strong className="block mb-1 text-[#6366f1]">LANGUAGES</strong>
-              <span className="font-semibold">{LANGUAGES.join(" • ")}</span>
+
+          {/* Role 2 */}
+          <div className="ats-exp-item">
+            <div className="ats-exp-header">
+              <span>SOCIAL MEDIA MANAGER & BRAND DESIGNER</span>
+              <span className="font-semibold text-xs">Jan 2025 – Sep 2025</span>
             </div>
-            <div className="p-4 bg-slate-50 rounded-xl border-l-2 border-indigo-500">
-              <p className="text-slate-600 italic leading-relaxed text-[8.5pt]">
-                "Bridging the intersection of digital marketing strategy, performance media buying, and high-impact visual content creation."
-              </p>
+            <div className="ats-exp-sub">
+              <span>IBM International Real Estate LLC (Contract)</span>
+              <span className="text-xs font-semibold text-slate-500">Dubai, UAE</span>
+            </div>
+            <ul className="ats-bullet-list">
+              {EXPERIENCES[1].description.slice(0, 6).map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 1 of 2</div>
+      </div>
+
+      {/* PAGE 2: Additional Experience, Education, Certifications & Portfolio Links */}
+      <div className="cv-page">
+        <div>
+          {/* Professional Experience Continued */}
+          <div className="ats-section-title" style={{ marginTop: 0 }}>Professional Experience (Continued)</div>
+
+          {/* Role 3 */}
+          <div className="ats-exp-item">
+            <div className="ats-exp-header">
+              <span>SENIOR DIGITAL MARKETING SPECIALIST</span>
+              <span className="font-semibold text-xs">Jan 2023 – Dec 2024</span>
+            </div>
+            <div className="ats-exp-sub">
+              <span>British College of Applied Studies (BCAS Campus)</span>
+              <span className="text-xs font-semibold text-slate-500">Colombo, Sri Lanka</span>
+            </div>
+            <ul className="ats-bullet-list">
+              {EXPERIENCES[2].description.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Role 4 */}
+          <div className="ats-exp-item">
+            <div className="ats-exp-header">
+              <span>SOCIAL MEDIA MARKETING SPECIALIST</span>
+              <span className="font-semibold text-xs">Oct 2020 – Dec 2022</span>
+            </div>
+            <div className="ats-exp-sub">
+              <span>Dr. Jameel Memorial Hospital</span>
+              <span className="text-xs font-semibold text-slate-500">Colombo, Sri Lanka</span>
+            </div>
+            <ul className="ats-bullet-list">
+              {EXPERIENCES[3].description.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Educational Foundation */}
+          <div className="ats-section-title">Educational Qualifications</div>
+          <div className="space-y-2.5 mb-3">
+            {EDUCATION.map(edu => (
+              <div key={edu.id} className="ats-exp-item" style={{ marginBottom: '4px' }}>
+                <div className="ats-exp-header" style={{ fontSize: '8.5pt' }}>
+                  <span>{edu.degree}</span>
+                  <span className="text-xs font-semibold text-slate-600">{edu.period}</span>
+                </div>
+                <div className="ats-exp-sub" style={{ fontSize: '8pt' }}>
+                  <span>{edu.institution}</span>
+                  <span className="text-slate-500">{edu.location}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Certifications & Languages Grid */}
+          <div className="ats-section-title">Certifications & Languages</div>
+          <div className="grid grid-cols-12 gap-4 mb-3 text-[8pt]">
+            <div className="col-span-8">
+              <strong className="block mb-1 text-slate-900 font-bold uppercase tracking-wider text-[7.5pt]">Key Certifications</strong>
+              <ul className="ats-bullet-list" style={{ marginLeft: '8px' }}>
+                {CERTIFICATIONS.slice(0, 6).map((cert, idx) => (
+                  <li key={idx}>{cert}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-span-4 border-l border-slate-200 pl-3">
+              <strong className="block mb-1 text-indigo-600 font-bold uppercase tracking-wider text-[7.5pt]">Languages</strong>
+              <div className="text-slate-700 leading-relaxed font-medium mb-3">
+                {LANGUAGES.join(" • ")}
+              </div>
+            </div>
+          </div>
+
+          {/* Digital Portfolios */}
+          <div className="ats-section-title">Verified Portfolio Links</div>
+          <div className="grid grid-cols-2 gap-4 text-[8pt]">
+            <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+              <strong className="block text-slate-900 font-bold mb-0.5">Linktree Portfolio Hub:</strong>
+              <a href="https://linktr.ee/ahmathmusharraf" target="_blank" rel="noreferrer" className="text-indigo-600 font-semibold hover:underline">
+                linktr.ee/ahmathmusharraf
+              </a>
+            </div>
+            <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
+              <strong className="block text-slate-900 font-bold mb-0.5">LinkedIn Profile:</strong>
+              <a href="https://linkedin.com/in/ahmathmusharraf" target="_blank" rel="noreferrer" className="text-indigo-600 font-semibold hover:underline">
+                linkedin.com/in/ahmathmusharraf
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="ats-section-title">Digital Portfolio Profiles</div>
-        <div className="grid grid-cols-2 gap-6 text-[9.5pt]">
-          <div className="space-y-1">
-            <div className="font-bold text-[#111827]">LinkedIn Profile:</div>
-            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#6366f1] underline break-all">{PERSONAL_INFO.linkedin}</a>
-          </div>
-          <div className="space-y-1">
-            <div className="font-bold text-[#111827]">Visual Portfolio Website:</div>
-            <a href={`https://${PERSONAL_INFO.portfolio}`} target="_blank" rel="noopener noreferrer" className="text-[#6366f1] underline break-all">{PERSONAL_INFO.portfolio}</a>
-          </div>
-        </div>
-
-        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 3</div>
+        <div className="ats-footer">{PERSONAL_INFO.name} | Curriculum Vitae | Page 2 of 2</div>
       </div>
     </div>
   );
