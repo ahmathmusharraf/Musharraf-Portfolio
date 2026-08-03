@@ -45,7 +45,7 @@ export const PERSONAL_INFO = {
   
   summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
   
-  profileImage: "/MushiFinal1.png",
+  profileImage: "https://raw.githubusercontent.com/ahmathmusharraf/Musharraf-Portfolio/refs/heads/main/MushiFinal1.png",
 
   // PATH TO YOUR REAL CV
   cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
