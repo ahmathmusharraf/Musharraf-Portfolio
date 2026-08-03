@@ -36,22 +36,21 @@ function App() {
   // Resume Mode Rendering
   if (showResume) {
     return (
-      <div className="min-h-screen bg-neutral-100 py-12 relative print:bg-white print:py-0 print:px-0">
-        <div className="fixed top-8 right-8 z-50 flex gap-4 print:hidden">
+      <div className="min-h-screen bg-slate-950 pt-20 pb-12 sm:pt-24 relative print:bg-white print:p-0">
+        <div className="fixed top-4 right-4 sm:top-6 sm:right-8 z-50 flex items-center gap-2 sm:gap-3 print:hidden bg-slate-900/90 backdrop-blur-xl p-2 rounded-2xl border border-white/10 shadow-2xl">
           <button 
             onClick={() => setShowResume(false)} 
-            className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full font-bold shadow-2xl hover:bg-indigo-600 transition-all border border-white/10"
+            className="flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 bg-slate-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow-lg hover:bg-slate-700 transition-all border border-white/10 active:scale-95"
           >
-            <ArrowLeft size={18} /> Exit
+            <ArrowLeft size={16} /> <span className="hidden sm:inline">Exit Preview</span><span className="sm:hidden">Exit</span>
           </button>
-          
-          <a 
-            href={SITE_CONFIG.resumeUrl}
-            download="Ahmath_Musharraf_CV.pdf"
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-500 text-white rounded-full font-bold shadow-2xl hover:bg-indigo-600 transition-all border border-white/10"
+
+          <button 
+            onClick={() => window.print()} 
+            className="flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 bg-indigo-600 text-white rounded-xl text-xs sm:text-sm font-bold shadow-lg hover:bg-indigo-500 transition-all border border-indigo-400/30 active:scale-95"
           >
-            <Download size={18} /> Download CV
-          </a>
+            <Download size={16} /> Print / Save PDF
+          </button>
         </div>
         <PrintableResume />
       </div>
