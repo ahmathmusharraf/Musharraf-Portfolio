@@ -45,7 +45,7 @@ export const PERSONAL_INFO = {
   
   summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
   
-  profileImage: "https://raw.githubusercontent.com/ahmath-musharraf/Musharraf-Portfolio/refs/heads/main/Musharraf.png",
+  profileImage: "/MushiFinal1.png",
 
   // PATH TO YOUR REAL CV
   cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
@@ -204,18 +204,53 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const SOFTWARE_PROJECTS: Project[] = [
   {
-    title: "Al Khateeb Digital Transformation",
-    description: "Re-engineered visual assets and web UI for a leading GCC enterprise to drive e-commerce growth.",
-    tags: ["Next.js", "Tailwind", "UX"],
-    link: "https://alkhateeb.ae/",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
+    title: "Pixels Advertisement & Printing",
+    description: "Full-service printing company & advertising web platform featuring custom print solutions, product catalogs, and client ordering workflows.",
+    tags: ["React", "Printing & Media", "Tailwind"],
+    link: "https://pixelsadvertisement1.vercel.app/",
+    image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "Portfolio Hub & Media Engine",
-    description: "Cloud-optimized media delivery platform and central portfolio hub for luxury real estate and marketing assets.",
-    tags: ["Performance", "Media", "Full-Stack"],
-    link: "https://linktr.ee/ahmathmusharraf",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800&auto=format&fit=crop"
+    title: "FixDeal Automotive Platform",
+    description: "Car buying and selling marketplace application featuring vehicle listing management, advanced search filters, and deal negotiation tools.",
+    tags: ["React", "Automotive Marketplace", "Tailwind"],
+    link: "https://fixdeal.vercel.app/",
+    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "XAU VIP Trading Platform",
+    description: "Premium trading platform and financial web portal providing market signal analytics, gold trading insights, and VIP membership access.",
+    tags: ["FinTech", "Trading Platform", "Web Portal"],
+    link: "https://xauvip.com/",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Studio Routes Production",
+    description: "Commercial photography & videography agency website showcasing luxury real estate, drone visual content, and brand media portfolios.",
+    tags: ["Media Production", "Cinematography", "React"],
+    link: "https://studioroutes.vercel.app/",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Dressline Fashion E-Commerce",
+    description: "Modern fashion & dress shop e-commerce platform featuring responsive product showcase, dynamic search, and seamless shopping experience.",
+    tags: ["E-Commerce", "Fashion UI", "Tailwind"],
+    link: "https://dressline.vercel.app/",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Hive Image UK E-Commerce",
+    description: "UK-based e-commerce platform offering specialized custom merchandise, branding solutions, and online store order fulfillment.",
+    tags: ["E-Commerce", "UK Retail", "Web Store"],
+    link: "https://hiveimage.co.uk/",
+    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Al Khateeb Global E-Commerce",
+    description: "Corporate web portal & digital transformation for a leading GCC general trading and e-commerce enterprise.",
+    tags: ["Next.js", "Enterprise", "GCC E-Commerce"],
+    link: "https://alkhateeb.ae/",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
