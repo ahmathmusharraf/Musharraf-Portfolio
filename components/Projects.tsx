@@ -48,8 +48,8 @@ const Projects: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Grid Layout - Balanced for project count (Desktop Only) */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        {/* Grid Layout - 4 in a line on desktop */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
           {SOFTWARE_PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
@@ -59,7 +59,7 @@ const Projects: React.FC = () => {
                 viewport: { once: true },
                 transition: { delay: index * 0.1, duration: 0.6 }
               } as any)}
-              className="group relative aspect-[1.3/1] sm:aspect-[1.5/1] rounded-3xl overflow-hidden bg-[#0e1324]/40 border border-white/[0.05] shadow-2xl hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-500"
+              className="group relative aspect-[0.85/1] sm:aspect-[0.95/1] lg:aspect-[0.8/1] xl:aspect-[0.85/1] rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0e1324]/40 border border-white/[0.05] shadow-2xl hover:border-primary/40 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-500"
             >
               <img 
                 src={project.image} 
@@ -68,46 +68,48 @@ const Projects: React.FC = () => {
               />
               
               {/* Overlay with dynamic gradients */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
               
-              <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end transform transition-transform duration-300">
-                <div className="flex flex-wrap gap-2 mb-3">
+              <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end transform transition-transform duration-300">
+                <div className="flex flex-wrap gap-1.5 mb-2.5">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-slate-300">
+                    <span key={tag} className="text-[8.5px] font-black uppercase tracking-widest px-2 py-0.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-slate-300">
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <h3 className="text-xl sm:text-2xl font-black text-white mb-2 tracking-tight group-hover:text-primary transition-colors leading-tight">{project.title}</h3>
-                <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed mb-5 max-w-md line-clamp-2 md:line-clamp-3">
+                <h3 className="text-base sm:text-lg font-black text-white mb-1.5 tracking-tight group-hover:text-primary transition-colors leading-snug">{project.title}</h3>
+                <p className="text-slate-400 text-xs font-light leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
                 
-                <div className="flex gap-3">
-                    <a 
-                      href={project.github || "#"} 
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-[10px] font-black text-slate-200 bg-white/5 backdrop-blur-md px-4 py-2 rounded-xl hover:bg-primary hover:text-white transition-all border border-white/5 uppercase tracking-widest"
-                    >
-                      <Github size={13} /> Source Code
-                    </a>
+                <div className="flex gap-2">
+                    {project.github && (
+                      <a 
+                        href={project.github} 
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 text-[9px] font-black text-slate-200 bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-xl hover:bg-primary hover:text-white transition-all border border-white/5 uppercase tracking-widest"
+                      >
+                        <Github size={12} /> Code
+                      </a>
+                    )}
                     {project.link && (
                       <a 
                         href={project.link} 
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-2 text-[10px] font-black text-slate-950 bg-white px-4 py-2 rounded-xl hover:bg-secondary hover:text-white transition-all border border-white/5 uppercase tracking-widest"
+                        className="flex items-center gap-1.5 text-[9px] font-black text-slate-950 bg-white px-3.5 py-1.5 rounded-xl hover:bg-secondary hover:text-white transition-all border border-white/5 uppercase tracking-widest"
                       >
-                        <Globe2 size={13} /> Launch App
+                        <Globe2 size={12} /> Launch App
                       </a>
                     )}
                 </div>
               </div>
  
               {/* Corner Icon Badge with beautiful glow */}
-              <div className="absolute top-6 right-6 p-3 bg-slate-950/80 backdrop-blur-xl border border-white/5 rounded-2xl text-primary group-hover:text-white group-hover:bg-primary transition-all duration-300 shadow-2xl">
+              <div className="absolute top-4 right-4 p-2.5 bg-slate-950/80 backdrop-blur-xl border border-white/5 rounded-xl text-primary group-hover:text-white group-hover:bg-primary transition-all duration-300 shadow-2xl">
                 {getTechIcon(project.tags[0])}
               </div>
             </motion.div>
@@ -154,15 +156,17 @@ const Projects: React.FC = () => {
                     </p>
                     
                     <div className="flex gap-2">
-                        <a 
-                          href={SOFTWARE_PROJECTS[mobileIdx].github || "#"} 
-                          target="_blank"
-                          rel="noreferrer"
-                          style={{ WebkitTapHighlightColor: 'transparent' }}
-                          className="flex items-center gap-1.5 text-[8.5px] font-black text-slate-200 bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5 uppercase tracking-widest active:scale-95 transition-transform"
-                        >
-                          <Github size={11} /> Code
-                        </a>
+                        {SOFTWARE_PROJECTS[mobileIdx].github && (
+                          <a 
+                            href={SOFTWARE_PROJECTS[mobileIdx].github} 
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
+                            className="flex items-center gap-1.5 text-[8.5px] font-black text-slate-200 bg-white/5 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5 uppercase tracking-widest active:scale-95 transition-transform"
+                          >
+                            <Github size={11} /> Code
+                          </a>
+                        )}
                         {SOFTWARE_PROJECTS[mobileIdx].link && (
                           <a 
                             href={SOFTWARE_PROJECTS[mobileIdx].link} 
