@@ -90,6 +90,11 @@ const CATEGORY_THEMES = [
 
 const Skills: React.FC = () => {
   const [selectedCategoryIdx, setSelectedCategoryIdx] = useState<number | null>(null);
+  const [activeMobileSkillIdx, setActiveMobileSkillIdx] = useState(0);
+
+  const activeMobileCat = SKILL_CATEGORIES[activeMobileSkillIdx];
+  const activeMobileTheme = CATEGORY_THEMES[activeMobileSkillIdx % CATEGORY_THEMES.length];
+  const ActiveMobileIcon = activeMobileCat.icon;
 
   return (
     <section id="skills" className="py-10 md:py-24 bg-slate-950 relative overflow-hidden">
@@ -158,50 +163,102 @@ const Skills: React.FC = () => {
           })}
         </div>
 
-        {/* Technical Mastery Bento Grid (Mobile Only) - Vibrant Multi-Color Bento Layout */}
-        <div className="grid grid-cols-2 gap-3.5 md:hidden px-1">
-          {SKILL_CATEGORIES.map((category, idx) => {
-            const Icon = category.icon;
-            const theme = CATEGORY_THEMES[idx % CATEGORY_THEMES.length];
-            return (
-              <motion.div
-                key={category.name}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.03, duration: 0.4 }}
-                onClick={() => setSelectedCategoryIdx(idx)}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
-                className={`${theme.bg} border ${theme.border} rounded-2xl p-5 flex flex-col items-center justify-start text-center h-full relative overflow-hidden active:scale-[0.98] transition-transform duration-200 cursor-pointer ${
-                  idx === SKILL_CATEGORIES.length - 1 ? 'col-span-2' : ''
+        {/* Technical Mastery Mobile Single-View Slider */}
+        <div className="md:hidden max-w-sm mx-auto">
+          {/* Horizontal Category Switcher Chips */}
+          <div className="flex gap-1.5 overflow-x-auto pb-3 mb-3 scrollbar-hide -mx-2 px-2">
+            {SKILL_CATEGORIES.map((cat, idx) => (
+              <button
+                key={cat.name}
+                onClick={() => setActiveMobileSkillIdx(idx)}
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider shrink-0 transition-all ${
+                  activeMobileSkillIdx === idx
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                    : 'bg-slate-900 text-slate-400 border border-white/5'
                 }`}
               >
-                {/* Visual Top Background Glow matching its specific theme colored gradient */}
-                <div className={`absolute top-0 inset-x-0 h-10 bg-gradient-to-b ${theme.gradient} opacity-20 pointer-events-none`} />
+                {cat.name.split(' ')[0]}
+              </button>
+            ))}
+          </div>
 
-                {/* Top Centered Icon with Themed Color Glow */}
-                <div className={`w-11 h-11 rounded-xl ${theme.iconBg} ${theme.glow} flex items-center justify-center ${theme.iconColor} mb-4 shrink-0 duration-200`}>
-                  <Icon size={16} />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeMobileCat.name}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              className={`${activeMobileTheme.bg} border ${activeMobileTheme.border} rounded-2xl p-5 shadow-2xl flex flex-col justify-between min-h-[320px] relative overflow-hidden`}
+            >
+              <div className={`absolute top-0 inset-x-0 h-12 bg-gradient-to-b ${activeMobileTheme.gradient} opacity-20 pointer-events-none`} />
+
+              <div>
+                {/* Header */}
+                <div className="flex items-center justify-between mb-4 relative z-10">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-xl ${activeMobileTheme.iconBg} flex items-center justify-center ${activeMobileTheme.iconColor}`}>
+                      <ActiveMobileIcon size={18} />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-black text-white uppercase tracking-wider">
+                        {activeMobileCat.name}
+                      </h3>
+                      <p className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">
+                        Domain Category 0{activeMobileSkillIdx + 1} / 0{SKILL_CATEGORIES.length}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="text-[10px] font-mono font-black text-amber-400 bg-slate-950 px-2 py-1 rounded-md border border-white/10">
+                    {activeMobileCat.skills.length} Skills
+                  </span>
                 </div>
 
-                {/* Title: High Contrast Bold Uppercase */}
-                <h3 className="text-[10.5px] font-black tracking-wider text-white uppercase mb-2 ml-px mr-px leading-tight">
-                  {category.name}
-                </h3>
-
-                {/* Subtext description list of core items */}
-                <p className="text-[9px] font-medium text-slate-400 leading-relaxed max-w-[120px] mx-auto text-ellipsis overflow-hidden whitespace-nowrap">
-                  {category.skills.slice(0, 2).join(" • ")}
-                </p>
-
-                {/* Micro Pill for more details indicator */}
-                <div className="absolute right-2 bottom-2 text-[6.5px] font-bold text-slate-500 uppercase flex items-center gap-0.5 tracking-wider">
-                  <span>View All</span>
-                  <ChevronRight size={8} />
+                {/* Skill Pills */}
+                <div className="flex flex-wrap gap-1.5 mb-4 relative z-10">
+                  {activeMobileCat.skills.map((sk) => (
+                    <span
+                      key={sk}
+                      className="px-2.5 py-1 bg-slate-950/80 border border-white/10 rounded-lg text-slate-200 font-bold text-[10px] uppercase tracking-wider"
+                    >
+                      {sk}
+                    </span>
+                  ))}
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+
+              {/* Slider Footer & Controls */}
+              <div className="pt-3 border-t border-white/10 flex items-center justify-between relative z-10">
+                <div className="flex gap-1">
+                  {SKILL_CATEGORIES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveMobileSkillIdx(idx)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        activeMobileSkillIdx === idx ? 'bg-indigo-400 w-4' : 'bg-slate-800 w-1.5'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setActiveMobileSkillIdx(p => (p === 0 ? SKILL_CATEGORIES.length - 1 : p - 1))}
+                    className="w-8 h-8 rounded-lg bg-slate-950 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                  >
+                    <ChevronRight size={16} className="rotate-180" />
+                  </button>
+                  <button
+                    onClick={() => setActiveMobileSkillIdx(p => (p === SKILL_CATEGORIES.length - 1 ? 0 : p + 1))}
+                    className="w-8 h-8 rounded-lg bg-slate-950 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Dynamic Theme Bottom Sheet Modal for Mobile Skill Detail Expand */}
