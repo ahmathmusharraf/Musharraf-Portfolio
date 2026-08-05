@@ -331,11 +331,11 @@ const VisualWorks: React.FC = () => {
                       />
                     </div>
                   ) : (
-                    <div className="relative w-full aspect-video sm:aspect-[16/9] max-h-[36vh] bg-slate-950 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-full h-48 sm:h-64 bg-slate-950 flex items-center justify-center overflow-hidden">
                       <img 
                         src={selectedWork.imageUrl} 
                         alt={selectedWork.title} 
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-cover object-center"
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0c101d] via-transparent to-transparent opacity-60 pointer-events-none" />
