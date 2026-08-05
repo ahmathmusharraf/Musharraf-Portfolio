@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-base sm:text-lg font-black text-white tracking-tight leading-none group-hover:text-indigo-300 transition-colors">
-              AHMATH<span className="text-amber-400">.</span>
+              MUSHARRAF<span className="text-amber-400">.</span>
             </span>
             <span className="text-[8px] font-bold tracking-[0.25em] text-indigo-400 uppercase">
               Dubai, UAE
