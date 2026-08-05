@@ -1,5 +1,5 @@
 
-import { Experience, Education, SkillCategory, Project, SocialLink, Testimonial, VisualWork } from './types';
+import { Experience, Education, SkillCategory, Project, SocialLink, Testimonial, VisualWork, CaseStudy } from './types';
 import { 
   Palette, 
   Linkedin, 
@@ -387,4 +387,107 @@ export const TESTIMONIALS: Testimonial[] = [
     quote: "Working with Musharraf is always a seamless experience. He takes complete ownership of end-to-end media campaigns, from creative direction to audience targeting and conversion analytics."
   }
 ];
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: "cs-1",
+    title: "Luxury Real Estate & High-Net-Worth Lead Generation",
+    client: "IBM International Real Estate & Al Khateeb Group",
+    category: "Performance Marketing & Video Production",
+    location: "Dubai, UAE",
+    period: "2024 - Present",
+    summary: "Engineered a high-converting digital advertising ecosystem combining 4K vertical drone video reels with laser-targeted Meta & TikTok lead forms for high-value real estate listings.",
+    problem: "Rising CPLs and low inquiry quality from standard static real estate ads across GCC markets, resulting in low sales team conversion rates.",
+    strategy: [
+      "Produced cinematic 9:16 drone video reels highlighting architectural exclusivity and investment ROI.",
+      "Built multi-step qualifying lead forms to filter out non-serious inquiries and capture investor budgets.",
+      "Deployed automated Instant WhatsApp routing to connect sales agents with prospects in under 3 minutes."
+    ],
+    execution: [
+      "Meta Ads Manager & TikTok Ads Manager performance campaign setup with custom lookalike audiences.",
+      "Cinematic 4K videography & vertical reel editing showcasing prime Dubai properties.",
+      "A/B testing ad creative variants: Lifestyle walkthroughs vs. Investment breakdown graphics."
+    ],
+    results: [
+      "Generated 1,500+ verified high-intent investor leads with valid contact credentials.",
+      "Achieved a 35% overall lift in appointment-booking conversion rate.",
+      "Maintained a solid 4.2x ROAS across monthly performance ad spend."
+    ],
+    metrics: [
+      { label: "Qualified Leads", value: "1,500+", badge: "High-Intent" },
+      { label: "Conversion Lift", value: "+35%", badge: "ROI Driven" },
+      { label: "Monthly Ad Spend", value: "AED 40k+", badge: "Managed" },
+      { label: "Return on Ad Spend", value: "4.2x", badge: "ROAS" }
+    ],
+    tags: ["Meta Ads", "TikTok Ads", "Real Estate Marketing", "Cinematic Reels", "Lead Gen Funnel"],
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    id: "cs-2",
+    title: "UK University Framework Student Recruitment Expansion",
+    client: "BCAS Campus UK University Framework",
+    category: "EdTech Marketing & Enrollment Growth",
+    location: "Colombo & International",
+    period: "2023 - 2024",
+    summary: "Scaled student intake by 45% through full-funnel digital marketing, social proof storytelling, and multi-channel ad automation across Facebook, Instagram, and Search.",
+    problem: "Declining traditional print/radio campaign effectiveness and fragmented applicant lead tracking during competitive intake cycles.",
+    strategy: [
+      "Shifted 80% of budget into targeted Instagram Reels, TikTok video ads, and Google Search intent campaigns.",
+      "Created student success stories and alumni video testimonials to establish immediate credibility.",
+      "Structured localized landing pages with automated SMS/Email follow-up sequences for application assistance."
+    ],
+    execution: [
+      "Omni-channel strategy spanning Facebook, Instagram, Google Search & WhatsApp Business API.",
+      "Brand identity refresh for recruitment materials, prospectus brochures, and digital ad sets.",
+      "Real-time CRM dashboard integration to monitor counselor call response rates and conversion pipelines."
+    ],
+    results: [
+      "Achieved a 45% year-over-year increase in verified student application submissions.",
+      "Reduced cost-per-lead (CPL) by 28% while elevating candidate academic qualification standards.",
+      "Surpassed 2.8 Million cumulative organic & paid video views across social channels."
+    ],
+    metrics: [
+      { label: "Enrollment Growth", value: "+45%", badge: "YoY Surge" },
+      { label: "Cost Per Lead", value: "-28%", badge: "Efficiency" },
+      { label: "Media Impressions", value: "2.8M+", badge: "Reach" },
+      { label: "Counselor Speed", value: "<15 mins", badge: "Lead Response" }
+    ],
+    tags: ["EdTech Marketing", "Google Search Ads", "Social Video Ads", "CRM Integration", "Brand Strategy"],
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    id: "cs-3",
+    title: "Commercial Retail Brand Positioning & Visual Identity",
+    client: "Al Khateeb Commercial & Corporate Ventures",
+    category: "Brand Identity & Media Production",
+    location: "Dubai, UAE",
+    period: "2023 - Present",
+    summary: "Refined end-to-end corporate visual identity, executive media assets, and digital brand presence to establish premium market positioning in GCC trade circles.",
+    problem: "Outdated visual identity and inconsistent brand presentation across digital platforms, sales decks, and physical marketing collateral.",
+    strategy: [
+      "Designed a sleek, dark-luxury corporate visual brand guidelines manual.",
+      "Produced executive videography and product showcase reels tailored for high-profile client proposals.",
+      "Developed an interactive responsive web portfolio with integrated client inquiry tools."
+    ],
+    execution: [
+      "Complete visual system redesign: Typography pairing, color palettes, vector brand marks, and digital guidelines.",
+      "High-definition product & corporate photography shoots on location in Dubai.",
+      "Frontend UI/UX design and development for corporate web properties."
+    ],
+    results: [
+      "Elevated brand perception, resulting in 50% increase in inbound enterprise client proposals.",
+      "Established unified design standards used across 12+ product lines and subsidiary entities.",
+      "Increased digital portfolio dwell time by 3.2x with interactive media showcases."
+    ],
+    metrics: [
+      { label: "Inbound Enquiries", value: "+50%", badge: "Enterprise" },
+      { label: "Brand Dwell Time", value: "3.2x", badge: "Engagement" },
+      { label: "Sub-Brands Aligned", value: "12+", badge: "Cohesive UI" },
+      { label: "Client Approval", value: "100%", badge: "Benchmark" }
+    ],
+    tags: ["Brand Identity", "Corporate Video", "UI/UX Design", "Product Photography", "Strategy"],
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
+  }
+];
+
 
