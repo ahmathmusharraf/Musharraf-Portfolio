@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   ];
 
   return (
-    <section id="home" className="relative min-h-[100dvh] md:min-h-screen flex items-center justify-center overflow-hidden bg-[#070a13] pt-24 pb-16 md:py-32">
+    <section id="home" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#070a13] pt-16 md:pt-24 pb-20 md:pb-32">
       
       {/* Background Lighting & Grid */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -68,19 +68,153 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
         {/* Ambient Gradient Glows */}
         <motion.div 
-          className="absolute -top-32 left-1/4 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-indigo-600/20 rounded-full blur-[120px]"
+          className="absolute -top-32 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-indigo-600/20 rounded-full blur-[100px] md:blur-[120px]"
           style={{ x: blob1X, y: blob1Y }}
         />
         <motion.div 
-          className="absolute top-1/3 -right-20 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-amber-500/15 rounded-full blur-[130px]"
+          className="absolute top-1/3 -right-20 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-amber-500/15 rounded-full blur-[100px] md:blur-[130px]"
           style={{ x: blob2X, y: blob2Y }}
         />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#070a13] to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-28 md:h-40 bg-gradient-to-t from-[#070a13] to-transparent z-10" />
       </div>
 
       {/* Main Responsive Container */}
       <div className="container mx-auto px-4 sm:px-6 relative z-20 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        {/* MOBILE SINGLE VIEW LAYOUT (Fit 1 Screen Height) */}
+        <div className="md:hidden flex flex-col justify-between items-center text-center max-w-sm mx-auto h-full space-y-3.5 py-2">
+          
+          {/* Avatar & Location Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="relative flex flex-col items-center"
+          >
+            <div className="relative w-20 h-20 rounded-2xl p-1 bg-gradient-to-tr from-indigo-500 via-amber-400 to-cyan-400 shadow-[0_0_25px_rgba(99,102,241,0.3)] mb-2.5">
+              <img
+                src={PERSONAL_INFO.profileImage}
+                alt={PERSONAL_INFO.name}
+                className="w-full h-full object-cover object-top rounded-xl bg-slate-950"
+              />
+              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+              </span>
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/90 border border-white/10 text-[9px] font-black uppercase tracking-wider text-amber-300 shadow-lg">
+              <MapPin size={9} className="text-emerald-400" />
+              <span>DUBAI, UAE</span>
+              <span className="text-slate-600">•</span>
+              <span className="text-indigo-300">6+ YRS EXP</span>
+            </div>
+          </motion.div>
+
+          {/* Headline & Rotating Role */}
+          <div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-2xl font-black text-white tracking-tight leading-tight mb-1"
+            >
+              Architecting <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-amber-200 to-indigo-300">
+                High-Growth Brands
+              </span>
+            </motion.h1>
+
+            {/* Rotating Role Pill */}
+            <div className="h-7 overflow-hidden flex items-center justify-center">
+              <motion.div
+                key={roleIndex}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="text-[11px] font-bold text-slate-300 flex items-center gap-1"
+              >
+                <span className="text-indigo-400 font-extrabold uppercase tracking-wider">Expert:</span>
+                <span className="px-2 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded-md text-amber-300 text-[10px] font-extrabold">
+                  {PERSONAL_INFO.roles[roleIndex]}
+                </span>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Compact Mobile 4-Metric Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="grid grid-cols-4 gap-1.5 w-full bg-slate-950/80 border border-white/10 p-2 rounded-2xl shadow-2xl backdrop-blur-xl"
+          >
+            {metrics.map((m, idx) => (
+              <div key={idx} className="flex flex-col items-center text-center p-1 bg-white/[0.02] rounded-lg">
+                <span className="text-xs font-black text-indigo-300 leading-none mb-0.5">{m.value}</span>
+                <span className="text-[7.5px] font-bold text-slate-400 uppercase tracking-tighter truncate w-full">{m.label.split(' ')[0]}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Quick Specialties Badges (Scrollable / Compact) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            className="flex items-center gap-1.5 overflow-x-auto w-full pb-1 scrollbar-hide px-0.5 justify-center flex-wrap"
+          >
+            {specialties.slice(0, 4).map((spec) => (
+              <div 
+                key={spec.label} 
+                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${spec.bg} text-[9px] font-black uppercase tracking-wider text-slate-200 shrink-0`}
+              >
+                <spec.icon size={11} className={spec.color} />
+                <span>{spec.label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Mobile CTA Button Group */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex items-center justify-center gap-2 w-full pt-1"
+          >
+            <a 
+              href="#contact" 
+              className="flex-1 py-2.5 bg-gradient-to-r from-indigo-500 to-indigo-700 text-white rounded-xl font-black text-[10px] uppercase tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.4)] flex items-center justify-center gap-1 active:scale-95"
+            >
+              <span>Book Strategy</span>
+              <ArrowUpRight size={13} />
+            </a>
+
+            <a 
+              href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, '')}`} 
+              target="_blank"
+              rel="noreferrer"
+              className="py-2.5 px-3 bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 rounded-xl font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
+            >
+              <span>WhatsApp</span>
+            </a>
+
+            {onOpenResume && (
+              <button 
+                onClick={onOpenResume}
+                className="py-2.5 px-3 bg-slate-900 text-slate-200 border border-white/10 rounded-xl font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
+                aria-label="View Resume"
+              >
+                <FileText size={13} className="text-amber-400" />
+                <span>CV</span>
+              </button>
+            )}
+          </motion.div>
+
+        </div>
+
+        {/* DESKTOP GRID LAYOUT */}
+        <div className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Left Hero Content */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -259,6 +393,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           </div>
 
         </div>
+
       </div>
     </section>
   );
