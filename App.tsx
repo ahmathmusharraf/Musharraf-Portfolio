@@ -85,9 +85,10 @@ function App() {
             animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-44 md:bottom-24 right-8 p-4 bg-slate-800/80 backdrop-blur-md rounded-full shadow-2xl border border-white/10 hover:bg-primary transition-all z-40 group"
+            className="fixed bottom-36 md:bottom-22 right-4 md:right-8 w-9 h-9 md:w-12 md:h-12 flex items-center justify-center bg-[#0e1528]/90 backdrop-blur-md rounded-xl shadow-xl border border-white/10 text-slate-300 hover:text-white hover:bg-indigo-600 transition-all z-40 group"
+            aria-label="Scroll to top"
           >
-            <ArrowUp size={20} className="group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-y-0.5 transition-transform" />
           </motion.button>
         )}
       </AnimatePresence>
