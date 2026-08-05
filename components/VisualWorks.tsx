@@ -315,13 +315,13 @@ const VisualWorks: React.FC = () => {
                 initial={{ scale: 0.92, y: 15 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.92, y: 15 }}
-                className="relative w-full max-w-4xl my-auto shadow-[0_25px_70px_rgba(0,0,0,0.95)] rounded-2xl md:rounded-3xl overflow-hidden bg-[#0c101d] border border-white/15 text-left"
+                className="relative w-full max-w-2xl my-auto shadow-[0_20px_60px_rgba(0,0,0,0.95)] rounded-2xl overflow-hidden bg-[#0c101d] border border-white/15 text-left"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Top Media Showcase: Video or Image */}
                 <div className="relative bg-black w-full overflow-hidden">
                   {selectedWork.videoUrl ? (
-                    <div className={`w-full ${selectedWork.aspectRatio === '9:16' ? 'max-w-[320px] aspect-[9/16] mx-auto py-4' : 'aspect-video'}`}>
+                    <div className={`w-full ${selectedWork.aspectRatio === '9:16' ? 'max-w-[260px] aspect-[9/16] mx-auto py-2' : 'aspect-video'}`}>
                       <iframe
                         src={`${selectedWork.videoUrl}?autoplay=1`}
                         className="w-full h-full rounded-xl sm:rounded-none"
@@ -331,7 +331,7 @@ const VisualWorks: React.FC = () => {
                       />
                     </div>
                   ) : (
-                    <div className="relative w-full aspect-video sm:aspect-[16/9] max-h-[50vh] bg-slate-950 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-full aspect-video sm:aspect-[16/9] max-h-[36vh] bg-slate-950 flex items-center justify-center overflow-hidden">
                       <img 
                         src={selectedWork.imageUrl} 
                         alt={selectedWork.title} 
@@ -344,34 +344,34 @@ const VisualWorks: React.FC = () => {
                 </div>
                 
                 {/* Content & Metadata Section */}
-                <div className="p-5 sm:p-7 space-y-4">
+                <div className="p-4 sm:p-5 space-y-3">
                   {/* Category & Format Badges */}
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className={`px-3 py-1 rounded-full border text-[9px] sm:text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 backdrop-blur-md ${getCategoryBadgeStyle(selectedWork.category)}`}>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className={`px-2.5 py-0.5 rounded-full border text-[8.5px] font-black uppercase tracking-widest flex items-center gap-1 backdrop-blur-md ${getCategoryBadgeStyle(selectedWork.category)}`}>
                       {getCategoryIcon(selectedWork.category)}
                       <span>{selectedWork.category}</span>
                     </span>
 
-                    <span className="px-2.5 py-1 rounded-full bg-slate-900 border border-white/10 text-slate-300 text-[9px] font-mono font-bold uppercase tracking-wider">
+                    <span className="px-2 py-0.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 text-[8.5px] font-mono font-bold uppercase tracking-wider">
                       Aspect: {selectedWork.aspectRatio || '16:9'}
                     </span>
 
-                    <span className="px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[9px] font-extrabold uppercase tracking-wider">
-                      {selectedWork.videoUrl ? 'Video Reel & Media' : 'High-Res Image Asset'}
+                    <span className="px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[8.5px] font-extrabold uppercase tracking-wider">
+                      {selectedWork.videoUrl ? 'Video Reel' : 'High-Res Asset'}
                     </span>
                   </div>
 
                   {/* Asset Title */}
-                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
+                  <h3 className="text-base sm:text-lg font-black text-white tracking-tight leading-snug">
                     {selectedWork.title}
                   </h3>
 
                   {/* Descriptive Text */}
-                  <div className="space-y-2 text-slate-300 text-xs sm:text-sm font-light leading-relaxed bg-slate-900/50 p-4 rounded-xl border border-white/5">
-                    <p className="font-semibold text-white/90">
+                  <div className="space-y-1 text-slate-300 text-xs font-light leading-relaxed bg-slate-900/50 p-3 rounded-xl border border-white/5">
+                    <p className="font-semibold text-white/90 text-[11px]">
                       Creative Direction & Production Overview:
                     </p>
-                    <p>
+                    <p className="text-[11.5px] text-slate-300">
                       {selectedWork.category === 'Videography' && "High-definition commercial video production crafted for luxury brand storytelling, corporate campaigns, and real estate visual showcases in Dubai & international markets."}
                       {selectedWork.category === 'Reels' && "Vertical short-form cinematic reel engineered for fast-paced social engagement, Meta & TikTok ad performance, and high-conversion brand awareness."}
                       {selectedWork.category === 'Photography' && "High-resolution commercial product & interior photography showcasing architectural details, brand aesthetics, and professional media presentation."}
@@ -382,22 +382,22 @@ const VisualWorks: React.FC = () => {
 
                   {/* Image Thumbnail Preview (if video is currently playing) */}
                   {selectedWork.videoUrl && (
-                    <div className="flex items-center gap-3 p-3 bg-slate-900/40 rounded-xl border border-white/5">
+                    <div className="flex items-center gap-2.5 p-2 bg-slate-900/40 rounded-lg border border-white/5">
                       <img 
                         src={selectedWork.imageUrl} 
                         alt="Thumbnail" 
-                        className="w-16 h-12 object-cover rounded-lg border border-white/10 shrink-0"
+                        className="w-12 h-9 object-cover rounded border border-white/10 shrink-0"
                       />
                       <div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Original Cover Asset</span>
-                        <span className="text-xs font-bold text-slate-200 line-clamp-1">{selectedWork.title}</span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">Original Cover Asset</span>
+                        <span className="text-[11px] font-bold text-slate-200 line-clamp-1">{selectedWork.title}</span>
                       </div>
                     </div>
                   )}
 
                   {/* Action Footer */}
-                  <div className="pt-2 flex flex-col sm:flex-row gap-3 items-center justify-between border-t border-white/10">
-                    <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">
+                  <div className="pt-1.5 flex flex-col sm:flex-row gap-2.5 items-center justify-between border-t border-white/10">
+                    <span className="text-[9.5px] text-slate-400 uppercase font-mono tracking-wider">
                       Producer: <strong className="text-amber-300">{PERSONAL_INFO.name}</strong> • Dubai, UAE
                     </span>
 
@@ -406,14 +406,14 @@ const VisualWorks: React.FC = () => {
                         href={PERSONAL_INFO.videoPortfolio}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 sm:flex-none px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-lg"
+                        className="flex-1 sm:flex-none px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-[11px] font-black uppercase tracking-wider flex items-center justify-center gap-1 transition-all shadow-md"
                       >
-                        <ExternalLink size={13} />
+                        <ExternalLink size={12} />
                         <span>View Portfolio</span>
                       </a>
                       <button
                         onClick={() => setSelectedWork(null)}
-                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold uppercase tracking-wider"
+                        className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-[11px] font-bold uppercase tracking-wider"
                       >
                         Close
                       </button>
