@@ -65,7 +65,7 @@ const VisualWorks: React.FC = () => {
   };
 
   return (
-    <section id="visuals" className="py-12 md:py-28 bg-[#060913] relative overflow-hidden">
+    <section id="visuals" className="py-6 md:py-28 bg-[#060913] relative overflow-hidden">
       {/* Background Glow Accents */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-indigo-600/5 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
@@ -78,26 +78,26 @@ const VisualWorks: React.FC = () => {
             whileInView: { opacity: 1, y: 0 },
             viewport: { once: true }
           } as any)}
-          className="mb-8 md:mb-16 text-center max-w-2xl mx-auto"
+          className="mb-4 md:mb-16 text-center max-w-2xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/10 border border-secondary/25 text-secondary font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase font-bold mb-4">
-            <Sparkles size={12} className="text-secondary" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/25 text-secondary font-mono text-[9px] sm:text-xs tracking-[0.2em] uppercase font-bold mb-2">
+            <Sparkles size={11} className="text-secondary" />
             <span>Creative Direction</span>
           </div>
           
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-2">
             Specialized Multimedia <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-indigo-300 to-indigo-500">& Visual Art</span>
           </h2>
           
-          <div className="w-20 h-1 bg-gradient-to-r from-secondary via-indigo-500 to-amber-400 mx-auto rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] mb-4" />
+          <div className="w-16 md:w-20 h-0.5 md:h-1 bg-gradient-to-r from-secondary via-indigo-500 to-amber-400 mx-auto rounded-full shadow-[0_0_20px_rgba(6,182,212,0.4)] mb-2 md:mb-4" />
           
-          <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
+          <p className="hidden md:block text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
             Crafting high-impact commercial brand assets, executive videography, cinematic real estate visual stories, and strategic graphic direction.
           </p>
         </motion.div>
 
         {/* Filter Navigation Bar */}
-        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-14 pb-3 md:pb-0 scrollbar-hide px-2 -mx-4 sm:mx-0">
+        <div className="flex overflow-x-auto md:flex-wrap justify-start md:justify-center gap-1.5 sm:gap-2.5 mb-4 sm:mb-14 pb-2 md:pb-0 scrollbar-hide px-2 -mx-4 sm:mx-0">
           {filters.map((filter) => {
             const isActive = activeFilter === filter.name;
             const FilterIcon = filter.icon;
@@ -107,17 +107,17 @@ const VisualWorks: React.FC = () => {
                 onClick={() => handleFilterChange(filter.name)}
                 whileTap={{ scale: 0.95 }}
                 style={{ WebkitTapHighlightColor: 'transparent' }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-xs font-bold transition-all duration-300 whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2.5 rounded-full border text-[10px] md:text-xs font-bold transition-all duration-300 whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'bg-slate-800/90 border-indigo-500/60 text-white shadow-[0_0_25px_rgba(99,102,241,0.25)]'
                     : 'bg-slate-900/40 border-white/5 text-slate-400 hover:border-white/15 hover:text-slate-200'
                 }`}
               >
                 <FilterIcon 
-                  size={14} 
+                  size={12} 
                   className={isActive ? 'text-amber-400' : 'text-slate-500'} 
                 />
-                <span className="uppercase tracking-wider text-[10.5px]">
+                <span className="uppercase tracking-wider text-[9px] md:text-[10.5px]">
                   {filter.name}
                 </span>
               </motion.button>
@@ -207,7 +207,7 @@ const VisualWorks: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.25 }}
-                  className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl cursor-pointer"
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-900 border border-white/10 shadow-xl cursor-pointer"
                   onClick={() => filteredWorks[mobileActiveIdx].videoUrl && setSelectedVideo(filteredWorks[mobileActiveIdx])}
                 >
                   <img 
@@ -217,60 +217,60 @@ const VisualWorks: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" />
                   
                   {filteredWorks[mobileActiveIdx].videoUrl && (
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-12 h-12 bg-indigo-600/90 backdrop-blur-md border border-indigo-400 rounded-full flex items-center justify-center text-white shadow-xl">
-                        <Play size={20} fill="currentColor" className="ml-0.5" />
+                      <div className="w-10 h-10 bg-indigo-600/90 backdrop-blur-md border border-indigo-400 rounded-full flex items-center justify-center text-white shadow-lg">
+                        <Play size={16} fill="currentColor" className="ml-0.5" />
                       </div>
                     </div>
                   )}
 
-                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`px-2.5 py-1 rounded-full border text-[9px] font-black uppercase tracking-widest flex items-center gap-1.5 backdrop-blur-md ${getCategoryBadgeStyle(filteredWorks[mobileActiveIdx].category)}`}>
+                  <div className="absolute inset-0 p-3.5 flex flex-col justify-end">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className={`px-2 py-0.5 rounded-full border text-[8px] font-black uppercase tracking-widest flex items-center gap-1 backdrop-blur-md ${getCategoryBadgeStyle(filteredWorks[mobileActiveIdx].category)}`}>
                         {getCategoryIcon(filteredWorks[mobileActiveIdx].category)}
                         <span>{filteredWorks[mobileActiveIdx].category}</span>
                       </span>
                     </div>
                     
-                    <h3 className="text-sm font-black text-white leading-tight tracking-tight mb-2">
+                    <h3 className="text-xs font-black text-white leading-tight tracking-tight mb-1 line-clamp-1">
                       {filteredWorks[mobileActiveIdx].title}
                     </h3>
                     
-                    <div className="inline-flex items-center gap-1.5 text-[9.5px] font-black text-indigo-400 uppercase tracking-widest">
+                    <div className="inline-flex items-center gap-1 text-[8.5px] font-black text-indigo-400 uppercase tracking-widest">
                       <span>{filteredWorks[mobileActiveIdx].videoUrl ? 'TAP TO PLAY' : 'TAP TO VIEW'}</span>
-                      <ChevronRight size={12} />
+                      <ChevronRight size={10} />
                     </div>
                   </div>
 
                   {/* Top-Right Index Badge */}
-                  <div className="absolute top-3.5 right-3.5 bg-slate-950/85 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[8.5px] font-mono font-bold text-white tracking-widest">
+                  <div className="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10 text-[7.5px] font-mono font-bold text-white tracking-widest">
                     {mobileActiveIdx + 1} / {filteredWorks.length}
                   </div>
                 </motion.div>
               </AnimatePresence>
 
               {/* Mobile Controls */}
-              <div className="flex items-center justify-between mt-4 px-1">
+              <div className="flex items-center justify-between mt-2.5 px-1">
                 <button
                   type="button"
                   onClick={() => setMobileActiveIdx(p => (p === 0 ? filteredWorks.length - 1 : p - 1))}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
-                  className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 text-slate-300 flex items-center justify-center active:scale-95 transition-all"
+                  className="w-7 h-7 rounded-lg bg-slate-900 border border-white/10 text-slate-300 flex items-center justify-center active:scale-95 transition-all"
                 >
-                  <ChevronRight size={16} className="rotate-180" />
+                  <ChevronRight size={14} className="rotate-180" />
                 </button>
 
-                <div className="flex gap-1.5">
+                <div className="flex gap-1">
                   {filteredWorks.map((_, dotIdx) => (
                     <button
                       key={dotIdx}
                       onClick={() => setMobileActiveIdx(dotIdx)}
                       style={{ WebkitTapHighlightColor: 'transparent' }}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        mobileActiveIdx === dotIdx ? 'bg-indigo-400 w-4' : 'bg-slate-800 w-1.5'
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        mobileActiveIdx === dotIdx ? 'bg-indigo-400 w-3' : 'bg-slate-800 w-1'
                       }`}
                     />
                   ))}
@@ -280,9 +280,9 @@ const VisualWorks: React.FC = () => {
                   type="button"
                   onClick={() => setMobileActiveIdx(p => (p === filteredWorks.length - 1 ? 0 : p + 1))}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
-                  className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 text-slate-300 flex items-center justify-center active:scale-95 transition-all"
+                  className="w-7 h-7 rounded-lg bg-slate-900 border border-white/10 text-slate-300 flex items-center justify-center active:scale-95 transition-all"
                 >
-                  <ChevronRight size={16} />
+                  <ChevronRight size={14} />
                 </button>
               </div>
             </div>
