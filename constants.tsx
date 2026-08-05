@@ -332,27 +332,41 @@ export const CERTIFICATIONS = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
+    name: "Mohamed Ishraque Kalideen",
+    role: "Education Consultant & Pearson/BTEC Verifier",
+    company: "Centre Management & Curriculum Design",
+    quote: "I know Mr. Musharaff is a very energetic young man who can handle entire digital marketing and digital advertising using sophisticated current technologies tools based on industrial expectations. And Mr. Musharaff is a good team player to make success of task which has been assigned by his team head."
+  },
+  {
+    id: "2",
+    name: "Sanjaya Dharmadasa",
+    role: "Creative & Brand Lead",
+    company: "Digital Media & Strategy",
+    quote: "Musharaf is a hard working go-getter type person with good team working ability. I highly recommend him to anyone who seeks his help and suggestions since I have worked with him on different projects. He'll keep tabs open until the work is done and asking suggestions if needed. He's good at his job as a digital marketer and designer as well as he's a good tutor."
+  },
+  {
+    id: "3",
     name: "Tariq Al Khateeb",
     role: "Executive Director",
     company: "Al Khateeb Global LLC",
     quote: "Ahmath combines a rare cinematic eye with rigorous creative strategy. His work modernized our visual language and drove a 50% increase in social traffic."
   },
   {
-    id: "2",
+    id: "4",
     name: "Yousuf Al Sayed",
     role: "Managing Director",
     company: "IBM International Real Estate",
     quote: "Under Ahmath's direction, our premium listings received immediate attention. He perfectly understands how to marry upscale lifestyle visual narratives with performance Facebook & Meta Ads to attract serious buyers."
   },
   {
-    id: "3",
+    id: "5",
     name: "Dr. Fazal Rahman",
     role: "Admissions Operations Director",
     company: "BCAS Campus UK Framework",
     quote: "Ahmath revolutionized our admissions funnel. His performance-driven campaigns pushed student enrollments up by 70% while consistently maintaining clean, high-end branding."
   },
   {
-    id: "4",
+    id: "6",
     name: "Sarah Jenkins",
     role: "Global Head of Brand",
     company: "Orbit Overseas & Travel Agency",
