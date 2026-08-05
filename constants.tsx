@@ -46,7 +46,7 @@ export const PERSONAL_INFO = {
   
   summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
   
-  profileImage: "https://raw.githubusercontent.com/ahmathmusharraf/Musharraf-Portfolio/refs/heads/main/MushiFinal1.png",
+  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
 
   // PATH TO YOUR REAL CV
   cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
@@ -371,6 +371,20 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Global Head of Brand",
     company: "Orbit Overseas & Travel Agency",
     quote: "He is incredibly rare. Ahmath bridges luxury visual direction and solid technical software engineering capabilities perfectly. He worked fast and produced stellar, benchmark-setting assets."
+  },
+  {
+    id: "7",
+    name: "Aamir Thanvi",
+    role: "Head of Growth & Digital Strategy",
+    company: "Apex Media & Tech Solutions Dubai",
+    quote: "Musharraf is an exceptionally talented creative strategist. His ability to fuse performance ad copy with high-impact video storytelling has consistently delivered ROI across our regional campaigns in UAE and GCC markets."
+  },
+  {
+    id: "8",
+    name: "Rizwan Mohamed",
+    role: "Senior Marketing Manager",
+    company: "Horizon Retail & E-Commerce Group",
+    quote: "Working with Musharraf is always a seamless experience. He takes complete ownership of end-to-end media campaigns, from creative direction to audience targeting and conversion analytics."
   }
 ];
 
