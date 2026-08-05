@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CASE_STUDIES } from '../constants';
+import { CASE_STUDIES, PERSONAL_INFO } from '../constants';
 import { CaseStudy } from '../types';
 import { 
   Briefcase, 
@@ -302,7 +302,7 @@ const CaseStudySection: React.FC = () => {
                   {/* Footer Action */}
                   <div className="pt-2 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5">
                     <span className="text-[9.5px] text-slate-400 font-mono uppercase tracking-wider">
-                      Strategy & Direction by <strong className="text-amber-300">Musharraf Ahamed</strong>
+                      Strategy & Direction by <strong className="text-amber-300">{PERSONAL_INFO.name}</strong>
                     </span>
 
                     <div className="flex items-center gap-2 w-full sm:w-auto">
