@@ -77,92 +77,47 @@ const Testimonials: React.FC = () => {
         </motion.div>
 
         {/* Desktop View */}
-        <div className="hidden md:block max-w-5xl mx-auto">
-          {TESTIMONIALS.length === 1 ? (
+        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[1400px] mx-auto">
+          {TESTIMONIALS.map((t, idx) => (
             <motion.div
+              key={t.id}
               {...({
                 initial: { opacity: 0, y: 20 },
                 whileInView: { opacity: 1, y: 0 },
-                viewport: { once: true }
+                viewport: { once: true },
+                transition: { delay: idx * 0.1, duration: 0.5 }
               } as any)}
-              className="relative p-10 rounded-3xl bg-[#0e1528] border border-white/10 shadow-2xl flex flex-col justify-between"
+              className="relative p-5 rounded-2xl bg-[#0e1528] border border-white/10 shadow-xl hover:border-amber-400/40 transition-all duration-300 flex flex-col justify-between"
             >
-              <div className="absolute top-6 right-8 text-amber-400/20">
-                <Quote size={64} />
+              <div className="absolute top-4 right-4 text-amber-400/15">
+                <Quote size={28} />
               </div>
 
-              <div className="flex gap-1 text-amber-400 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" />
-                ))}
+              <div className="mb-4">
+                <div className="flex gap-1 text-amber-400 mb-2.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={11} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="text-slate-300 text-xs font-light leading-relaxed italic">
+                  "{t.quote}"
+                </p>
               </div>
 
-              <p className="text-slate-200 text-lg font-light leading-relaxed italic mb-8 relative z-10">
-                "{TESTIMONIALS[0].quote}"
-              </p>
-
-              <div className="flex items-center gap-4 pt-6 border-t border-white/10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400 to-indigo-500 p-[2px] shrink-0">
+              <div className="flex items-center gap-2.5 pt-3.5 border-t border-white/10 mt-auto">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-indigo-500 p-[1.5px] shrink-0">
                   <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center">
-                    <User size={20} className="text-amber-300" />
+                    <User size={13} className="text-amber-300" />
                   </div>
                 </div>
-                <div>
-                  <h4 className="text-white font-black text-sm">{TESTIMONIALS[0].name}</h4>
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="text-amber-400 font-semibold">{TESTIMONIALS[0].role}</span>
-                    <span className="text-slate-600">•</span>
-                    <span className="text-slate-400 font-mono text-[10px] uppercase tracking-wider">{TESTIMONIALS[0].company}</span>
-                  </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-white font-bold text-xs truncate">{t.name}</h4>
+                  <span className="text-amber-400 text-[10px] block truncate">{t.role}</span>
+                  <span className="text-slate-400 text-[8.5px] uppercase font-mono tracking-wider block truncate">{t.company}</span>
                 </div>
               </div>
             </motion.div>
-          ) : (
-            <div className="relative">
-              <div 
-                ref={scrollRef}
-                className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-hide"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
-                {TESTIMONIALS.map((t, idx) => (
-                  <div 
-                    key={t.id} 
-                    className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center"
-                  >
-                    <div className="h-full relative p-8 rounded-2xl bg-[#0e1528] border border-white/10 shadow-xl hover:border-amber-400/40 transition-all duration-300 flex flex-col justify-between">
-                      <div className="absolute top-6 right-6 text-amber-400/15">
-                        <Quote size={40} />
-                      </div>
-
-                      <div className="mb-6">
-                        <div className="flex gap-1 text-amber-400 mb-4">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={14} fill="currentColor" />
-                          ))}
-                        </div>
-                        <p className="text-slate-300 text-sm font-light leading-relaxed italic">
-                          "{t.quote}"
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 to-indigo-500 p-[2px] shrink-0">
-                          <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center">
-                            <User size={16} className="text-amber-300" />
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="text-white font-bold text-xs">{t.name}</h4>
-                          <span className="text-amber-400 text-[11px] block">{t.role}</span>
-                          <span className="text-slate-400 text-[9px] uppercase font-mono tracking-wider">{t.company}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          ))}
         </div>
 
         {/* Mobile View */}
