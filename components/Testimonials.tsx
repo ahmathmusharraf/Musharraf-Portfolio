@@ -76,8 +76,8 @@ const Testimonials: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Desktop View */}
-        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[1400px] mx-auto">
+        {/* Desktop View (2 in one line side-by-side) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1100px] mx-auto">
           {TESTIMONIALS.map((t, idx) => (
             <motion.div
               key={t.id}
