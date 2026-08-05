@@ -38,14 +38,15 @@ export const PERSONAL_INFO = {
   location: "Dubai, United Arab Emirates",
   nationality: "Sri Lankan",
   email: "ahmathmusharraf@gmail.com",
-  phone: "+971 58146 2540",
-  secondaryPhone: "+94 76 77 65080",
+  phone: "+971 58 146 2540",
+  secondaryPhone: "+94 76 776 5080",
   linkedin: "https://linkedin.com/in/ahmathmusharraf",
-  portfolio: "linktr.ee/ahmathmusharraf",
+  portfolio: "https://linktr.ee/ahmathmusharraf",
+  videoPortfolio: "https://www.canva.com/design/DAG7830hOq8/RxMMMG4idKm8Q5GwIEuAhQ/view",
   
   summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
   
-  profileImage: "https://raw.githubusercontent.com/ahmathmusharraf/Musharraf-Portfolio/refs/heads/main/MushiFinal1.png",
+  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
 
   // PATH TO YOUR REAL CV
   cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
@@ -311,7 +312,8 @@ export const LANGUAGES = [
   "English (Professional)",
   "Tamil (Native)",
   "Sinhala (Advanced)",
-  "Malayalam (Conversational)"
+  "Malayalam (Conversational)",
+  "Hindi (Conversational)"
 ];
 
 export const CERTIFICATIONS = [
