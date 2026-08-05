@@ -166,14 +166,14 @@ const CaseStudySection: React.FC = () => {
               </button>
 
               <motion.div
-                initial={{ scale: 0.93, y: 20 }}
+                initial={{ scale: 0.93, y: 15 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.93, y: 20 }}
-                className="relative w-full max-w-3xl my-auto bg-[#0c1120] border border-white/15 rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.95)] text-left"
+                exit={{ scale: 0.93, y: 15 }}
+                className="relative w-full max-w-2xl my-auto bg-[#0c1120] border border-white/15 rounded-xl md:rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.95)] text-left"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Hero Header Banner */}
-                <div className="relative h-48 sm:h-60 w-full overflow-hidden bg-slate-950">
+                <div className="relative h-32 sm:h-40 w-full overflow-hidden bg-slate-950">
                   <img 
                     src={selectedCaseStudy.image} 
                     alt={selectedCaseStudy.title} 
@@ -182,35 +182,35 @@ const CaseStudySection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0c1120] via-[#0c1120]/70 to-transparent" />
 
-                  <div className="absolute bottom-4 left-5 right-5 space-y-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] font-black uppercase tracking-wider">
+                  <div className="absolute bottom-3 left-4 right-4 space-y-0.5">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[8.5px] font-black uppercase tracking-wider">
                         {selectedCaseStudy.category}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 text-[9px] font-mono font-bold uppercase">
+                      <span className="px-2 py-0.5 rounded-full bg-slate-900 border border-white/10 text-slate-300 text-[8.5px] font-mono font-bold uppercase">
                         {selectedCaseStudy.location}
                       </span>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
+                    <h3 className="text-base sm:text-xl font-black text-white tracking-tight leading-snug">
                       {selectedCaseStudy.title}
                     </h3>
-                    <p className="text-amber-400 font-mono text-xs font-bold">
+                    <p className="text-amber-400 font-mono text-[11px] font-bold">
                       Client: {selectedCaseStudy.client}
                     </p>
                   </div>
                 </div>
 
                 {/* Modal Main Content */}
-                <div className="p-5 sm:p-7 space-y-6">
+                <div className="p-4 sm:p-5 space-y-4">
 
                   {/* Metrics Banner */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-900/80 p-3.5 rounded-2xl border border-white/10">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-900/80 p-2.5 rounded-xl border border-white/10">
                     {selectedCaseStudy.metrics.map((m, idx) => (
-                      <div key={idx} className="text-center p-1.5">
-                        <div className="text-lg sm:text-xl font-black text-amber-300 tracking-tight leading-none mb-1">
+                      <div key={idx} className="text-center p-1">
+                        <div className="text-base sm:text-lg font-black text-amber-300 tracking-tight leading-none mb-0.5">
                           {m.value}
                         </div>
-                        <div className="text-[9px] font-extrabold uppercase text-slate-300 tracking-wider">
+                        <div className="text-[8.5px] font-extrabold uppercase text-slate-300 tracking-wider">
                           {m.label}
                         </div>
                       </div>
@@ -218,57 +218,57 @@ const CaseStudySection: React.FC = () => {
                   </div>
 
                   {/* Problem & Challenge Statement */}
-                  <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 space-y-1.5">
-                    <div className="flex items-center gap-2 text-rose-300 font-black text-xs uppercase tracking-wider">
-                      <Target size={14} />
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 space-y-1">
+                    <div className="flex items-center gap-1.5 text-rose-300 font-black text-[11px] uppercase tracking-wider">
+                      <Target size={12} />
                       <span>The Core Challenge</span>
                     </div>
-                    <p className="text-slate-300 text-xs sm:text-sm font-light leading-relaxed">
+                    <p className="text-slate-300 text-xs font-light leading-relaxed">
                       {selectedCaseStudy.problem}
                     </p>
                   </div>
 
                   {/* Interactive Strategy / Execution / Results Tabs */}
-                  <div className="space-y-4">
-                    <div className="flex border-b border-white/10 gap-2">
+                  <div className="space-y-3">
+                    <div className="flex border-b border-white/10 gap-1.5">
                       <button
                         onClick={() => setActiveTab('strategy')}
-                        className={`pb-2.5 px-3 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border-b-2 ${
+                        className={`pb-2 px-2.5 text-[11px] font-black uppercase tracking-wider transition-all flex items-center gap-1 border-b-2 ${
                           activeTab === 'strategy' 
                             ? 'border-amber-400 text-amber-300' 
                             : 'border-transparent text-slate-400 hover:text-slate-200'
                         }`}
                       >
-                        <Lightbulb size={13} /> Strategy
+                        <Lightbulb size={12} /> Strategy
                       </button>
                       <button
                         onClick={() => setActiveTab('execution')}
-                        className={`pb-2.5 px-3 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border-b-2 ${
+                        className={`pb-2 px-2.5 text-[11px] font-black uppercase tracking-wider transition-all flex items-center gap-1 border-b-2 ${
                           activeTab === 'execution' 
                             ? 'border-amber-400 text-amber-300' 
                             : 'border-transparent text-slate-400 hover:text-slate-200'
                         }`}
                       >
-                        <Rocket size={13} /> Execution
+                        <Rocket size={12} /> Execution
                       </button>
                       <button
                         onClick={() => setActiveTab('results')}
-                        className={`pb-2.5 px-3 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border-b-2 ${
+                        className={`pb-2 px-2.5 text-[11px] font-black uppercase tracking-wider transition-all flex items-center gap-1 border-b-2 ${
                           activeTab === 'results' 
                             ? 'border-amber-400 text-amber-300' 
                             : 'border-transparent text-slate-400 hover:text-slate-200'
                         }`}
                       >
-                        <TrendingUp size={13} /> Measurable Results
+                        <TrendingUp size={12} /> Measurable Results
                       </button>
                     </div>
 
-                    <div className="bg-slate-900/60 p-4 rounded-2xl border border-white/5 min-h-[140px]">
+                    <div className="bg-slate-900/60 p-3 rounded-xl border border-white/5 min-h-[110px]">
                       {activeTab === 'strategy' && (
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2">
                           {selectedCaseStudy.strategy.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 font-light leading-relaxed">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 mt-1.5" />
+                            <li key={idx} className="flex items-start gap-2 text-[11px] text-slate-200 font-light leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 mt-1" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -276,10 +276,10 @@ const CaseStudySection: React.FC = () => {
                       )}
 
                       {activeTab === 'execution' && (
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2">
                           {selectedCaseStudy.execution.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 font-light leading-relaxed">
-                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 mt-1.5" />
+                            <li key={idx} className="flex items-start gap-2 text-[11px] text-slate-200 font-light leading-relaxed">
+                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 mt-1" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -287,10 +287,10 @@ const CaseStudySection: React.FC = () => {
                       )}
 
                       {activeTab === 'results' && (
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2">
                           {selectedCaseStudy.results.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 font-light leading-relaxed">
-                              <CheckCircle2 size={14} className="text-emerald-400 shrink-0 mt-0.5" />
+                            <li key={idx} className="flex items-start gap-2 text-[11px] text-slate-200 font-light leading-relaxed">
+                              <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
                               <span className="font-semibold text-white/90">{item}</span>
                             </li>
                           ))}
@@ -300,8 +300,8 @@ const CaseStudySection: React.FC = () => {
                   </div>
 
                   {/* Footer Action */}
-                  <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">
+                  <div className="pt-2 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+                    <span className="text-[9.5px] text-slate-400 font-mono uppercase tracking-wider">
                       Strategy & Direction by <strong className="text-amber-300">Musharraf Ahamed</strong>
                     </span>
 
@@ -309,14 +309,14 @@ const CaseStudySection: React.FC = () => {
                       <a
                         href="#contact"
                         onClick={() => setSelectedCaseStudy(null)}
-                        className="flex-1 sm:flex-none px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-lg"
+                        className="flex-1 sm:flex-none px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-lg text-[11px] uppercase tracking-wider flex items-center justify-center gap-1 transition-all shadow-md"
                       >
                         <span>Discuss Similar Campaign</span>
-                        <ArrowUpRight size={14} />
+                        <ArrowUpRight size={13} />
                       </a>
                       <button
                         onClick={() => setSelectedCaseStudy(null)}
-                        className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-xl text-xs uppercase tracking-wider"
+                        className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-lg text-[11px] uppercase tracking-wider"
                       >
                         Close
                       </button>
