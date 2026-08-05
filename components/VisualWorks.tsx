@@ -128,7 +128,7 @@ const VisualWorks: React.FC = () => {
         {/* Desktop Grid Layout */}
         <motion.div 
           layout
-          className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[1400px] mx-auto"
         >
           <AnimatePresence mode="popLayout">
             {filteredWorks.map((work) => {
