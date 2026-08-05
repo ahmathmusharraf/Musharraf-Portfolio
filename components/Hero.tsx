@@ -332,59 +332,88 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* Right Hero Card & Visual Asset */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full max-w-[280px] sm:max-w-[320px]"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1, 
+                y: [0, -8, 0]
+              }}
+              transition={{ 
+                opacity: { duration: 0.8 },
+                scale: { duration: 0.8 },
+                y: { repeat: Infinity, duration: 5, ease: "easeInOut" }
+              }}
+              whileHover={{ scale: 1.02, rotate: 0.5 }}
+              className="relative w-full max-w-[280px] sm:max-w-[320px] cursor-pointer group"
             >
-              {/* Outer Glow Halo */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/25 via-amber-400/15 to-indigo-600/25 rounded-[2rem] blur-xl -z-10 animate-pulse" />
+              {/* Animated Outer Glow Halo */}
+              <motion.div 
+                animate={{ 
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [0.98, 1.05, 0.98]
+                }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 via-amber-400/20 to-indigo-600/30 rounded-[2.2rem] blur-2xl -z-10" 
+              />
 
               {/* Glassmorphic Profile Frame */}
-              <div className="bg-slate-900/80 border border-white/10 rounded-[2rem] p-3.5 shadow-[0_20px_40px_rgba(0,0,0,0.8)] backdrop-blur-2xl relative overflow-hidden">
+              <div className="bg-slate-900/85 border border-white/15 group-hover:border-amber-400/40 rounded-[2rem] p-3.5 shadow-[0_25px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl relative overflow-hidden transition-colors duration-500">
                 
+                {/* Light Reflection Shimmer Beam */}
+                <div className="absolute -top-[100%] -left-[100%] w-[300%] h-[300%] bg-gradient-to-br from-white/10 via-transparent to-transparent rotate-45 pointer-events-none group-hover:translate-x-1/2 group-hover:translate-y-1/2 transition-transform duration-1000" />
+
                 {/* Image Container */}
-                <div className="relative aspect-[4/3.8] rounded-xl overflow-hidden border border-white/10 bg-slate-950 mb-3">
+                <div className="relative aspect-[4/3.8] rounded-xl overflow-hidden border border-white/10 bg-slate-950 mb-3 shadow-inner">
                   <img 
                     src={PERSONAL_INFO.profileImage} 
                     alt={PERSONAL_INFO.name} 
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                   
                   {/* Badge Overlay */}
-                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/10 text-white text-[8.5px] font-black uppercase tracking-wider flex items-center gap-1 shadow-md">
-                    <Award size={10} className="text-amber-400" />
+                  <motion.div 
+                    initial={{ x: -10, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/15 text-white text-[8.5px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-xl"
+                  >
+                    <Award size={11} className="text-amber-400 animate-bounce" />
                     <span>6+ Yrs Experience</span>
-                  </div>
+                  </motion.div>
 
                   <div className="absolute bottom-2 left-2 right-2 flex items-end justify-between">
                     <div>
-                      <h3 className="text-sm font-black text-white leading-tight">{PERSONAL_INFO.name}</h3>
+                      <h3 className="text-sm sm:text-base font-black text-white leading-tight group-hover:text-amber-200 transition-colors">{PERSONAL_INFO.name}</h3>
                       <p className="text-amber-400 text-[9.5px] font-bold flex items-center gap-1">
-                        <MapPin size={9} /> {PERSONAL_INFO.location}
+                        <MapPin size={9.5} className="animate-pulse text-rose-400" /> {PERSONAL_INFO.location}
                       </p>
                     </div>
-                    <div className="p-1.5 rounded-lg bg-indigo-600 text-white shadow-lg">
+                    <div className="p-1.5 rounded-lg bg-indigo-600 text-white shadow-lg group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
                       <ShieldCheck size={14} />
                     </div>
                   </div>
                 </div>
 
-                {/* Key Metrics Strip */}
+                {/* Key Metrics Strip with Hover Animation */}
                 <div className="grid grid-cols-2 gap-1.5">
                   {metrics.slice(0, 4).map((m, idx) => (
-                    <div key={idx} className="p-2 bg-white/[0.03] border border-white/5 rounded-lg">
-                      <div className="text-xs font-black text-white tracking-tight leading-none mb-0.5 text-indigo-300">
+                    <motion.div 
+                      key={idx} 
+                      whileHover={{ y: -2, backgroundColor: 'rgba(255, 255, 255, 0.08)' }}
+                      transition={{ duration: 0.2 }}
+                      className="p-2 bg-white/[0.04] border border-white/10 rounded-lg transition-colors"
+                    >
+                      <div className="text-xs font-black text-white tracking-tight leading-none mb-0.5 text-indigo-300 group-hover:text-amber-300 transition-colors">
                         {m.value}
                       </div>
-                      <div className="text-[8.5px] font-extrabold uppercase tracking-wider text-slate-300">
+                      <div className="text-[8.5px] font-extrabold uppercase tracking-wider text-slate-200">
                         {m.label}
                       </div>
-                      <div className="text-[7.5px] text-slate-500 font-medium truncate">
+                      <div className="text-[7.5px] text-slate-400 font-medium truncate">
                         {m.desc}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
