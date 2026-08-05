@@ -35,391 +35,200 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="bg-slate-950 pt-10 md:pt-24 pb-28 md:pb-12 border-t border-slate-900 relative overflow-hidden">
-        {/* Background elements */}
+    <footer id="contact" className="bg-[#070a14] py-10 md:py-16 border-t border-white/10 relative overflow-hidden">
+        {/* Ambient lighting */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-            <div className="absolute top-20 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-10 w-80 h-80 bg-indigo-600/10 rounded-full blur-[120px]" />
+            <div className="absolute top-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px]" />
         </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-4 text-center md:text-left">
-          <span className="text-secondary font-mono text-xs tracking-widest uppercase">Get in Touch</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mt-1 mb-4">Let's Work Together</h2>
-          <p className="text-slate-400 text-sm md:text-lg leading-relaxed max-w-xl md:max-w-none mx-auto md:mx-0">
-            I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* Header */}
+        <div className="mb-6 md:mb-10 text-center max-w-xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold mb-3">
+            <Mail size={12} />
+            <span>Get in Touch</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-2">
+            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-300 to-amber-300">Work Together</span>
+          </h2>
+          <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
+            Open to discussing new projects, creative directions, or technical engineering opportunities.
           </p>
         </div>
 
-        <div className="hidden md:flex flex-col lg:flex-row gap-10 lg:gap-16 mb-12 lg:mb-20">
+        {/* Compact Full Layout */}
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mb-10">
 
-          {/* Contact Info & Social Badge */}
-          <div className="lg:w-5/12 space-y-6 lg:space-y-10">
-            <div className="space-y-3 lg:space-y-6">
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                  <Mail size={22} />
+          {/* Contact Channels (5 cols on md+) */}
+          <div className="md:col-span-5 space-y-3 flex flex-col justify-between">
+            {/* Direct Channels Cards */}
+            <div className="grid grid-cols-1 gap-2.5">
+              <a href={`mailto:${PERSONAL_INFO.email}`} className="p-3 rounded-xl bg-[#0e1528] border border-white/10 hover:border-indigo-500/40 transition-all flex items-center gap-3 group">
+                <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center text-indigo-400 group-hover:scale-105 transition-transform shrink-0 border border-white/5">
+                  <Mail size={16} />
                 </div>
-                <div>
-                    <p className="text-sm text-slate-500 mb-1">Mail me at</p>
-                    <p className="text-white font-medium group-hover:text-primary transition-colors">{PERSONAL_INFO.email}</p>
+                <div className="min-w-0">
+                  <span className="text-[9px] font-mono text-slate-500 uppercase block">EMAIL</span>
+                  <span className="text-white text-xs font-semibold block truncate group-hover:text-indigo-300 transition-colors">{PERSONAL_INFO.email}</span>
                 </div>
               </a>
 
-               <div className="flex items-start gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5 hover:bg-slate-900 hover:border-primary/50 transition-all group">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform mt-1">
-                  <Phone size={22} />
+              <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-3">
+                <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center text-cyan-400 shrink-0 border border-white/5">
+                  <Phone size={16} />
                 </div>
-                <div>
-                    <p className="text-sm text-slate-500 mb-2">Call me at</p>
-                    <div className="flex flex-col gap-2">
-                        <a href={`tel:${PERSONAL_INFO.phone}`} className="text-white font-medium hover:text-primary transition-colors flex items-center gap-2 group/phone">
-                            {PERSONAL_INFO.phone}
-                            <span className="text-[10px] font-bold bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded uppercase group-hover/phone:bg-primary/20 group-hover/phone:text-primary transition-colors">UAE</span>
-                        </a>
-                        {PERSONAL_INFO.secondaryPhone && (
-                            <a href={`tel:${PERSONAL_INFO.secondaryPhone}`} className="text-white font-medium hover:text-primary transition-colors flex items-center gap-2 group/phone">
-                                {PERSONAL_INFO.secondaryPhone}
-                                <span className="text-[10px] font-bold bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded uppercase group-hover/phone:bg-primary/20 group-hover/phone:text-primary transition-colors">SL</span>
-                            </a>
-                        )}
-                    </div>
+                <div className="min-w-0 flex-1">
+                  <span className="text-[9px] font-mono text-slate-500 uppercase block">PHONE</span>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <a href={`tel:${PERSONAL_INFO.phone}`} className="text-white text-xs font-semibold hover:text-cyan-300 transition-colors">
+                      {PERSONAL_INFO.phone} <span className="text-[9px] text-cyan-400 font-mono">(UAE)</span>
+                    </a>
+                    {PERSONAL_INFO.secondaryPhone && (
+                      <a href={`tel:${PERSONAL_INFO.secondaryPhone}`} className="text-white text-xs font-semibold hover:text-cyan-300 transition-colors">
+                        {PERSONAL_INFO.secondaryPhone} <span className="text-[9px] text-amber-400 font-mono">(SL)</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
+
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-amber-400 shrink-0 border border-white/5">
+                    <MapPin size={14} />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[8px] font-mono text-slate-500 uppercase block">LOCATION</span>
+                    <span className="text-white text-[11px] font-semibold block truncate">{PERSONAL_INFO.location}</span>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-indigo-400 shrink-0 border border-white/5">
+                    <Flag size={14} />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[8px] font-mono text-slate-500 uppercase block">NATIONALITY</span>
+                    <span className="text-white text-[11px] font-semibold block truncate">{PERSONAL_INFO.nationality}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Compact LinkedIn Pill Card */}
+            <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#00669e] to-[#0077b5] border border-white/10 shadow-lg flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="bg-white/15 p-1.5 rounded-lg shrink-0">
+                  <Linkedin className="text-white" size={18} />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-white font-bold text-xs block truncate">LinkedIn Network</span>
+                  <span className="text-blue-100 text-[10px] block truncate">Professional Profile</span>
+                </div>
+              </div>
+              <a 
+                href="https://linkedin.com/in/ahmathmusharraf" 
+                target="_blank" 
+                rel="noreferrer"
+                className="bg-white text-[#0077b5] px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider hover:bg-blue-50 transition-colors shrink-0 shadow-sm flex items-center gap-1"
+              >
+                Connect <ExternalLink size={10} />
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Form (7 cols on md+) */}
+          <div className="md:col-span-7">
+            <div className="bg-[#0e1528] p-5 rounded-2xl border border-white/10 shadow-xl relative overflow-hidden">
+              <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                <Send size={14} className="text-indigo-400" />
+                <span>Send a Direct Message</span>
+              </h3>
               
-               <div className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
-                  <MapPin size={22} />
-                </div>
-                <div>
-                    <p className="text-sm text-slate-500 mb-1">Based in</p>
-                    <p className="text-white font-medium">{PERSONAL_INFO.location}</p>
-                </div>
-              </div>
-
-               <div className="flex items-center gap-4 lg:gap-6 p-3 lg:p-4 rounded-2xl bg-slate-900/50 border border-white/5">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-primary">
-                  <Flag size={22} />
-                </div>
-                <div>
-                    <p className="text-sm text-slate-500 mb-1">Nationality</p>
-                    <p className="text-white font-medium">{PERSONAL_INFO.nationality}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Icons Row */}
-            <div className="flex gap-4">
-              {SOCIAL_LINKS.filter(link => ['GitHub', 'Behance', 'Instagram'].includes(link.name)).map((link) => (
-                 <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 rounded-2xl bg-slate-900/50 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 hover:border-primary/50 hover:scale-110 transition-all duration-300 group shadow-lg"
-                    aria-label={link.name}
-                  >
-                    <link.icon size={24} className="group-hover:text-primary transition-colors" />
-                  </a>
-              ))}
-            </div>
-
-            {/* LinkedIn Creative Card */}
-            <div className="relative p-6 rounded-2xl bg-[#0077b5] overflow-hidden group shadow-xl shadow-blue-900/20 transform hover:-translate-y-1 transition-transform duration-300">
-                 <div className="absolute top-0 right-0 p-16 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/20 transition-colors"></div>
-                 <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                            <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
-                              <Linkedin className="text-white" size={24} />
-                            </div>
-                            <div>
-                              <span className="text-white font-bold block leading-tight">LinkedIn</span>
-                              <span className="text-blue-100 text-xs">Professional Profile</span>
-                            </div>
-                        </div>
-                        <a 
-                            href="https://linkedin.com/in/ahmathmusharraf" 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="bg-white text-[#0077b5] px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-blue-50 transition-colors shadow-lg"
-                        >
-                            Connect <ExternalLink size={14} />
-                        </a>
-                    </div>
-                    <p className="text-white/90 text-sm mb-5 font-light leading-relaxed">
-                        Join my network for the latest updates on digital marketing trends, creative projects, and industry insights.
-                    </p>
-                    <div className="flex items-center gap-2 text-white/90 text-xs font-medium bg-black/10 w-fit px-3 py-1.5 rounded-full backdrop-blur-sm">
-                        <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span>
-                        Open to Opportunities
-                    </div>
-                 </div>
-            </div>
-
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:w-7/12">
-            <div className="bg-slate-900 p-6 md:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                
-                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-8 relative z-10">Send a Message</h3>
-                <form className="space-y-4 md:space-y-6 relative z-10" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                        <label className="text-sm text-slate-400 ml-1 font-medium">Name</label>
-                        <input 
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-700"
-                        placeholder="John Doe"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <label className="text-sm text-slate-400 ml-1 font-medium">Email</label>
-                        <input 
-                        type="email" 
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-700"
-                        placeholder="john@example.com"
-                        />
-                    </div>
-                </div>
-                <div className="space-y-2">
-                    <label className="text-sm text-slate-400 ml-1 font-medium">Subject</label>
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Your Name</label>
                     <input 
-                        type="text" 
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-700"
-                        placeholder="Project Inquiry"
-                    />
-                </div>
-                <div className="space-y-2">
-                    <label className="text-sm text-slate-400 ml-1 font-medium">Message</label>
-                    <textarea 
-                        rows={5}
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-700 resize-none"
-                        placeholder="Tell me about your project..."
-                    ></textarea>
-                </div>
-                <button type="submit" className="w-full bg-primary hover:bg-indigo-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 flex items-center justify-center gap-2 group">
-                    Send to WhatsApp
-                    <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </button>
-                </form>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Mobile View: High Impact One-View Switcher Card */}
-        <div className="md:hidden space-y-4 px-1 max-w-sm mx-auto mb-10">
-          {/* Subtle switcher tabs */}
-          <div className="flex bg-slate-900/80 p-1 rounded-xl border border-white/5">
-            <button
-              onClick={() => setMobileTab('channels')}
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-              className={`flex-1 py-2 text-[10.5px] font-black uppercase tracking-widest rounded-lg transition-all ${
-                mobileTab === 'channels' 
-                  ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 text-white shadow-inner' 
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              CHANNELS
-            </button>
-            <button
-              onClick={() => setMobileTab('message')}
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-              className={`flex-1 py-2 text-[10.5px] font-black uppercase tracking-widest rounded-lg transition-all ${
-                mobileTab === 'message' 
-                  ? 'bg-gradient-to-r from-primary/20 to-secondary/20 border border-white/10 text-white shadow-inner' 
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              WRITE MESSAGE
-            </button>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {mobileTab === 'channels' ? (
-              <motion.div
-                key="channels"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="space-y-3"
-              >
-                {/* Mail & Location Grid */}
-                <div className="grid grid-cols-2 gap-3">
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square hover:border-primary/30 transition-all group">
-                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary group-hover:scale-105 transition-transform shrink-0">
-                      <Mail size={15} />
-                    </div>
-                    <div>
-                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">EMAIL</span>
-                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.email}</span>
-                    </div>
-                  </a>
-
-                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
-                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
-                      <MapPin size={15} />
-                    </div>
-                    <div>
-                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">LOCATION</span>
-                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.location}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Call & Status Grid */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
-                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
-                      <Phone size={15} />
-                    </div>
-                    <div>
-                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-1">CALL ME</span>
-                      <div className="flex flex-col gap-1">
-                        <a href={`tel:${PERSONAL_INFO.phone}`} className="text-white text-[9px] font-bold hover:text-primary transition-colors flex items-center gap-1">
-                          UAE: {PERSONAL_INFO.phone}
-                        </a>
-                        {PERSONAL_INFO.secondaryPhone && (
-                          <a href={`tel:${PERSONAL_INFO.secondaryPhone}`} className="text-white text-[9px] font-bold hover:text-primary transition-colors flex items-center gap-1">
-                            SL: {PERSONAL_INFO.secondaryPhone}
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-slate-900/40 border border-white/5 flex flex-col justify-between aspect-square">
-                    <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-primary shrink-0">
-                      <Flag size={15} />
-                    </div>
-                    <div>
-                      <span className="text-[8px] font-mono text-slate-500 uppercase block mb-0.5">NATIONALITY</span>
-                      <span className="text-white text-[9.5px] font-bold block truncate">{PERSONAL_INFO.nationality}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* LinkedIn compact card */}
-                <div className="p-4 rounded-xl bg-[#0077b5] border border-white/5 shadow-xl relative overflow-hidden flex items-center justify-between">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-                  <div className="flex items-center gap-3 relative z-10 min-w-0 pr-2">
-                    <div className="bg-white/10 p-2 rounded-lg shrink-0">
-                      <Linkedin className="text-white" size={16} />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="text-[8px] font-mono text-blue-100 uppercase block mb-0.5">LINKEDIN PROFILE</span>
-                      <span className="text-white text-xs font-black block truncate">Connect on LinkedIn</span>
-                    </div>
-                  </div>
-                  <a
-                    href="https://linkedin.com/in/ahmathmusharraf"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                    className="bg-white text-[#0077b5] text-[9px] font-black uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors shrink-0 shadow-sm"
-                  >
-                    CONNECT
-                  </a>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="message"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="bg-slate-900/60 p-4 rounded-2xl border border-white/[0.05] shadow-xl space-y-3"
-              >
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="space-y-1 text-left">
-                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Name</label>
-                    <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 font-medium"
+                      className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
                       placeholder="John Doe"
                     />
                   </div>
-
-                  <div className="space-y-1 text-left">
-                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Email</label>
-                    <input
-                      type="email"
+                  <div>
+                    <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Your Email</label>
+                    <input 
+                      type="email" 
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 font-medium"
+                      className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
                       placeholder="john@example.com"
                     />
                   </div>
+                </div>
 
-                  <div className="space-y-1 text-left">
-                    <label className="text-[8.5px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Message</label>
-                    <textarea
-                      rows={3}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-slate-950/80 border border-slate-800/85 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-primary transition-all placeholder:text-slate-700 resize-none font-medium"
-                      placeholder="Tell me about your project..."
-                    ></textarea>
-                  </div>
+                <div>
+                  <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Subject</label>
+                  <input 
+                    type="text" 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
+                    placeholder="Project Inquiry"
+                  />
+                </div>
 
-                  <button
-                    type="submit"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                    className="w-full py-3 bg-primary hover:bg-indigo-600 text-white font-black text-[10px] uppercase tracking-widest rounded-xl transition-all shadow-md shadow-primary/20 flex items-center justify-center gap-1.5 active:scale-95"
-                  >
-                    SEND TO WHATSAPP
-                    <Send size={12} />
-                  </button>
-                </form>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <div>
+                  <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Message</label>
+                  <textarea 
+                    rows={3}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700 resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-md flex items-center justify-center gap-2 uppercase tracking-wider"
+                >
+                  <span>Send via WhatsApp</span>
+                  <Send size={12} />
+                </button>
+              </form>
+            </div>
+          </div>
+
         </div>
 
-        <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
+        {/* Footer Bottom Bar */}
+        <div className="max-w-5xl mx-auto border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-slate-500 text-xs">
             © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
           </p>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-2">
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300"
+                className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all"
                 title={link.name}
               >
-                <link.icon size={18} />
+                <link.icon size={14} />
               </a>
             ))}
           </div>
