@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import VisualWorks from './components/VisualWorks';
+import CaseStudySection from './components/CaseStudySection';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
@@ -69,6 +70,7 @@ function App() {
         <Experience />
         <Skills />
         <VisualWorks />
+        <CaseStudySection />
         <Projects />
         <Education />
         <Testimonials />
