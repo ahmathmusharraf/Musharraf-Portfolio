@@ -1,241 +1,362 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { PERSONAL_INFO, SOCIAL_LINKS } from '../constants';
-import { Mail, Phone, MapPin, Linkedin, ExternalLink, ArrowRight, Send, Flag } from 'lucide-react';
 
-const Contact: React.FC = () => {
-  const [mobileTab, setMobileTab] = useState<'channels' | 'message'>('channels');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+import { Experience, Education, SkillCategory, Project, SocialLink, Testimonial, VisualWork } from './types';
+import { 
+  Palette, 
+  Linkedin, 
+  Mail, 
+  Instagram, 
+  Github, 
+  GraduationCap, 
+  Code, 
+  Zap, 
+  Car, 
+  Building2, 
+  Briefcase, 
+  Megaphone, 
+  Focus, 
+  Workflow, 
+  Stethoscope, 
+  Camera, 
+  Video, 
+  Cpu, 
+  Brain, 
+  Layers,
+  Globe
+} from 'lucide-react';
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+/**
+ * EDIT THIS SECTION TO CHANGE YOUR MAIN INFO
+ */
+export const PERSONAL_INFO = {
+  name: "Ahmath Musharraf",
+  roles: [
+    "Senior Digital Marketing Manager",
+    "Creative Director",
+    "Brand & Performance Marketing Specialist",
+    "Real Estate & Multi-Industry Expert"
+  ],
+  location: "Dubai, United Arab Emirates",
+  nationality: "Sri Lankan",
+  email: "ahmathmusharraf@gmail.com",
+  phone: "+971 58 146 2540",
+  secondaryPhone: "+94 76 776 5080",
+  linkedin: "https://linkedin.com/in/ahmathmusharraf",
+  portfolio: "https://linktr.ee/ahmathmusharraf",
+  videoPortfolio: "https://www.canva.com/design/DAG7830hOq8/RxMMMG4idKm8Q5GwIEuAhQ/view",
+  
+  summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
+  
+  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Construct WhatsApp Message
-    const phoneNumber = PERSONAL_INFO.phone.replace(/[^0-9]/g, '');
-    const text = encodeURIComponent(
-      `*New Inquiry from Portfolio Website*\n\n` +
-      `*Name:* ${formData.name}\n` +
-      `*Email:* ${formData.email}\n` +
-      `*Subject:* ${formData.subject}\n` +
-      `*Message:* ${formData.message}`
-    );
-    
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  return (
-    <footer id="contact" className="bg-[#070a14] py-10 md:py-16 border-t border-white/10 relative overflow-hidden">
-        {/* Ambient lighting */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-            <div className="absolute bottom-0 left-10 w-80 h-80 bg-indigo-600/10 rounded-full blur-[120px]" />
-            <div className="absolute top-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px]" />
-        </div>
-
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        {/* Header */}
-        <div className="mb-6 md:mb-10 text-center max-w-xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase font-bold mb-3">
-            <Mail size={12} />
-            <span>Get in Touch</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-2">
-            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-300 to-amber-300">Work Together</span>
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
-            Open to discussing new projects, creative directions, or technical engineering opportunities.
-          </p>
-        </div>
-
-        {/* Compact Full Layout */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 mb-10">
-
-          {/* Contact Channels (5 cols on md+) */}
-          <div className="md:col-span-5 space-y-3 flex flex-col justify-between">
-            {/* Direct Channels Cards */}
-            <div className="grid grid-cols-1 gap-2.5">
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="p-3 rounded-xl bg-[#0e1528] border border-white/10 hover:border-indigo-500/40 transition-all flex items-center gap-3 group">
-                <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center text-indigo-400 group-hover:scale-105 transition-transform shrink-0 border border-white/5">
-                  <Mail size={16} />
-                </div>
-                <div className="min-w-0">
-                  <span className="text-[9px] font-mono text-slate-500 uppercase block">EMAIL</span>
-                  <span className="text-white text-xs font-semibold block truncate group-hover:text-indigo-300 transition-colors">{PERSONAL_INFO.email}</span>
-                </div>
-              </a>
-
-              <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-3">
-                <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center text-cyan-400 shrink-0 border border-white/5">
-                  <Phone size={16} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <span className="text-[9px] font-mono text-slate-500 uppercase block">PHONE</span>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <a href={`tel:${PERSONAL_INFO.phone}`} className="text-white text-xs font-semibold hover:text-cyan-300 transition-colors">
-                      {PERSONAL_INFO.phone} <span className="text-[9px] text-cyan-400 font-mono">(UAE)</span>
-                    </a>
-                    {PERSONAL_INFO.secondaryPhone && (
-                      <a href={`tel:${PERSONAL_INFO.secondaryPhone}`} className="text-white text-xs font-semibold hover:text-cyan-300 transition-colors">
-                        {PERSONAL_INFO.secondaryPhone} <span className="text-[9px] text-amber-400 font-mono">(SL)</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2.5">
-                <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-amber-400 shrink-0 border border-white/5">
-                    <MapPin size={14} />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[8px] font-mono text-slate-500 uppercase block">LOCATION</span>
-                    <span className="text-white text-[11px] font-semibold block truncate">{PERSONAL_INFO.location}</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-[#0e1528] border border-white/10 flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-indigo-400 shrink-0 border border-white/5">
-                    <Flag size={14} />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="text-[8px] font-mono text-slate-500 uppercase block">NATIONALITY</span>
-                    <span className="text-white text-[11px] font-semibold block truncate">{PERSONAL_INFO.nationality}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Compact LinkedIn Pill Card */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#00669e] to-[#0077b5] border border-white/10 shadow-lg flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="bg-white/15 p-1.5 rounded-lg shrink-0">
-                  <Linkedin className="text-white" size={18} />
-                </div>
-                <div className="min-w-0">
-                  <span className="text-white font-bold text-xs block truncate">LinkedIn Network</span>
-                  <span className="text-blue-100 text-[10px] block truncate">Professional Profile</span>
-                </div>
-              </div>
-              <a 
-                href="https://linkedin.com/in/ahmathmusharraf" 
-                target="_blank" 
-                rel="noreferrer"
-                className="bg-white text-[#0077b5] px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider hover:bg-blue-50 transition-colors shrink-0 shadow-sm flex items-center gap-1"
-              >
-                Connect <ExternalLink size={10} />
-              </a>
-            </div>
-          </div>
-
-          {/* Contact Form (7 cols on md+) */}
-          <div className="md:col-span-7">
-            <div className="bg-[#0e1528] p-5 rounded-2xl border border-white/10 shadow-xl relative overflow-hidden">
-              <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                <Send size={14} className="text-indigo-400" />
-                <span>Send a Direct Message</span>
-              </h3>
-              
-              <form className="space-y-3" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Your Name</label>
-                    <input 
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Your Email</label>
-                    <input 
-                      type="email" 
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Subject</label>
-                  <input 
-                    type="text" 
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700"
-                    placeholder="Project Inquiry"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-[9px] font-mono text-slate-400 uppercase block mb-1">Message</label>
-                  <textarea 
-                    rows={3}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-all placeholder:text-slate-700 resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-cyan-500 hover:from-indigo-600 hover:to-cyan-600 text-white font-bold py-2.5 rounded-lg text-xs transition-all shadow-md flex items-center justify-center gap-2 uppercase tracking-wider"
-                >
-                  <span>Send via WhatsApp</span>
-                  <Send size={12} />
-                </button>
-              </form>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Footer Bottom Bar */}
-        <div className="max-w-5xl mx-auto border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-slate-500 text-xs">
-            © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
-          </p>
-          <div className="flex items-center gap-2">
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all"
-                title={link.name}
-              >
-                <link.icon size={14} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+  // PATH TO YOUR REAL CV
+  cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
 };
 
-export default Contact;
+export const SITE_CONFIG = {
+  title: `${PERSONAL_INFO.name} | Senior Digital Marketing Manager & Creative Director`,
+  description: "Senior Digital Marketing Manager & Creative Director based in Dubai, UAE. Specializing in Real Estate Marketing, Performance Ads, Brand Strategy & Media Production.",
+  resumeUrl: PERSONAL_INFO.cvUrl,
+};
+
+/**
+ * EDIT YOUR WORK EXPERIENCE HERE
+ */
+export const EXPERIENCES: Experience[] = [
+  {
+    id: "1",
+    role: "Senior Multimedia Designer",
+    company: "Al Khateeb Global General Trading LLC",
+    location: "Dubai, UAE",
+    period: "Oct 2025 - Present",
+    description: [
+      "Produced product photography, photo retouching, and promotional videos for marketing and e-commerce platforms.",
+      "Optimized multimedia content for websites, social media platforms, and digital advertising campaigns.",
+      "Designed and developed high-quality visual content for digital and print marketing campaigns, including social media creatives, brochures, flyers, banners, and promotional materials.",
+      "Managed end-to-end multimedia production, including concept development, graphic design, video editing, animation, and final delivery.",
+      "Stayed updated with the latest design trends, tools, and multimedia technologies to improve creative outputs.",
+      "Directed end-to-end creative vision for multimedia campaigns, setting visual tone, style guidelines, and quality standards across the team.",
+      "Led creative decision-making from concept to final output, acting as the primary point of creative sign-off before delivery.",
+      "Supervised creative projects and ensured timely delivery while maintaining high design standards."
+    ]
+  },
+  {
+    id: "2",
+    role: "Social Media Manager & Brand Designer",
+    company: "IBM International Real Estate LLC (Contract)",
+    location: "Dubai, UAE",
+    period: "Jan 2025 - Sep 2025",
+    description: [
+      "Managed AED 40,000+ monthly advertising budget across Meta, Google, and TikTok platforms for high-performance real estate lead generation campaigns.",
+      "Developed brand identity materials and ensured consistent visual communication across all digital platforms and campaigns.",
+      "Owned creative direction for all campaign assets, defining brand tone, visual identity, and messaging across property launches and listings.",
+      "Directed photography, videography, and design vendors to produce premium, on-brand property marketing content.",
+      "Optimized campaign performance to achieve cost-per-lead (CPL) ranging from AED 8-40 (Sri Lanka) and AED 80-300 (UAE market), improving overall ad efficiency and ROI.",
+      "Increased lead quality from 20% to 35% conversion rate through advanced audience segmentation, funnel optimization, and landing page improvements.",
+      "Implemented WhatsApp API automation and Zapier workflows for lead nurturing, instant follow-ups, and improved conversion speed.",
+      "Generated 1,500+ qualified leads per month across international markets including UAE, India, Pakistan, Australia, Canada, Singapore, UK, USA, and Sri Lanka.",
+      "Tracked and reported on ROAS, CPA, and CTR across campaigns using Google Analytics and Meta Business Manager to guide budget reallocation.",
+      "Presented campaign performance reports and marketing proposals to senior management to secure continued budget investment."
+    ]
+  },
+  {
+    id: "3",
+    role: "Senior Digital Marketing Specialist",
+    company: "British College of Applied Studies (BCAS Campus)",
+    location: "Colombo, Sri Lanka",
+    period: "Jan 2023 - Dec 2024",
+    description: [
+      "Led comprehensive digital marketing strategies for multiple academic programs, increasing student inquiries and lead generation by 70%+ through SEO, social media, email marketing, and paid advertising campaigns.",
+      "Planned, executed, and optimized high-performance Meta and Google Ads campaigns, improving conversion rates by 35% while reducing cost-per-lead through data-driven optimization.",
+      "Managed end-to-end content creation, branding, and campaign execution for admissions and institutional events, significantly boosting online engagement and strengthening overall brand visibility.",
+      "Set creative direction for all admissions marketing materials, ensuring consistent brand identity across digital, print, and event campaigns."
+    ]
+  },
+  {
+    id: "4",
+    role: "Social Media Marketing Specialist",
+    company: "Dr. Jameel Memorial Hospital",
+    location: "Colombo, Sri Lanka",
+    period: "Oct 2020 - Dec 2022",
+    description: [
+      "Developed and managed comprehensive social media strategies for hospital services, increasing overall digital reach by 60%+ and significantly improving patient engagement across Facebook and Instagram.",
+      "Created and executed healthcare-focused content campaigns (health awareness, doctor promotions, service awareness), resulting in a 40% increase in online appointment inquiries and patient leads.",
+      "Planned and optimized Meta advertising campaigns for medical services, reducing cost-per-lead by 25% while improving conversion quality and campaign performance.",
+      "Directed the visual and creative direction of healthcare content, shaping the hospital's brand voice across all social media channels."
+    ]
+  }
+];
+
+export const EDUCATION: Education[] = [
+  {
+    id: "e1",
+    degree: "B.Sc (Hons) in Software Engineering",
+    institution: "University of Solent - UK",
+    location: "United Kingdom",
+    period: "2023 - 2024"
+  },
+  {
+    id: "e2",
+    degree: "BTEC Higher National Diploma in Software Engineering",
+    institution: "Pearson - UK",
+    location: "United Kingdom",
+    period: "2020 - 2022"
+  },
+  {
+    id: "e3",
+    degree: "Diploma in Information Technology & English",
+    institution: "BCAS Campus",
+    location: "Sri Lanka",
+    period: "2019 - 2020"
+  }
+];
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    name: "Digital Marketing & Performance",
+    icon: Megaphone,
+    skills: ["Social Media Marketing", "SEO Strategy", "SEM", "Meta Ads", "Google Ads", "LinkedIn Ads", "TikTok Ads", "Email Marketing", "Retargeting", "Lead Generation", "Conversion Rate Optimization (CRO)", "Campaign Analytics", "ROAS", "CPA", "CTR Tracking"]
+  },
+  {
+    name: "Analytics & Automation Tools",
+    icon: Workflow,
+    skills: ["Google Analytics", "Google Tag Manager", "Meta Business Manager", "HubSpot", "Mailchimp", "SEMrush", "Ahrefs", "WhatsApp API", "Zapier"]
+  },
+  {
+    name: "Real Estate Marketing",
+    icon: Building2,
+    skills: ["Property Photography", "Real Estate Videography", "Virtual Tours", "Architectural & Interior Shoots", "Luxury Property Branding", "Listing Marketing"]
+  },
+  {
+    name: "Branding & Creative Strategy",
+    icon: Briefcase,
+    skills: ["Brand Identity Development", "Market Positioning", "Campaign Strategy", "Creative Direction", "Brand Guidelines", "Visual Storytelling"]
+  },
+  {
+    name: "Content & Video Production",
+    icon: Video,
+    skills: ["Content Strategy", "Short & Long-Form Video", "Reels & TikTok Content", "Copywriting", "Storyboarding", "Video Editing", "Color Grading"]
+  },
+  {
+    name: "Graphic Design & Visuals",
+    icon: Palette,
+    skills: ["Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere Pro", "Social Media Design", "Print & Digital Media", "Typography", "Layout Design"]
+  },
+  {
+    name: "Web & Digital Experience",
+    icon: Code,
+    skills: ["WordPress Development", "HTML", "CSS", "UI/UX Basics", "Landing Page Design", "SEO Optimization", "E-Commerce Content Management"]
+  },
+  {
+    name: "Photography & Cinematography",
+    icon: Camera,
+    skills: ["Commercial Photography", "Event Coverage", "Product Photography", "Drone Visual Content", "Cinematic Video Production"]
+  },
+  {
+    name: "Project Management & Leadership",
+    icon: Zap,
+    skills: ["Project Coordination", "Team Leadership", "Workflow Optimization", "Client Communication", "Campaign Management"]
+  },
+  {
+    name: "AI & Marketing Automation",
+    icon: Brain,
+    skills: ["AI Content Generation", "Prompt Engineering", "Marketing Automation Tools", "ChatGPT Workflows", "AI Image & Video Tools"]
+  }
+];
+
+export const SOFTWARE_PROJECTS: Project[] = [
+  {
+    title: "Pixels Advertisement & Printing",
+    description: "Full-service printing company & advertising web platform featuring custom print solutions, product catalogs, and client ordering workflows.",
+    tags: ["React", "Printing & Media", "Tailwind"],
+    link: "https://pixelsadvertisement1.vercel.app/",
+    image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "FixDeal Automotive Platform",
+    description: "Car buying and selling marketplace application featuring vehicle listing management, advanced search filters, and deal negotiation tools.",
+    tags: ["React", "Automotive Marketplace", "Tailwind"],
+    link: "https://fixdeal.vercel.app/",
+    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "XAU VIP Trading Platform",
+    description: "Premium trading platform and financial web portal providing market signal analytics, gold trading insights, and VIP membership access.",
+    tags: ["FinTech", "Trading Platform", "Web Portal"],
+    link: "https://xauvip.com/",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Studio Routes Production",
+    description: "Commercial photography & videography agency website showcasing luxury real estate, drone visual content, and brand media portfolios.",
+    tags: ["Media Production", "Cinematography", "React"],
+    link: "https://studioroutes.vercel.app/",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Dressline Fashion E-Commerce",
+    description: "Modern fashion & dress shop e-commerce platform featuring responsive product showcase, dynamic search, and seamless shopping experience.",
+    tags: ["E-Commerce", "Fashion UI", "Tailwind"],
+    link: "https://dressline.vercel.app/",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Hive Image UK E-Commerce",
+    description: "UK-based e-commerce platform offering specialized custom merchandise, branding solutions, and online store order fulfillment.",
+    tags: ["E-Commerce", "UK Retail", "Web Store"],
+    link: "https://hiveimage.co.uk/",
+    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    title: "Al Khateeb Global E-Commerce",
+    description: "Corporate web portal & digital transformation for a leading GCC general trading and e-commerce enterprise.",
+    tags: ["Next.js", "Enterprise", "GCC E-Commerce"],
+    link: "https://alkhateeb.ae/",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"
+  }
+];
+
+export const VISUAL_WORKS: VisualWork[] = [
+  { 
+    id: "v1", 
+    title: "Dubai Penthouse Cinematic", 
+    category: "Videography", 
+    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
+    videoUrl: "https://www.youtube.com/embed/ldzhMWha3bk", 
+    aspectRatio: '16:9'
+  },
+  { 
+    id: "v2", 
+    title: "Lexus LX600 Identity", 
+    category: "Reels", 
+    imageUrl: "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=800&auto=format&fit=crop",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
+    aspectRatio: '9:16'
+  },
+  { 
+    id: "v3", 
+    title: "Luxury Property Branding", 
+    category: "Branding", 
+    imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '3:4'
+  },
+  { 
+    id: "v4", 
+    title: "BCAS Education Campaign", 
+    category: "Mentorship", 
+    imageUrl: "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '3:4'
+  },
+  {
+    id: "v5",
+    title: "Commercial Product Photography",
+    category: "Photography",
+    imageUrl: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '16:9'
+  },
+  {
+    id: "v6",
+    title: "Corporate Identity Motion",
+    category: "Videography",
+    imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=800&auto=format&fit=crop",
+    aspectRatio: '16:9'
+  }
+];
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { name: "LinkedIn", url: PERSONAL_INFO.linkedin, icon: Linkedin },
+  { name: "Portfolio Hub", url: PERSONAL_INFO.portfolio, icon: Globe },
+  { name: "Email", url: `mailto:${PERSONAL_INFO.email}`, icon: Mail },
+];
+
+export const LANGUAGES = [
+  "English (Professional)",
+  "Tamil (Native)",
+  "Sinhala (Advanced)",
+  "Malayalam (Conversational)",
+  "Hindi (Conversational)"
+];
+
+export const CERTIFICATIONS = [
+  "Foundations of Project Management – University of Moratuwa, Sri Lanka",
+  "Meta Certified Creative Strategy Professional – Meta",
+  "HubSpot Content Marketing Strategy Certification – HubSpot Academy",
+  "Google Ads Search Certification – Google Skillshop",
+  "AI-Powered Performance Ads Certification – Google",
+  "Fundamentals of Digital Marketing – Google",
+  "AI for App Building – Google",
+  "AI for Business Professionals – HP LIFE",
+  "Social Media Marketing – HP LIFE",
+  "Microsoft Certified: Azure Fundamentals – Microsoft"
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "1",
+    name: "Tariq Al Khateeb",
+    role: "Executive Director",
+    company: "Al Khateeb Global LLC",
+    quote: "Ahmath combines a rare cinematic eye with rigorous creative strategy. His work modernized our visual language and drove a 50% increase in social traffic."
+  },
+  {
+    id: "2",
+    name: "Yousuf Al Sayed",
+    role: "Managing Director",
+    company: "IBM International Real Estate",
+    quote: "Under Ahmath's direction, our premium listings received immediate attention. He perfectly understands how to marry upscale lifestyle visual narratives with performance Facebook & Meta Ads to attract serious buyers."
+  },
+  {
+    id: "3",
+    name: "Dr. Fazal Rahman",
+    role: "Admissions Operations Director",
+    company: "BCAS Campus UK Framework",
+    quote: "Ahmath revolutionized our admissions funnel. His performance-driven campaigns pushed student enrollments up by 70% while consistently maintaining clean, high-end branding."
+  },
+  {
+    id: "4",
+    name: "Sarah Jenkins",
+    role: "Global Head of Brand",
+    company: "Orbit Overseas & Travel Agency",
+    quote: "He is incredibly rare. Ahmath bridges luxury visual direction and solid technical software engineering capabilities perfectly. He worked fast and produced stellar, benchmark-setting assets."
+  }
+];
+
