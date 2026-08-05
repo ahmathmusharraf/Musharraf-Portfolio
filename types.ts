@@ -49,6 +49,23 @@ export interface SocialLink {
   icon: LucideIcon;
 }
 
+export interface CaseStudy {
+  id: string;
+  title: string;
+  client: string;
+  category: string;
+  location: string;
+  period: string;
+  summary: string;
+  problem: string;
+  strategy: string[];
+  execution: string[];
+  results: string[];
+  metrics: { label: string; value: string; badge?: string }[];
+  tags: string[];
+  image: string;
+}
+
 export interface Testimonial {
   id: string;
   name: string;
