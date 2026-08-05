@@ -158,9 +158,9 @@ const Experience: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* INTERACTIVE SPOTLIGHT VIEW MODE */}
+        {/* INTERACTIVE SPOTLIGHT VIEW MODE (Desktop) */}
         {viewMode === 'interactive' ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             {/* Left Sidebar Tab Navigation */}
             <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide -mx-4 px-4 lg:mx-0 lg:px-0">
@@ -356,8 +356,8 @@ const Experience: React.FC = () => {
 
           </div>
         ) : (
-          /* FULL TIMELINE VIEW MODE */
-          <div className="relative pl-5 sm:pl-8 border-l-2 border-indigo-500/30 space-y-6">
+          /* FULL TIMELINE VIEW MODE (Desktop) */
+          <div className="hidden md:block relative pl-5 sm:pl-8 border-l-2 border-indigo-500/30 space-y-6">
             {EXPERIENCES.map((exp, idx) => {
               const Icon = getRoleIcon(exp.role);
               const highlights = getImpactHighlights(exp.id);
@@ -445,6 +445,93 @@ const Experience: React.FC = () => {
             })}
           </div>
         )}
+
+        {/* MOBILE HIGH-IMPACT SINGLE VIEW CARD SLIDER */}
+        <div className="md:hidden space-y-4 max-w-sm mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentExp.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              className="bg-[#0e1528] border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col justify-between min-h-[360px]"
+            >
+              <div>
+                {/* Header */}
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 font-mono text-[9px] font-black uppercase tracking-wider">
+                    {currentExp.period}
+                  </span>
+                  <div className="bg-slate-950 px-2 py-0.5 rounded-full border border-white/10 text-[8px] font-mono text-amber-400">
+                    {activeExpIdx + 1}/{EXPERIENCES.length}
+                  </div>
+                </div>
+
+                <h3 className="text-base font-black text-white leading-tight mb-1">
+                  {currentExp.role}
+                </h3>
+
+                <div className="text-xs font-semibold text-amber-400 mb-4 flex items-center gap-1.5">
+                  <Building2 size={13} />
+                  <span>{currentExp.company}</span>
+                </div>
+
+                {/* Highlights */}
+                {currentHighlights.length > 0 && (
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    {currentHighlights.slice(0, 2).map((hl, hIdx) => (
+                      <div key={hIdx} className="p-2 bg-slate-950/80 border border-white/5 rounded-lg">
+                        <div className="text-xs font-black text-indigo-300">{hl.metric}</div>
+                        <div className="text-[8px] font-bold text-slate-400 uppercase truncate">{hl.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Key Points */}
+                <div className="space-y-2 mb-4">
+                  {currentExp.description.slice(0, 2).map((pt, pIdx) => (
+                    <div key={pIdx} className="flex items-start gap-2">
+                      <CheckCircle2 size={13} className="text-indigo-400 shrink-0 mt-0.5" />
+                      <p className="text-slate-300 text-[11px] leading-relaxed line-clamp-2">{pt}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Card Footer & Controls */}
+              <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                <div className="flex gap-1">
+                  {EXPERIENCES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveExpIdx(idx)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        activeExpIdx === idx ? 'bg-indigo-400 w-4' : 'bg-slate-800 w-1.5'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setActiveExpIdx(p => (p === 0 ? EXPERIENCES.length - 1 : p - 1))}
+                    className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                  >
+                    <ChevronLeft size={16} />
+                  </button>
+                  <button
+                    onClick={() => setActiveExpIdx(p => (p === EXPERIENCES.length - 1 ? 0 : p + 1))}
+                    className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                  >
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
       </div>
     </section>
