@@ -213,8 +213,11 @@ const Experience: React.FC = () => {
                     </h3>
 
                     <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
-                      <span>{getShortCompanyName(exp.company)}</span>
-                      <span className="text-[9.5px] text-slate-500 font-mono">{exp.location.split(',')[0]}</span>
+                      <span className="truncate pr-1">{getShortCompanyName(exp.company)}</span>
+                      <span className="text-[9.5px] text-slate-400 font-mono font-bold flex items-center gap-0.5 shrink-0">
+                        <MapPin size={10} className="text-rose-400" />
+                        {exp.location}
+                      </span>
                     </div>
                   </button>
                 );
@@ -472,9 +475,15 @@ const Experience: React.FC = () => {
                   {currentExp.role}
                 </h3>
 
-                <div className="text-xs font-semibold text-amber-400 mb-4 flex items-center gap-1.5">
-                  <Building2 size={13} />
-                  <span>{currentExp.company}</span>
+                <div className="text-xs font-semibold text-amber-400 mb-4 flex flex-wrap items-center justify-between gap-1.5">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <Building2 size={13} className="shrink-0" />
+                    <span className="truncate">{currentExp.company}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-[10px] text-slate-300 font-mono font-bold bg-slate-950 px-2 py-0.5 rounded border border-white/5 shrink-0">
+                    <MapPin size={10} className="text-rose-400" />
+                    <span>{currentExp.location}</span>
+                  </div>
                 </div>
 
                 {/* Highlights */}
