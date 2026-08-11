@@ -29,32 +29,34 @@ import {
  */
 export const PERSONAL_INFO = {
   name: "Ahmath Musharraf",
+  title: "Digital Marketing Manager • Marketing & Creative Leadership • Strategic Growth & Brand Direction",
+  availability: "IMMEDIATELY AVAILABLE TO JOIN",
   roles: [
-    "Senior Digital Marketing Manager",
-    "Creative Director",
-    "Brand & Performance Marketing Specialist",
-    "Real Estate & Multi-Industry Expert"
+    "Digital Marketing Manager",
+    "Digital Marketing Specialist",
+    "Social Media Manager & Brand Designer",
+    "Performance Marketing & Creative Strategist"
   ],
   location: "Dubai, United Arab Emirates",
   nationality: "Sri Lankan",
   email: "ahmathmusharraf@gmail.com",
   phone: "+971 58 146 2540",
   secondaryPhone: "+94 76 776 5080",
-  linkedin: "https://linkedin.com/in/ahmathmusharraf",
+  linkedin: "https://linkedin.com/in/ahmathmusharraf/",
   portfolio: "https://linktr.ee/ahmathmusharraf",
   videoPortfolio: "https://www.canva.com/design/DAG7830hOq8/RxMMMG4idKm8Q5GwIEuAhQ/view",
   
-  summary: "Results-driven Digital Marketing Manager and Brand Designer with 6+ years of experience across the UAE and Sri Lanka, specializing in real estate marketing, performance advertising, and end-to-end brand and content strategy. Proven track record managing multi-market Meta and Google Ads budgets exceeding AED 40,000 per month, generating 1,500+ qualified leads monthly, and improving conversion rates by up to 35% through data-driven campaign optimization. Skilled in Meta Ads, Google Ads, SEO, content strategy, photography, videography, graphic design, and marketing automation (WhatsApp API, Zapier, AI-powered workflows). Delivered measurable growth across real estate, education, healthcare, and multi-industry sectors, combining creative direction with performance marketing to drive lead generation, brand visibility, and ROI.",
+  summary: "Results-driven Digital Marketing & Creative Strategist with 6+ years of experience across the UAE and Sri Lanka, specializing in performance marketing, paid media, lead generation, social media strategy, SEO, brand development, e-commerce, and creative content production. Proven track record of managing multi-channel campaigns across Meta, Google, and TikTok, with experience handling advertising budgets of up to AED 40,000+ monthly and driving measurable improvements in leads, engagement, conversions, and ROI. Skilled in developing data-driven strategies and monitoring ROAS, ROI, CPL, CPA, CTR, impressions, engagement, conversion rates, and overall campaign KPIs to optimize marketing performance. Strong creative leadership across graphic design, photography, videography, promotional campaigns, and content production.",
   
-  profileImage: '/images/MushiFinal1.png',
+  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
 
   // PATH TO YOUR REAL CV
-  cvUrl: "/Multimedia_Portfolio_Ahmath.pdf" 
+  cvUrl: "/Musharraf_CV.pdf" 
 };
 
 export const SITE_CONFIG = {
-  title: `${PERSONAL_INFO.name} | Senior Digital Marketing Manager & Creative Director`,
-  description: "Senior Digital Marketing Manager & Creative Director based in Dubai, UAE. Specializing in Real Estate Marketing, Performance Ads, Brand Strategy & Media Production.",
+  title: `${PERSONAL_INFO.name} | Digital Marketing Manager & Creative Strategist`,
+  description: "Digital Marketing Manager & Creative Strategist based in Dubai, UAE. Specializing in Performance Marketing, Paid Media, Social Media Strategy, SEO, E-Commerce & Media Production.",
   resumeUrl: PERSONAL_INFO.cvUrl,
 };
 
@@ -64,19 +66,17 @@ export const SITE_CONFIG = {
 export const EXPERIENCES: Experience[] = [
   {
     id: "1",
-    role: "Senior Multimedia Designer",
+    role: "Digital Marketing Specialist",
     company: "Al Khateeb Global General Trading LLC",
     location: "Dubai, UAE",
     period: "Oct 2025 - Present",
     description: [
-      "Produced product photography, photo retouching, and promotional videos for marketing and e-commerce platforms.",
-      "Optimized multimedia content for websites, social media platforms, and digital advertising campaigns.",
-      "Designed and developed high-quality visual content for digital and print marketing campaigns, including social media creatives, brochures, flyers, banners, and promotional materials.",
-      "Managed end-to-end multimedia production, including concept development, graphic design, video editing, animation, and final delivery.",
-      "Stayed updated with the latest design trends, tools, and multimedia technologies to improve creative outputs.",
-      "Directed end-to-end creative vision for multimedia campaigns, setting visual tone, style guidelines, and quality standards across the team.",
-      "Led creative decision-making from concept to final output, acting as the primary point of creative sign-off before delivery.",
-      "Supervised creative projects and ensured timely delivery while maintaining high design standards."
+      "Manage digital marketing across Instagram, Facebook, LinkedIn, TikTok, and YouTube for multiple brands, developing content and campaigns aligned with business and sales objectives.",
+      "Plan and optimize Meta and Google Ads campaigns, tracking impressions, reach, engagement, CTR, CPC, conversions, ROAS, ROI, and sales performance against campaign KPIs.",
+      "Increased social media following from 500+ to 10,000+, achieving a 70% increase in engagement through targeted content, creative optimization, and audience-focused campaigns.",
+      "Contributed to 50% sales growth through integrated paid advertising, social media marketing, e-commerce promotions, product content, and marketplace optimization.",
+      "Produce complete campaign creatives including videos, Reels, product photography, flyers, banners, carousels, and promotional graphics, handling concept, scripting, filming, design, editing, and publishing.",
+      "Manage 1,500+ products across Amazon and Noon, optimizing product listings, SEO content, visuals, promotional materials, and digital campaigns to support traffic, conversions, and sales."
     ]
   },
   {
@@ -86,16 +86,12 @@ export const EXPERIENCES: Experience[] = [
     location: "Dubai, UAE",
     period: "Jan 2025 - Sep 2025",
     description: [
-      "Managed AED 40,000+ monthly advertising budget across Meta, Google, and TikTok platforms for high-performance real estate lead generation campaigns.",
-      "Developed brand identity materials and ensured consistent visual communication across all digital platforms and campaigns.",
-      "Owned creative direction for all campaign assets, defining brand tone, visual identity, and messaging across property launches and listings.",
-      "Directed photography, videography, and design vendors to produce premium, on-brand property marketing content.",
-      "Optimized campaign performance to achieve cost-per-lead (CPL) ranging from AED 8-40 (Sri Lanka) and AED 80-300 (UAE market), improving overall ad efficiency and ROI.",
-      "Increased lead quality from 20% to 35% conversion rate through advanced audience segmentation, funnel optimization, and landing page improvements.",
-      "Implemented WhatsApp API automation and Zapier workflows for lead nurturing, instant follow-ups, and improved conversion speed.",
-      "Generated 1,500+ qualified leads per month across international markets including UAE, India, Pakistan, Australia, Canada, Singapore, UK, USA, and Sri Lanka.",
-      "Tracked and reported on ROAS, CPA, and CTR across campaigns using Google Analytics and Meta Business Manager to guide budget reallocation.",
-      "Presented campaign performance reports and marketing proposals to senior management to secure continued budget investment."
+      "Managed AED 40,000+ monthly advertising budgets across Meta, Google, and TikTok, optimizing campaigns for lead generation, conversions, CPL, CPA, ROAS, and ROI.",
+      "Generated 1,500+ qualified leads monthly across 9 international markets, using audience segmentation, retargeting, funnel optimization, and continuous campaign testing.",
+      "Monitored key KPIs including impressions, reach, engagement, CTR, CPC, CPL, conversion rate, lead quality, ROAS, and ROI, using performance data to guide budget and campaign decisions.",
+      "Improved lead-to-conversion rate from 20% to 35% and reduced CPL through audience optimization, creative A/B testing, campaign restructuring, and performance analysis.",
+      "Created end-to-end advertising creatives including promotional videos, property reels, flyers, banners, social media graphics, and carousels, from concept and scripting through design, photography, videography, and editing.",
+      "Prepared campaign performance reports for management, connecting ad spend, impressions, engagement, clicks, leads, conversions, and revenue to evaluate marketing ROI and identify optimization opportunities."
     ]
   },
   {
@@ -105,10 +101,12 @@ export const EXPERIENCES: Experience[] = [
     location: "Colombo, Sri Lanka",
     period: "Jan 2023 - Dec 2024",
     description: [
-      "Led comprehensive digital marketing strategies for multiple academic programs, increasing student inquiries and lead generation by 70%+ through SEO, social media, email marketing, and paid advertising campaigns.",
-      "Planned, executed, and optimized high-performance Meta and Google Ads campaigns, improving conversion rates by 35% while reducing cost-per-lead through data-driven optimization.",
-      "Managed end-to-end content creation, branding, and campaign execution for admissions and institutional events, significantly boosting online engagement and strengthening overall brand visibility.",
-      "Set creative direction for all admissions marketing materials, ensuring consistent brand identity across digital, print, and event campaigns."
+      "Increased student inquiries and lead generation by 70%+ through integrated SEO, social media marketing, paid advertising, email marketing, and content campaigns.",
+      "Improved digital campaign conversion rates by 35% through data-driven optimization of Meta and Google Ads campaigns.",
+      "Developed and executed admission-focused marketing campaigns to generate qualified student leads and support enrollment growth across academic programs.",
+      "Increased online engagement and institutional visibility through strategic social media content, campaign creatives, promotional videos, flyers, and digital marketing materials.",
+      "Managed end-to-end creative production and campaign execution, including content planning, graphic design, video content, copywriting, and promotional materials for admissions and institutional events.",
+      "Used campaign performance data and KPIs to evaluate reach, impressions, engagement, CTR, conversions, and lead generation, continuously optimizing campaigns against marketing objectives."
     ]
   },
   {
@@ -185,6 +183,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: "Web & Digital Experience",
     icon: Code,
     skills: ["WordPress Development", "HTML", "CSS", "UI/UX Basics", "Landing Page Design", "SEO Optimization", "E-Commerce Content Management"]
+  },
+  {
+    name: "E-Commerce & Marketplace Management",
+    icon: Layers,
+    skills: ["Amazon Seller Central", "Noon Marketplace", "Product Listing Optimization", "Catalog & Inventory Management", "Marketplace SEO", "Product Content Creation"]
   },
   {
     name: "Photography & Cinematography",
