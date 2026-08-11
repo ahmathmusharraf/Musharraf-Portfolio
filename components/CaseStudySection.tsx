@@ -14,6 +14,7 @@ import {
   Sparkles, 
   X, 
   ChevronRight,
+  ChevronLeft,
   BarChart3,
   Lightbulb,
   Rocket
@@ -22,6 +23,85 @@ import {
 const CaseStudySection: React.FC = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [activeTab, setActiveTab] = useState<'strategy' | 'execution' | 'results'>('strategy');
+  const [mobileIndex, setMobileIndex] = useState(0);
+
+  const renderCard = (cs: CaseStudy) => (
+    <div className="group relative bg-[#0e1528] border border-white/10 hover:border-amber-400/40 rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_15px_40px_rgba(245,158,11,0.12)] transition-all duration-300 flex flex-col justify-between h-full">
+      {/* Image Header with Overlay */}
+      <div className="relative h-32 sm:h-40 w-full overflow-hidden bg-slate-950">
+        <img 
+          src={cs.image} 
+          alt={cs.title} 
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0e1528] via-[#0e1528]/50 to-transparent opacity-90" />
+        
+        {/* Location & Period Badges */}
+        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+          <span className="px-2 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/10 text-amber-300 text-[8.5px] font-black uppercase tracking-wider flex items-center gap-1">
+            <MapPin size={9} className="text-rose-400" />
+            {cs.location}
+          </span>
+          <span className="px-2 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/10 text-slate-300 text-[8.5px] font-mono font-bold uppercase">
+            {cs.period}
+          </span>
+        </div>
+
+        {/* Title overlay */}
+        <div className="absolute bottom-2 left-3 right-3 sm:bottom-2.5 sm:left-3.5 sm:right-3.5">
+          <span className="text-[8px] sm:text-[8.5px] font-mono font-extrabold uppercase tracking-widest text-indigo-400 block mb-0.5">
+            {cs.client}
+          </span>
+          <h3 className="text-xs sm:text-base font-black text-white leading-tight line-clamp-2 group-hover:text-amber-300 transition-colors">
+            {cs.title}
+          </h3>
+        </div>
+      </div>
+
+      {/* Content Body */}
+      <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
+        <p className="text-slate-300 text-[10px] sm:text-[11px] font-light leading-relaxed line-clamp-2">
+          {cs.summary}
+        </p>
+
+        {/* Key Metrics Grid */}
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1.5 border-t border-white/5">
+          {cs.metrics.slice(0, 2).map((m, idx) => (
+            <div key={idx} className="p-1.5 sm:p-2 bg-slate-900/70 rounded-lg border border-white/5">
+              <div className="text-xs sm:text-sm font-black text-amber-300 tracking-tight leading-none mb-0.5">
+                {m.value}
+              </div>
+              <div className="text-[8px] sm:text-[8.5px] font-bold text-slate-300 uppercase tracking-wider truncate">
+                {m.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1 pt-0.5">
+          {cs.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className="text-[7.5px] sm:text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-900 border border-white/10 rounded text-slate-400">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Action Trigger */}
+        <button
+          onClick={() => {
+            setSelectedCaseStudy(cs);
+            setActiveTab('strategy');
+          }}
+          className="w-full mt-0.5 py-1.5 sm:py-2 px-2.5 sm:px-3 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white rounded-lg text-[9.5px] sm:text-[11px] font-black uppercase tracking-wider flex items-center justify-center gap-1 border border-indigo-500/30 transition-all shadow-md active:scale-98"
+        >
+          <span>Explore Full Case Study</span>
+          <ChevronRight size={12} className="sm:w-3.5 sm:h-3.5" />
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <section id="casestudies" className="py-10 md:py-16 bg-[#070b16] relative overflow-hidden">
@@ -57,8 +137,57 @@ const CaseStudySection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-7xl mx-auto">
+        {/* MOBILE VIEW: Single Card Carousel Slider */}
+        <div className="md:hidden max-w-sm mx-auto">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={CASE_STUDIES[mobileIndex].id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25 }}
+              >
+                {renderCard(CASE_STUDIES[mobileIndex])}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-3 px-1">
+            <button
+              onClick={() => setMobileIndex((prev) => (prev > 0 ? prev - 1 : CASE_STUDIES.length - 1))}
+              className="py-1 px-2.5 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white active:scale-95 transition-all flex items-center gap-1 text-[9.5px] font-bold uppercase tracking-wider"
+              aria-label="Previous Case Study"
+            >
+              <ChevronLeft size={13} />
+              <span>Prev</span>
+            </button>
+
+            <div className="flex items-center gap-1.5">
+              {CASE_STUDIES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setMobileIndex(idx)}
+                  className={`h-1.5 rounded-full transition-all ${mobileIndex === idx ? 'w-5 bg-amber-400' : 'w-1.5 bg-slate-700'}`}
+                  aria-label={`Go to case study ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setMobileIndex((prev) => (prev < CASE_STUDIES.length - 1 ? prev + 1 : 0))}
+              className="py-1 px-2.5 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white active:scale-95 transition-all flex items-center gap-1 text-[9.5px] font-bold uppercase tracking-wider"
+              aria-label="Next Case Study"
+            >
+              <span>Next</span>
+              <ChevronRight size={13} />
+            </button>
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW: 3-Column Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-5 max-w-7xl mx-auto">
           {CASE_STUDIES.map((cs, index) => (
             <motion.div
               key={cs.id}
@@ -68,81 +197,8 @@ const CaseStudySection: React.FC = () => {
                 viewport: { once: true },
                 transition: { delay: index * 0.08, duration: 0.4 }
               } as any)}
-              className="group relative bg-[#0e1528] border border-white/10 hover:border-amber-400/40 rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_15px_40px_rgba(245,158,11,0.12)] transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Image Header with Overlay */}
-              <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-950">
-                <img 
-                  src={cs.image} 
-                  alt={cs.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1528] via-[#0e1528]/50 to-transparent opacity-90" />
-                
-                {/* Location & Period Badges */}
-                <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/10 text-amber-300 text-[8.5px] font-black uppercase tracking-wider flex items-center gap-1">
-                    <MapPin size={9} className="text-rose-400" />
-                    {cs.location}
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/10 text-slate-300 text-[8.5px] font-mono font-bold uppercase">
-                    {cs.period}
-                  </span>
-                </div>
-
-                {/* Title overlay */}
-                <div className="absolute bottom-2.5 left-3.5 right-3.5">
-                  <span className="text-[8.5px] font-mono font-extrabold uppercase tracking-widest text-indigo-400 block mb-0.5">
-                    {cs.client}
-                  </span>
-                  <h3 className="text-sm sm:text-base font-black text-white leading-tight line-clamp-2 group-hover:text-amber-300 transition-colors">
-                    {cs.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Content Body */}
-              <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
-                <p className="text-slate-300 text-[10px] sm:text-[11px] font-light leading-relaxed line-clamp-2">
-                  {cs.summary}
-                </p>
-
-                {/* Key Metrics Grid */}
-                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1.5 border-t border-white/5">
-                  {cs.metrics.slice(0, 2).map((m, idx) => (
-                    <div key={idx} className="p-1.5 sm:p-2 bg-slate-900/70 rounded-lg border border-white/5">
-                      <div className="text-xs sm:text-sm font-black text-amber-300 tracking-tight leading-none mb-0.5">
-                        {m.value}
-                      </div>
-                      <div className="text-[8px] sm:text-[8.5px] font-bold text-slate-300 uppercase tracking-wider truncate">
-                        {m.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1 pt-0.5">
-                  {cs.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="text-[7.5px] sm:text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-slate-900 border border-white/10 rounded text-slate-400">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Trigger */}
-                <button
-                  onClick={() => {
-                    setSelectedCaseStudy(cs);
-                    setActiveTab('strategy');
-                  }}
-                  className="w-full mt-0.5 py-1.5 sm:py-2 px-2.5 sm:px-3 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white rounded-lg text-[9.5px] sm:text-[11px] font-black uppercase tracking-wider flex items-center justify-center gap-1 border border-indigo-500/30 transition-all shadow-md active:scale-98"
-                >
-                  <span>Explore Full Case Study</span>
-                  <ChevronRight size={12} className="sm:w-3.5 sm:h-3.5" />
-                </button>
-              </div>
+              {renderCard(cs)}
             </motion.div>
           ))}
         </div>
