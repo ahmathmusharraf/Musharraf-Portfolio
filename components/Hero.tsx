@@ -102,7 +102,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </span>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/90 border border-white/10 text-[9px] font-black uppercase tracking-wider text-amber-300 shadow-lg">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[9px] font-black uppercase tracking-wider text-rose-300 shadow-lg">
+              <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+              <span>{PERSONAL_INFO.availability}</span>
+            </div>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/90 border border-white/10 text-[9px] font-black uppercase tracking-wider text-amber-300 shadow-lg mt-1">
               <MapPin size={9} className="text-emerald-400" />
               <span>DUBAI, UAE</span>
               <span className="text-slate-600">•</span>
@@ -224,14 +229,20 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-slate-900/90 border border-white/10 text-amber-300 text-xs font-black uppercase tracking-widest shadow-xl mb-6 backdrop-blur-xl"
+              className="flex flex-wrap items-center gap-2 mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-slate-200">DUBAI, UAE</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-amber-400 flex items-center gap-1">
-                <Sparkles size={12} /> Digital Marketing & Media Leader
-              </span>
+              <div className="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-black uppercase tracking-widest shadow-xl backdrop-blur-xl">
+                <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+                <span>{PERSONAL_INFO.availability}</span>
+              </div>
+              <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-slate-900/90 border border-white/10 text-amber-300 text-xs font-black uppercase tracking-widest shadow-xl backdrop-blur-xl">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-slate-200">DUBAI, UAE</span>
+                <span className="text-slate-600">•</span>
+                <span className="text-amber-400 flex items-center gap-1">
+                  <Sparkles size={12} /> Digital Marketing & Media Leader
+                </span>
+              </div>
             </motion.div>
 
             {/* Display Headline */}
