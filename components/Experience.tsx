@@ -21,7 +21,11 @@ import {
   Building2,
   Globe,
   ArrowUpRight,
-  Sliders
+  Sliders,
+  Maximize2,
+  X,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 const getRoleIcon = (role: string) => {
@@ -87,6 +91,8 @@ const getImpactHighlights = (id: string) => {
 const Experience: React.FC = () => {
   const [activeExpIdx, setActiveExpIdx] = useState(0);
   const [viewMode, setViewMode] = useState<'interactive' | 'timeline'>('interactive');
+  const [expandedMobileCard, setExpandedMobileCard] = useState<boolean>(false);
+  const [showFullModal, setShowFullModal] = useState<boolean>(false);
 
   const currentExp = EXPERIENCES[activeExpIdx];
   const CurrentIcon = getRoleIcon(currentExp.role);
@@ -449,8 +455,29 @@ const Experience: React.FC = () => {
           </div>
         )}
 
-        {/* MOBILE HIGH-IMPACT SINGLE VIEW CARD SLIDER */}
-        <div className="md:hidden space-y-4 max-w-sm mx-auto">
+        {/* MOBILE HIGH-IMPACT SINGLE VIEW CARD SLIDER & JOB SELECTOR */}
+        <div className="md:hidden space-y-3 max-w-sm mx-auto">
+          
+          {/* Quick Job Selector Chips */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide -mx-2 px-2 justify-start sm:justify-center">
+            {EXPERIENCES.map((exp, idx) => (
+              <button
+                key={exp.id}
+                onClick={() => {
+                  setActiveExpIdx(idx);
+                  setExpandedMobileCard(false);
+                }}
+                className={`px-2.5 py-1 rounded-lg text-[9.5px] font-black uppercase tracking-wider whitespace-nowrap shrink-0 transition-all ${
+                  activeExpIdx === idx
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/30'
+                    : 'bg-slate-900/80 text-slate-400 border border-white/10'
+                }`}
+              >
+                {getShortCompanyName(exp.company)}
+              </button>
+            ))}
+          </div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={currentExp.id}
@@ -458,7 +485,7 @@ const Experience: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.25 }}
-              className="bg-[#0e1528] border border-white/10 rounded-2xl p-5 shadow-2xl flex flex-col justify-between min-h-[360px]"
+              className="bg-[#0e1528] border border-white/10 rounded-2xl p-4 shadow-2xl flex flex-col justify-between"
             >
               <div>
                 {/* Header */}
@@ -467,20 +494,24 @@ const Experience: React.FC = () => {
                     {currentExp.period}
                   </span>
                   <div className="bg-slate-950 px-2 py-0.5 rounded-full border border-white/10 text-[8px] font-mono text-amber-400">
-                    {activeExpIdx + 1}/{EXPERIENCES.length}
+                    Job 0{activeExpIdx + 1}/0{EXPERIENCES.length}
                   </div>
                 </div>
 
-                <h3 className="text-base font-black text-white leading-tight mb-1">
-                  {currentExp.role}
+                <h3 
+                  onClick={() => setShowFullModal(true)}
+                  className="text-base font-black text-white leading-tight mb-1 cursor-pointer hover:text-amber-300 transition-colors flex items-center justify-between gap-2 group"
+                >
+                  <span>{currentExp.role}</span>
+                  <Maximize2 size={13} className="text-indigo-400 shrink-0 group-hover:scale-110 transition-transform" />
                 </h3>
 
-                <div className="text-xs font-semibold text-amber-400 mb-4 flex flex-wrap items-center justify-between gap-1.5">
+                <div className="text-xs font-semibold text-amber-400 mb-3 flex flex-wrap items-center justify-between gap-1.5">
                   <div className="flex items-center gap-1.5 min-w-0">
-                    <Building2 size={13} className="shrink-0" />
+                    <Building2 size={13} className="shrink-0 text-amber-400" />
                     <span className="truncate">{currentExp.company}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] text-slate-300 font-mono font-bold bg-slate-950 px-2 py-0.5 rounded border border-white/5 shrink-0">
+                  <div className="flex items-center gap-1 text-[9.5px] text-slate-300 font-mono font-bold bg-slate-950 px-2 py-0.5 rounded border border-white/5 shrink-0">
                     <MapPin size={10} className="text-rose-400" />
                     <span>{currentExp.location}</span>
                   </div>
@@ -488,51 +519,86 @@ const Experience: React.FC = () => {
 
                 {/* Highlights */}
                 {currentHighlights.length > 0 && (
-                  <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="grid grid-cols-2 gap-1.5 mb-3">
                     {currentHighlights.slice(0, 2).map((hl, hIdx) => (
                       <div key={hIdx} className="p-2 bg-slate-950/80 border border-white/5 rounded-lg">
-                        <div className="text-xs font-black text-indigo-300">{hl.metric}</div>
+                        <div className="text-xs font-black text-indigo-300 leading-tight">{hl.metric}</div>
                         <div className="text-[8px] font-bold text-slate-400 uppercase truncate">{hl.label}</div>
                       </div>
                     ))}
                   </div>
                 )}
 
-                {/* Key Points */}
-                <div className="space-y-2 mb-4">
-                  {currentExp.description.slice(0, 2).map((pt, pIdx) => (
-                    <div key={pIdx} className="flex items-start gap-2">
+                {/* Key Points / Responsibilities List */}
+                <div className="space-y-2 mb-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1">
+                      <Award size={11} className="text-amber-400" /> Key Responsibilities ({currentExp.description.length})
+                    </span>
+                    <button
+                      onClick={() => setExpandedMobileCard(!expandedMobileCard)}
+                      className="text-[9px] font-extrabold text-indigo-400 hover:text-indigo-300 flex items-center gap-0.5 uppercase tracking-wider"
+                    >
+                      <span>{expandedMobileCard ? 'Collapse' : 'Show All'}</span>
+                      {expandedMobileCard ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                    </button>
+                  </div>
+
+                  {(expandedMobileCard ? currentExp.description : currentExp.description.slice(0, 2)).map((pt, pIdx) => (
+                    <div key={pIdx} className="flex items-start gap-2 p-1.5 rounded-lg bg-slate-950/40 border border-white/5">
                       <CheckCircle2 size={13} className="text-indigo-400 shrink-0 mt-0.5" />
-                      <p className="text-slate-300 text-[11px] leading-relaxed line-clamp-2">{pt}</p>
+                      <p className="text-slate-300 text-[10.5px] leading-relaxed">{pt}</p>
                     </div>
                   ))}
                 </div>
+
+                {/* Click to Open Full Modal Button */}
+                <button
+                  onClick={() => setShowFullModal(true)}
+                  className="w-full py-2 px-3 mb-3 bg-gradient-to-r from-indigo-600/30 via-indigo-600/20 to-indigo-600/30 hover:bg-indigo-600 text-indigo-200 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-wider flex items-center justify-center gap-1.5 border border-indigo-500/30 transition-all active:scale-98 shadow-md"
+                >
+                  <Sparkles size={12} className="text-amber-400 animate-pulse" />
+                  <span>View Full Responsibilities & Impact</span>
+                  <Maximize2 size={11} />
+                </button>
               </div>
 
               {/* Mobile Card Footer & Controls */}
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+              <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
                 <div className="flex gap-1">
                   {EXPERIENCES.map((_, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setActiveExpIdx(idx)}
+                      onClick={() => {
+                        setActiveExpIdx(idx);
+                        setExpandedMobileCard(false);
+                      }}
                       className={`h-1.5 rounded-full transition-all ${
                         activeExpIdx === idx ? 'bg-indigo-400 w-4' : 'bg-slate-800 w-1.5'
                       }`}
+                      aria-label={`Go to experience ${idx + 1}`}
                     />
                   ))}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <button
-                    onClick={() => setActiveExpIdx(p => (p === 0 ? EXPERIENCES.length - 1 : p - 1))}
+                    onClick={() => {
+                      setActiveExpIdx(p => (p === 0 ? EXPERIENCES.length - 1 : p - 1));
+                      setExpandedMobileCard(false);
+                    }}
                     className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                    aria-label="Previous Job"
                   >
                     <ChevronLeft size={16} />
                   </button>
                   <button
-                    onClick={() => setActiveExpIdx(p => (p === EXPERIENCES.length - 1 ? 0 : p + 1))}
+                    onClick={() => {
+                      setActiveExpIdx(p => (p === EXPERIENCES.length - 1 ? 0 : p + 1));
+                      setExpandedMobileCard(false);
+                    }}
                     className="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-white flex items-center justify-center active:scale-95"
+                    aria-label="Next Job"
                   >
                     <ChevronRight size={16} />
                   </button>
@@ -541,6 +607,123 @@ const Experience: React.FC = () => {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* FULL RESPONSIBILITIES MODAL */}
+        <AnimatePresence>
+          {showFullModal && (
+            <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 100 }}
+                transition={{ duration: 0.3 }}
+                className="bg-[#0b1021] border border-white/15 rounded-t-3xl sm:rounded-3xl w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] flex flex-col shadow-2xl overflow-hidden"
+              >
+                {/* Modal Sticky Header */}
+                <div className="p-4 sm:p-5 border-b border-white/10 flex items-start justify-between gap-3 bg-[#0e1528]">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[9px] font-mono font-bold uppercase tracking-wider">
+                        {currentExp.period}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono flex items-center gap-1">
+                        <MapPin size={10} className="text-rose-400" /> {currentExp.location}
+                      </span>
+                    </div>
+                    <h3 className="text-base sm:text-xl font-black text-white leading-tight">
+                      {currentExp.role}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-semibold text-amber-400 flex items-center gap-1 mt-0.5">
+                      <Building2 size={13} /> {currentExp.company}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setShowFullModal(false)}
+                    className="p-2 rounded-full bg-slate-900 border border-white/10 text-slate-300 hover:text-white active:scale-95 transition-all"
+                    aria-label="Close modal"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Job Switcher Bar inside Modal */}
+                <div className="p-2.5 bg-slate-950 border-b border-white/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
+                  {EXPERIENCES.map((exp, idx) => (
+                    <button
+                      key={exp.id}
+                      onClick={() => setActiveExpIdx(idx)}
+                      className={`px-3 py-1 rounded-lg text-[9.5px] font-black uppercase tracking-wider shrink-0 transition-all ${
+                        activeExpIdx === idx
+                          ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                          : 'bg-slate-900 text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {getShortCompanyName(exp.company)}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Modal Scrollable Content Body */}
+                <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
+                  {/* Highlights */}
+                  {currentHighlights.length > 0 && (
+                    <div>
+                      <h4 className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">
+                        Key Performance Highlights
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        {currentHighlights.map((hl, hIdx) => (
+                          <div key={hIdx} className="p-2.5 bg-slate-900/90 border border-white/10 rounded-xl">
+                            <div className="text-sm font-black text-amber-300">{hl.metric}</div>
+                            <div className="text-[9px] font-bold text-slate-400 uppercase">{hl.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* All Responsibilities */}
+                  <div>
+                    <h4 className="text-[10px] font-extrabold uppercase tracking-widest text-amber-400 mb-2.5 flex items-center gap-1.5">
+                      <Award size={13} /> Complete Responsibilities & Scope ({currentExp.description.length} Points)
+                    </h4>
+                    <div className="space-y-2.5">
+                      {currentExp.description.map((pt, pIdx) => (
+                        <div key={pIdx} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-white/5">
+                          <CheckCircle2 size={15} className="text-indigo-400 shrink-0 mt-0.5" />
+                          <p className="text-slate-200 text-xs sm:text-sm font-normal leading-relaxed">{pt}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Role Tags */}
+                  <div className="pt-2 border-t border-white/10 flex flex-wrap gap-1.5">
+                    {getRoleTags(currentExp.id).map((tag, tIdx) => (
+                      <span key={tIdx} className="text-[9px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 rounded-full">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Modal Footer */}
+                <div className="p-3 sm:p-4 bg-[#0e1528] border-t border-white/10 flex items-center justify-between">
+                  <div className="text-[10px] font-mono text-slate-400">
+                    Showing Job {activeExpIdx + 1} of {EXPERIENCES.length}
+                  </div>
+                  <button
+                    onClick={() => setShowFullModal(false)}
+                    className="py-2 px-5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-lg active:scale-95"
+                  >
+                    Done
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>
