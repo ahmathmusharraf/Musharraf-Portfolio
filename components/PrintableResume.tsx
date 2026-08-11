@@ -211,13 +211,15 @@ const PrintableResume: React.FC = () => {
           {/* Header */}
           <div className="ats-header">
             <div>
-              <div className="ats-name">{PERSONAL_INFO.name}</div>
-              <div className="ats-roles">Senior Digital Marketing Manager | Creative Director</div>
+              <div className="ats-name">{PERSONAL_INFO.name.toUpperCase()}</div>
+              <div className="ats-roles">{PERSONAL_INFO.title}</div>
+              <div className="text-[8pt] font-black text-rose-600 tracking-wider uppercase mt-1">{PERSONAL_INFO.availability}</div>
             </div>
             <div className="header-contact">
               <div>Dubai, United Arab Emirates</div>
               <div>{PERSONAL_INFO.phone}</div>
               <div><a href={`mailto:${PERSONAL_INFO.email}`}>{PERSONAL_INFO.email}</a></div>
+              <div><a href="https://linkedin.com/in/ahmathmusharraf/" target="_blank" rel="noreferrer">linkedin.com/in/ahmathmusharraf</a></div>
               <div><a href="https://linktr.ee/ahmathmusharraf" target="_blank" rel="noreferrer">linktr.ee/ahmathmusharraf</a></div>
             </div>
           </div>
@@ -242,12 +244,12 @@ const PrintableResume: React.FC = () => {
           {/* Role 1 */}
           <div className="ats-exp-item">
             <div className="ats-exp-header">
-              <span>SENIOR MULTIMEDIA DESIGNER</span>
-              <span className="font-semibold text-xs">Oct 2025 – Present</span>
+              <span>{EXPERIENCES[0].role.toUpperCase()}</span>
+              <span className="font-semibold text-xs">{EXPERIENCES[0].period}</span>
             </div>
             <div className="ats-exp-sub">
-              <span>Al Khateeb Global General Trading LLC</span>
-              <span className="text-xs font-semibold text-slate-500">Dubai, UAE</span>
+              <span>{EXPERIENCES[0].company}</span>
+              <span className="text-xs font-semibold text-slate-500">{EXPERIENCES[0].location}</span>
             </div>
             <ul className="ats-bullet-list">
               {EXPERIENCES[0].description.slice(0, 5).map((point, i) => (
