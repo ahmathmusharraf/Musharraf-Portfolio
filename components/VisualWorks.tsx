@@ -41,6 +41,7 @@ const VisualWorks: React.FC = () => {
       case 'Reels': return <Smartphone size={14} />;
       case 'Graphic Design': return <Layout size={14} />;
       case 'Branding': return <Palette size={14} />;
+      case 'Mentorship': return <GraduationCap size={14} />;
       default: return <Film size={14} />;
     }
   };
@@ -52,6 +53,7 @@ const VisualWorks: React.FC = () => {
       case 'Reels': return 'bg-purple-500/15 text-purple-400 border-purple-500/30';
       case 'Graphic Design': return 'bg-pink-500/15 text-pink-400 border-pink-500/30';
       case 'Branding': return 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+      case 'Mentorship': return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
       default: return 'bg-slate-500/15 text-slate-400 border-slate-500/30';
     }
   };
@@ -377,6 +379,7 @@ const VisualWorks: React.FC = () => {
                       {selectedWork.category === 'Photography' && "High-resolution commercial product & interior photography showcasing architectural details, brand aesthetics, and professional media presentation."}
                       {selectedWork.category === 'Branding' && "Strategic brand identity & visual communication design created to establish strong market positioning, cohesive guidelines, and premium audience perception."}
                       {selectedWork.category === 'Graphic Design' && "Multi-channel graphic design asset designed for digital ads, print media, social campaigns, and institutional marketing collateral."}
+                      {selectedWork.category === 'Mentorship' && "Academic lecturing, corporate workshops, and professional design mentorship covering digital media, UI/UX, and marketing strategy."}
                     </p>
                   </div>
 
