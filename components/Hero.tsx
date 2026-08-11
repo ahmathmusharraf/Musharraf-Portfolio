@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   ];
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#070a13] pt-16 md:pt-24 pb-20 md:pb-32">
+    <section id="home" className="relative min-h-0 md:min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#070a13] pt-14 sm:pt-20 md:pt-24 pb-6 sm:pb-16 md:pb-32">
       
       {/* Background Lighting & Grid */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -81,47 +81,49 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       {/* Main Responsive Container */}
       <div className="container mx-auto px-4 sm:px-6 relative z-20 max-w-7xl">
         
-        {/* MOBILE SINGLE VIEW LAYOUT (Fit 1 Screen Height) */}
-        <div className="md:hidden flex flex-col justify-between items-center text-center max-w-sm mx-auto h-full space-y-3.5 py-2">
+        {/* MOBILE SINGLE VIEW LAYOUT (Compact & Tightly Spaced) */}
+        <div className="md:hidden flex flex-col justify-center items-center text-center max-w-sm mx-auto space-y-2.5 py-1">
           
-          {/* Avatar & Location Badge */}
+          {/* Avatar & Badges */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
             className="relative flex flex-col items-center"
           >
-            <div className="relative w-20 h-20 rounded-2xl p-1 bg-gradient-to-tr from-indigo-500 via-amber-400 to-cyan-400 shadow-[0_0_25px_rgba(99,102,241,0.3)] mb-2.5">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl p-0.5 bg-gradient-to-tr from-indigo-500 via-amber-400 to-cyan-400 shadow-[0_0_20px_rgba(99,102,241,0.3)] mb-1.5">
               <img
                 src={PERSONAL_INFO.profileImage}
                 alt={PERSONAL_INFO.name}
                 className="w-full h-full object-cover object-top rounded-xl bg-slate-950"
               />
-              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center">
+              <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-950 flex items-center justify-center">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
               </span>
             </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[9px] font-black uppercase tracking-wider text-rose-300 shadow-lg">
-              <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
-              <span>{PERSONAL_INFO.availability}</span>
-            </div>
+            <div className="flex flex-wrap items-center justify-center gap-1 mt-0.5">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-[8px] font-black uppercase tracking-wider text-rose-300 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+                <span>{PERSONAL_INFO.availability}</span>
+              </div>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-slate-900/90 border border-white/10 text-[9px] font-black uppercase tracking-wider text-amber-300 shadow-lg mt-1">
-              <MapPin size={9} className="text-emerald-400" />
-              <span>DUBAI, UAE</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-indigo-300">6+ YRS EXP</span>
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-900/90 border border-white/10 text-[8px] font-black uppercase tracking-wider text-amber-300 shadow-sm">
+                <MapPin size={8} className="text-emerald-400" />
+                <span>DUBAI</span>
+                <span className="text-slate-600">•</span>
+                <span className="text-indigo-300">6+ YRS EXP</span>
+              </div>
             </div>
           </motion.div>
 
           {/* Headline & Rotating Role */}
-          <div>
+          <div className="space-y-0.5">
             <motion.h1 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-2xl font-black text-white tracking-tight leading-tight mb-1"
+              className="text-xl font-black text-white tracking-tight leading-snug"
             >
               Architecting <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-amber-200 to-indigo-300">
@@ -130,17 +132,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </motion.h1>
 
             {/* Rotating Role Pill */}
-            <div className="h-7 overflow-hidden flex items-center justify-center">
+            <div className="h-6 overflow-hidden flex items-center justify-center">
               <motion.div
                 key={roleIndex}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
+                exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-[11px] font-bold text-slate-300 flex items-center gap-1"
+                className="text-[10.5px] font-bold text-slate-300 flex items-center gap-1"
               >
-                <span className="text-indigo-400 font-extrabold uppercase tracking-wider">Expert:</span>
-                <span className="px-2 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded-md text-amber-300 text-[10px] font-extrabold">
+                <span className="text-indigo-400 font-extrabold uppercase tracking-wider text-[9px]">Expert:</span>
+                <span className="px-2 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded-md text-amber-300 text-[9.5px] font-extrabold truncate max-w-[220px]">
                   {PERSONAL_INFO.roles[roleIndex]}
                 </span>
               </motion.div>
@@ -152,29 +154,29 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="grid grid-cols-4 gap-1.5 w-full bg-slate-950/80 border border-white/10 p-2 rounded-2xl shadow-2xl backdrop-blur-xl"
+            className="grid grid-cols-4 gap-1 w-full bg-slate-950/80 border border-white/10 p-1.5 rounded-xl shadow-xl backdrop-blur-xl"
           >
             {metrics.map((m, idx) => (
-              <div key={idx} className="flex flex-col items-center text-center p-1 bg-white/[0.02] rounded-lg">
-                <span className="text-xs font-black text-indigo-300 leading-none mb-0.5">{m.value}</span>
-                <span className="text-[7.5px] font-bold text-slate-400 uppercase tracking-tighter truncate w-full">{m.label.split(' ')[0]}</span>
+              <div key={idx} className="flex flex-col items-center text-center p-0.5 bg-white/[0.02] rounded-lg">
+                <span className="text-[11px] font-black text-indigo-300 leading-none mb-0.5">{m.value}</span>
+                <span className="text-[7px] font-bold text-slate-400 uppercase tracking-tighter truncate w-full">{m.label.split(' ')[0]}</span>
               </div>
             ))}
           </motion.div>
 
-          {/* Quick Specialties Badges (Scrollable / Compact) */}
+          {/* Quick Specialties Badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.25 }}
-            className="flex items-center gap-1.5 overflow-x-auto w-full pb-1 scrollbar-hide px-0.5 justify-center flex-wrap"
+            className="flex items-center gap-1 flex-wrap w-full justify-center px-0.5"
           >
             {specialties.slice(0, 4).map((spec) => (
               <div 
                 key={spec.label} 
-                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${spec.bg} text-[9px] font-black uppercase tracking-wider text-slate-200 shrink-0`}
+                className={`flex items-center gap-1 px-1.5 py-0.5 rounded-md ${spec.bg} text-[8.5px] font-black uppercase tracking-wider text-slate-200 shrink-0`}
               >
-                <spec.icon size={11} className={spec.color} />
+                <spec.icon size={10} className={spec.color} />
                 <span>{spec.label}</span>
               </div>
             ))}
@@ -185,21 +187,21 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="flex items-center justify-center gap-2 w-full pt-1"
+            className="flex items-center justify-center gap-1.5 w-full pt-0.5"
           >
             <a 
               href="#contact" 
-              className="flex-1 py-2.5 bg-gradient-to-r from-indigo-500 to-indigo-700 text-white rounded-xl font-black text-[10px] uppercase tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.4)] flex items-center justify-center gap-1 active:scale-95"
+              className="flex-1 py-2 bg-gradient-to-r from-indigo-500 to-indigo-700 text-white rounded-lg font-black text-[9.5px] uppercase tracking-wider shadow-[0_0_15px_rgba(99,102,241,0.4)] flex items-center justify-center gap-1 active:scale-95"
             >
               <span>Book Strategy</span>
-              <ArrowUpRight size={13} />
+              <ArrowUpRight size={12} />
             </a>
 
             <a 
               href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, '')}`} 
               target="_blank"
               rel="noreferrer"
-              className="py-2.5 px-3 bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 rounded-xl font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
+              className="py-2 px-2.5 bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 rounded-lg font-black text-[9.5px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
             >
               <span>WhatsApp</span>
             </a>
@@ -207,10 +209,10 @@ const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             {onOpenResume && (
               <button 
                 onClick={onOpenResume}
-                className="py-2.5 px-3 bg-slate-900 text-slate-200 border border-white/10 rounded-xl font-black text-[10px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
+                className="py-2 px-2.5 bg-slate-900 text-slate-200 border border-white/10 rounded-lg font-black text-[9.5px] uppercase tracking-wider flex items-center justify-center gap-1 active:scale-95"
                 aria-label="View Resume"
               >
-                <FileText size={13} className="text-amber-400" />
+                <FileText size={12} className="text-amber-400" />
                 <span>CV</span>
               </button>
             )}
