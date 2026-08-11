@@ -37,10 +37,10 @@ export interface Project {
 export interface VisualWork {
   id: string;
   title: string;
-  category: 'Photography' | 'Videography' | 'Branding' | 'Graphic Design' | 'Reels';
+  category: 'Photography' | 'Videography' | 'Branding' | 'Graphic Design' | 'Reels' | 'Mentorship';
   imageUrl: string;
   videoUrl?: string;
-  aspectRatio?: '9:16' | '16:9';
+  aspectRatio?: '9:16' | '16:9' | '3:4';
 }
 
 export interface SocialLink {
