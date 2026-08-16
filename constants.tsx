@@ -48,7 +48,7 @@ export const PERSONAL_INFO = {
   
   summary: "Results-driven Digital Marketing & Creative Strategist with 6+ years of experience across the UAE and Sri Lanka, specializing in performance marketing, paid media, lead generation, social media strategy, SEO, brand development, e-commerce, and creative content production. Proven track record of managing multi-channel campaigns across Meta, Google, and TikTok, with experience handling advertising budgets of up to AED 40,000+ monthly and driving measurable improvements in leads, engagement, conversions, and ROI. Skilled in developing data-driven strategies and monitoring ROAS, ROI, CPL, CPA, CTR, impressions, engagement, conversion rates, and overall campaign KPIs to optimize marketing performance. Strong creative leadership across graphic design, photography, videography, promotional campaigns, and content production.",
   
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+  profileImage: "/Mushifinal1.png",
 
   // PATH TO YOUR REAL CV
   cvUrl: "/Musharraf_CV.pdf" 
